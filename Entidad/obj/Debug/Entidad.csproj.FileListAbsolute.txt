@@ -1,0 +1,12 @@
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Entidad\bin\Debug\Entidad.dll.config
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Entidad\bin\Debug\Entidad.dll
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Entidad\bin\Debug\Entidad.pdb
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Entidad\obj\Debug\ResolveAssemblyReference.cache
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Entidad\obj\Debug\Entidad.dll
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Entidad\obj\Debug\Entidad.pdb
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Entidad\bin\Debug\Entidad.dll.config
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Entidad\bin\Debug\Entidad.dll
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Entidad\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Entidad\obj\Debug\Entidad.dll
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Entidad\obj\Debug\Entidad.pdb

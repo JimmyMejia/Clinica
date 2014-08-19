@@ -1,0 +1,14 @@
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\bin\Debug\Datos.dll
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\bin\Debug\Datos.pdb
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\obj\Debug\ResolveAssemblyReference.cache
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\obj\Debug\Datos.dll
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\obj\Debug\Datos.pdb
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\bin\Debug\Entidad.dll
+c:\users\jimmy\documents\visual studio 2010\projects\Clinica\Datos\bin\Debug\Entidad.pdb
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\bin\Debug\Datos.dll
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\bin\Debug\Datos.pdb
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\bin\Debug\Entidad.dll
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\bin\Debug\Entidad.pdb
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\obj\Debug\Datos.dll
+C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Datos\obj\Debug\Datos.pdb

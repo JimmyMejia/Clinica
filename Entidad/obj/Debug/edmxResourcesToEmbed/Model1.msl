@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ClinicaModelStoreContainer" CdmEntityContainer="ClinicaEntities">
+    <EntitySetMapping Name="Cat_Servicio">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio">
+        <MappingFragment StoreEntitySet="Cat_Servicio">
+          <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat_Servicio_Brindado">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio_Brindado">
+        <MappingFragment StoreEntitySet="Cat_Servicio_Brindado">
+          <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat_Sub_Opcion">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Sub_Opcion">
+        <MappingFragment StoreEntitySet="Cat_Sub_Opcion">
+          <ScalarProperty Name="IdSubOpcion" ColumnName="IdSubOpcion" />
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Descripcion_sub_opcion" ColumnName="Descripcion_sub_opcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clinicas">
+      <EntityTypeMapping TypeName="ClinicaModel.Clinica">
+        <MappingFragment StoreEntitySet="Clinica">
+          <ScalarProperty Name="IdClinica" ColumnName="IdClinica" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fotoes">
+      <EntityTypeMapping TypeName="ClinicaModel.Foto">
+        <MappingFragment StoreEntitySet="Foto">
+          <ScalarProperty Name="IdFoto" ColumnName="IdFoto" />
+          <ScalarProperty Name="Foto1" ColumnName="Foto" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maes_Derecho_Usuario">
+      <EntityTypeMapping TypeName="ClinicaModel.Maes_Derecho_Usuario">
+        <MappingFragment StoreEntitySet="Maes_Derecho_Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="IdSubOpcion" ColumnName="IdSubOpcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maes_Opciones_Catalogo">
+      <EntityTypeMapping TypeName="ClinicaModel.Maes_Opciones_Catalogo">
+        <MappingFragment StoreEntitySet="Maes_Opciones_Catalogo">
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Descripcion_opcion" ColumnName="Descripcion_opcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacientes">
+      <EntityTypeMapping TypeName="ClinicaModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pbcatcols">
+      <EntityTypeMapping TypeName="ClinicaModel.pbcatcol">
+        <MappingFragment StoreEntitySet="pbcatcol">
+          <ScalarProperty Name="pbc_tnam" ColumnName="pbc_tnam" />
+          <ScalarProperty Name="pbc_tid" ColumnName="pbc_tid" />
+          <ScalarProperty Name="pbc_ownr" ColumnName="pbc_ownr" />
+          <ScalarProperty Name="pbc_cnam" ColumnName="pbc_cnam" />
+          <ScalarProperty Name="pbc_cid" ColumnName="pbc_cid" />
+          <ScalarProperty Name="pbc_labl" ColumnName="pbc_labl" />
+          <ScalarProperty Name="pbc_lpos" ColumnName="pbc_lpos" />
+          <ScalarProperty Name="pbc_hdr" ColumnName="pbc_hdr" />
+          <ScalarProperty Name="pbc_hpos" ColumnName="pbc_hpos" />
+          <ScalarProperty Name="pbc_jtfy" ColumnName="pbc_jtfy" />
+          <ScalarProperty Name="pbc_mask" ColumnName="pbc_mask" />
+          <ScalarProperty Name="pbc_case" ColumnName="pbc_case" />
+          <ScalarProperty Name="pbc_hght" ColumnName="pbc_hght" />
+          <ScalarProperty Name="pbc_wdth" ColumnName="pbc_wdth" />
+          <ScalarProperty Name="pbc_ptrn" ColumnName="pbc_ptrn" />
+          <ScalarProperty Name="pbc_bmap" ColumnName="pbc_bmap" />
+          <ScalarProperty Name="pbc_init" ColumnName="pbc_init" />
+          <ScalarProperty Name="pbc_cmnt" ColumnName="pbc_cmnt" />
+          <ScalarProperty Name="pbc_edit" ColumnName="pbc_edit" />
+          <ScalarProperty Name="pbc_tag" ColumnName="pbc_tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pbcatedts">
+      <EntityTypeMapping TypeName="ClinicaModel.pbcatedt">
+        <MappingFragment StoreEntitySet="pbcatedt">
+          <ScalarProperty Name="pbe_name" ColumnName="pbe_name" />
+          <ScalarProperty Name="pbe_edit" ColumnName="pbe_edit" />
+          <ScalarProperty Name="pbe_type" ColumnName="pbe_type" />
+          <ScalarProperty Name="pbe_cntr" ColumnName="pbe_cntr" />
+          <ScalarProperty Name="pbe_seqn" ColumnName="pbe_seqn" />
+          <ScalarProperty Name="pbe_flag" ColumnName="pbe_flag" />
+          <ScalarProperty Name="pbe_work" ColumnName="pbe_work" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pbcatfmts">
+      <EntityTypeMapping TypeName="ClinicaModel.pbcatfmt">
+        <MappingFragment StoreEntitySet="pbcatfmt">
+          <ScalarProperty Name="pbf_name" ColumnName="pbf_name" />
+          <ScalarProperty Name="pbf_frmt" ColumnName="pbf_frmt" />
+          <ScalarProperty Name="pbf_type" ColumnName="pbf_type" />
+          <ScalarProperty Name="pbf_cntr" ColumnName="pbf_cntr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pbcattbls">
+      <EntityTypeMapping TypeName="ClinicaModel.pbcattbl">
+        <MappingFragment StoreEntitySet="pbcattbl">
+          <ScalarProperty Name="pbt_tnam" ColumnName="pbt_tnam" />
+          <ScalarProperty Name="pbt_tid" ColumnName="pbt_tid" />
+          <ScalarProperty Name="pbt_ownr" ColumnName="pbt_ownr" />
+          <ScalarProperty Name="pbd_fhgt" ColumnName="pbd_fhgt" />
+          <ScalarProperty Name="pbd_fwgt" ColumnName="pbd_fwgt" />
+          <ScalarProperty Name="pbd_fitl" ColumnName="pbd_fitl" />
+          <ScalarProperty Name="pbd_funl" ColumnName="pbd_funl" />
+          <ScalarProperty Name="pbd_fchr" ColumnName="pbd_fchr" />
+          <ScalarProperty Name="pbd_fptc" ColumnName="pbd_fptc" />
+          <ScalarProperty Name="pbd_ffce" ColumnName="pbd_ffce" />
+          <ScalarProperty Name="pbh_fhgt" ColumnName="pbh_fhgt" />
+          <ScalarProperty Name="pbh_fwgt" ColumnName="pbh_fwgt" />
+          <ScalarProperty Name="pbh_fitl" ColumnName="pbh_fitl" />
+          <ScalarProperty Name="pbh_funl" ColumnName="pbh_funl" />
+          <ScalarProperty Name="pbh_fchr" ColumnName="pbh_fchr" />
+          <ScalarProperty Name="pbh_fptc" ColumnName="pbh_fptc" />
+          <ScalarProperty Name="pbh_ffce" ColumnName="pbh_ffce" />
+          <ScalarProperty Name="pbl_fhgt" ColumnName="pbl_fhgt" />
+          <ScalarProperty Name="pbl_fwgt" ColumnName="pbl_fwgt" />
+          <ScalarProperty Name="pbl_fitl" ColumnName="pbl_fitl" />
+          <ScalarProperty Name="pbl_funl" ColumnName="pbl_funl" />
+          <ScalarProperty Name="pbl_fchr" ColumnName="pbl_fchr" />
+          <ScalarProperty Name="pbl_fptc" ColumnName="pbl_fptc" />
+          <ScalarProperty Name="pbl_ffce" ColumnName="pbl_ffce" />
+          <ScalarProperty Name="pbt_cmnt" ColumnName="pbt_cmnt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pbcatvlds">
+      <EntityTypeMapping TypeName="ClinicaModel.pbcatvld">
+        <MappingFragment StoreEntitySet="pbcatvld">
+          <ScalarProperty Name="pbv_name" ColumnName="pbv_name" />
+          <ScalarProperty Name="pbv_vald" ColumnName="pbv_vald" />
+          <ScalarProperty Name="pbv_type" ColumnName="pbv_type" />
+          <ScalarProperty Name="pbv_cntr" ColumnName="pbv_cntr" />
+          <ScalarProperty Name="pbv_msg" ColumnName="pbv_msg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ClinicaModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="ClinicaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Detalle_Servicio_Brindado" TypeName="ClinicaModel.Detalle_Servicio_Brindado" StoreEntitySet="Detalle_Servicio_Brindado">
+      <EndProperty Name="Cat_Servicio">
+        <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+      </EndProperty>
+      <EndProperty Name="Cat_Servicio_Brindado">
+        <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Cat_Cita">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Cita">
+        <MappingFragment StoreEntitySet="Cat_Cita">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
+          <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

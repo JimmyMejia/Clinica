@@ -1,0 +1,1029 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ClinicaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ClinicaModelStoreContainer">
+          <EntitySet Name="Cat_Cita" EntityType="ClinicaModel.Store.Cat_Cita" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cat_Servicio" EntityType="ClinicaModel.Store.Cat_Servicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cat_Servicio_Brindado" EntityType="ClinicaModel.Store.Cat_Servicio_Brindado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cat_Sub_Opcion" EntityType="ClinicaModel.Store.Cat_Sub_Opcion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Clinica" EntityType="ClinicaModel.Store.Clinica" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Detalle_Servicio_Brindado" EntityType="ClinicaModel.Store.Detalle_Servicio_Brindado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Foto" EntityType="ClinicaModel.Store.Foto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Store.Maes_Derecho_Usuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Store.Maes_Opciones_Catalogo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Paciente" EntityType="ClinicaModel.Store.Paciente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="pbcatcol" EntityType="ClinicaModel.Store.pbcatcol" store:Type="Tables" store:Schema="dbo" store:Name="pbcatcol">
+            <DefiningQuery>SELECT 
+      [pbcatcol].[pbc_tnam] AS [pbc_tnam], 
+      [pbcatcol].[pbc_tid] AS [pbc_tid], 
+      [pbcatcol].[pbc_ownr] AS [pbc_ownr], 
+      [pbcatcol].[pbc_cnam] AS [pbc_cnam], 
+      [pbcatcol].[pbc_cid] AS [pbc_cid], 
+      [pbcatcol].[pbc_labl] AS [pbc_labl], 
+      [pbcatcol].[pbc_lpos] AS [pbc_lpos], 
+      [pbcatcol].[pbc_hdr] AS [pbc_hdr], 
+      [pbcatcol].[pbc_hpos] AS [pbc_hpos], 
+      [pbcatcol].[pbc_jtfy] AS [pbc_jtfy], 
+      [pbcatcol].[pbc_mask] AS [pbc_mask], 
+      [pbcatcol].[pbc_case] AS [pbc_case], 
+      [pbcatcol].[pbc_hght] AS [pbc_hght], 
+      [pbcatcol].[pbc_wdth] AS [pbc_wdth], 
+      [pbcatcol].[pbc_ptrn] AS [pbc_ptrn], 
+      [pbcatcol].[pbc_bmap] AS [pbc_bmap], 
+      [pbcatcol].[pbc_init] AS [pbc_init], 
+      [pbcatcol].[pbc_cmnt] AS [pbc_cmnt], 
+      [pbcatcol].[pbc_edit] AS [pbc_edit], 
+      [pbcatcol].[pbc_tag] AS [pbc_tag]
+      FROM [dbo].[pbcatcol] AS [pbcatcol]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="pbcatedt" EntityType="ClinicaModel.Store.pbcatedt" store:Type="Tables" store:Schema="dbo" store:Name="pbcatedt">
+            <DefiningQuery>SELECT 
+      [pbcatedt].[pbe_name] AS [pbe_name], 
+      [pbcatedt].[pbe_edit] AS [pbe_edit], 
+      [pbcatedt].[pbe_type] AS [pbe_type], 
+      [pbcatedt].[pbe_cntr] AS [pbe_cntr], 
+      [pbcatedt].[pbe_seqn] AS [pbe_seqn], 
+      [pbcatedt].[pbe_flag] AS [pbe_flag], 
+      [pbcatedt].[pbe_work] AS [pbe_work]
+      FROM [dbo].[pbcatedt] AS [pbcatedt]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="pbcatfmt" EntityType="ClinicaModel.Store.pbcatfmt" store:Type="Tables" store:Schema="dbo" store:Name="pbcatfmt">
+            <DefiningQuery>SELECT 
+      [pbcatfmt].[pbf_name] AS [pbf_name], 
+      [pbcatfmt].[pbf_frmt] AS [pbf_frmt], 
+      [pbcatfmt].[pbf_type] AS [pbf_type], 
+      [pbcatfmt].[pbf_cntr] AS [pbf_cntr]
+      FROM [dbo].[pbcatfmt] AS [pbcatfmt]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="pbcattbl" EntityType="ClinicaModel.Store.pbcattbl" store:Type="Tables" store:Schema="dbo" store:Name="pbcattbl">
+            <DefiningQuery>SELECT 
+      [pbcattbl].[pbt_tnam] AS [pbt_tnam], 
+      [pbcattbl].[pbt_tid] AS [pbt_tid], 
+      [pbcattbl].[pbt_ownr] AS [pbt_ownr], 
+      [pbcattbl].[pbd_fhgt] AS [pbd_fhgt], 
+      [pbcattbl].[pbd_fwgt] AS [pbd_fwgt], 
+      [pbcattbl].[pbd_fitl] AS [pbd_fitl], 
+      [pbcattbl].[pbd_funl] AS [pbd_funl], 
+      [pbcattbl].[pbd_fchr] AS [pbd_fchr], 
+      [pbcattbl].[pbd_fptc] AS [pbd_fptc], 
+      [pbcattbl].[pbd_ffce] AS [pbd_ffce], 
+      [pbcattbl].[pbh_fhgt] AS [pbh_fhgt], 
+      [pbcattbl].[pbh_fwgt] AS [pbh_fwgt], 
+      [pbcattbl].[pbh_fitl] AS [pbh_fitl], 
+      [pbcattbl].[pbh_funl] AS [pbh_funl], 
+      [pbcattbl].[pbh_fchr] AS [pbh_fchr], 
+      [pbcattbl].[pbh_fptc] AS [pbh_fptc], 
+      [pbcattbl].[pbh_ffce] AS [pbh_ffce], 
+      [pbcattbl].[pbl_fhgt] AS [pbl_fhgt], 
+      [pbcattbl].[pbl_fwgt] AS [pbl_fwgt], 
+      [pbcattbl].[pbl_fitl] AS [pbl_fitl], 
+      [pbcattbl].[pbl_funl] AS [pbl_funl], 
+      [pbcattbl].[pbl_fchr] AS [pbl_fchr], 
+      [pbcattbl].[pbl_fptc] AS [pbl_fptc], 
+      [pbcattbl].[pbl_ffce] AS [pbl_ffce], 
+      [pbcattbl].[pbt_cmnt] AS [pbt_cmnt]
+      FROM [dbo].[pbcattbl] AS [pbcattbl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="pbcatvld" EntityType="ClinicaModel.Store.pbcatvld" store:Type="Tables" store:Schema="dbo" store:Name="pbcatvld">
+            <DefiningQuery>SELECT 
+      [pbcatvld].[pbv_name] AS [pbv_name], 
+      [pbcatvld].[pbv_vald] AS [pbv_vald], 
+      [pbcatvld].[pbv_type] AS [pbv_type], 
+      [pbcatvld].[pbv_cntr] AS [pbv_cntr], 
+      [pbcatvld].[pbv_msg] AS [pbv_msg]
+      FROM [dbo].[pbcatvld] AS [pbcatvld]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usuario" EntityType="ClinicaModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.Store.FK_Cat_Cita_Cat_Servicio">
+            <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+            <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Cita_Paciente" Association="ClinicaModel.Store.FK_Cat_Cita_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Servicio_Brindado_Paciente" Association="ClinicaModel.Store.FK_Cat_Servicio_Brindado_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo" Association="ClinicaModel.Store.FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo">
+            <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
+            <End Role="Cat_Sub_Opcion" EntitySet="Cat_Sub_Opcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Servicio_Brindado_Cat_Servicio" Association="ClinicaModel.Store.FK_Detalle_Servicio_Brindado_Cat_Servicio">
+            <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+            <End Role="Detalle_Servicio_Brindado" EntitySet="Detalle_Servicio_Brindado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado" Association="ClinicaModel.Store.FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado">
+            <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
+            <End Role="Detalle_Servicio_Brindado" EntitySet="Detalle_Servicio_Brindado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mes_Derecho_Usuario_Cat_Usuario" Association="ClinicaModel.Store.FK_Mes_Derecho_Usuario_Cat_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" Association="ClinicaModel.Store.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo">
+            <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
+            <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cat_Cita">
+          <Key>
+            <PropertyRef Name="IdCita" />
+          </Key>
+          <Property Name="IdCita" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="IdPaciente" Type="int" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Hora" Type="varchar" MaxLength="10" />
+          <Property Name="IdServicio" Type="int" />
+          <Property Name="FechaRegistroCita" Type="date" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Cat_Servicio">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Precio" Type="int" />
+        </EntityType>
+        <EntityType Name="Cat_Servicio_Brindado">
+          <Key>
+            <PropertyRef Name="IdRecibo" />
+          </Key>
+          <Property Name="IdRecibo" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="IdPaciente" Type="int" />
+        </EntityType>
+        <EntityType Name="Cat_Sub_Opcion">
+          <Key>
+            <PropertyRef Name="IdSubOpcion" />
+            <PropertyRef Name="IdOpcion" />
+          </Key>
+          <Property Name="IdSubOpcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdOpcion" Type="int" Nullable="false" />
+          <Property Name="Descripcion_sub_opcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Clinica">
+          <Key>
+            <PropertyRef Name="IdClinica" />
+          </Key>
+          <Property Name="IdClinica" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="40" />
+          <Property Name="Telefono" Type="varchar" MaxLength="9" />
+          <Property Name="Celular" Type="varchar" MaxLength="9" />
+          <Property Name="Logo" Type="varchar(max)" />
+          <Property Name="Activo" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Detalle_Servicio_Brindado">
+          <Key>
+            <PropertyRef Name="IdRecibo" />
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdRecibo" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="IdServicio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="IdFoto" />
+          </Key>
+          <Property Name="IdFoto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Ubicacion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Maes_Derecho_Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="IdOpcion" />
+            <PropertyRef Name="IdSubOpcion" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdOpcion" Type="int" Nullable="false" />
+          <Property Name="IdSubOpcion" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Maes_Opciones_Catalogo">
+          <Key>
+            <PropertyRef Name="IdOpcion" />
+          </Key>
+          <Property Name="IdOpcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion_opcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="IdPaciente" />
+          </Key>
+          <Property Name="IdPaciente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="varchar" MaxLength="40" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="40" />
+          <Property Name="Fecha_nacimiento" Type="date" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" />
+          <Property Name="Telefono" Type="varchar" MaxLength="8" />
+          <Property Name="Celular" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatcol' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="pbcatcol">
+          <Key>
+            <PropertyRef Name="pbc_tnam" />
+            <PropertyRef Name="pbc_ownr" />
+            <PropertyRef Name="pbc_cnam" />
+          </Key>
+          <Property Name="pbc_tnam" Type="varchar" Nullable="false" MaxLength="129" />
+          <Property Name="pbc_tid" Type="int" />
+          <Property Name="pbc_ownr" Type="varchar" Nullable="false" MaxLength="129" />
+          <Property Name="pbc_cnam" Type="varchar" Nullable="false" MaxLength="129" />
+          <Property Name="pbc_cid" Type="smallint" />
+          <Property Name="pbc_labl" Type="varchar" MaxLength="254" />
+          <Property Name="pbc_lpos" Type="smallint" />
+          <Property Name="pbc_hdr" Type="varchar" MaxLength="254" />
+          <Property Name="pbc_hpos" Type="smallint" />
+          <Property Name="pbc_jtfy" Type="smallint" />
+          <Property Name="pbc_mask" Type="varchar" MaxLength="31" />
+          <Property Name="pbc_case" Type="smallint" />
+          <Property Name="pbc_hght" Type="smallint" />
+          <Property Name="pbc_wdth" Type="smallint" />
+          <Property Name="pbc_ptrn" Type="varchar" MaxLength="31" />
+          <Property Name="pbc_bmap" Type="varchar" MaxLength="1" />
+          <Property Name="pbc_init" Type="varchar" MaxLength="254" />
+          <Property Name="pbc_cmnt" Type="varchar" MaxLength="254" />
+          <Property Name="pbc_edit" Type="varchar" MaxLength="31" />
+          <Property Name="pbc_tag" Type="varchar" MaxLength="254" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatedt' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="pbcatedt">
+          <Key>
+            <PropertyRef Name="pbe_name" />
+            <PropertyRef Name="pbe_seqn" />
+          </Key>
+          <Property Name="pbe_name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="pbe_edit" Type="varchar" MaxLength="254" />
+          <Property Name="pbe_type" Type="smallint" />
+          <Property Name="pbe_cntr" Type="int" />
+          <Property Name="pbe_seqn" Type="smallint" Nullable="false" />
+          <Property Name="pbe_flag" Type="int" />
+          <Property Name="pbe_work" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatfmt' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="pbcatfmt">
+          <Key>
+            <PropertyRef Name="pbf_name" />
+          </Key>
+          <Property Name="pbf_name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="pbf_frmt" Type="varchar" MaxLength="254" />
+          <Property Name="pbf_type" Type="smallint" />
+          <Property Name="pbf_cntr" Type="int" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcattbl' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="pbcattbl">
+          <Key>
+            <PropertyRef Name="pbt_tnam" />
+            <PropertyRef Name="pbt_ownr" />
+          </Key>
+          <Property Name="pbt_tnam" Type="varchar" Nullable="false" MaxLength="129" />
+          <Property Name="pbt_tid" Type="int" />
+          <Property Name="pbt_ownr" Type="varchar" Nullable="false" MaxLength="129" />
+          <Property Name="pbd_fhgt" Type="smallint" />
+          <Property Name="pbd_fwgt" Type="smallint" />
+          <Property Name="pbd_fitl" Type="varchar" MaxLength="1" />
+          <Property Name="pbd_funl" Type="varchar" MaxLength="1" />
+          <Property Name="pbd_fchr" Type="smallint" />
+          <Property Name="pbd_fptc" Type="smallint" />
+          <Property Name="pbd_ffce" Type="varchar" MaxLength="18" />
+          <Property Name="pbh_fhgt" Type="smallint" />
+          <Property Name="pbh_fwgt" Type="smallint" />
+          <Property Name="pbh_fitl" Type="varchar" MaxLength="1" />
+          <Property Name="pbh_funl" Type="varchar" MaxLength="1" />
+          <Property Name="pbh_fchr" Type="smallint" />
+          <Property Name="pbh_fptc" Type="smallint" />
+          <Property Name="pbh_ffce" Type="varchar" MaxLength="18" />
+          <Property Name="pbl_fhgt" Type="smallint" />
+          <Property Name="pbl_fwgt" Type="smallint" />
+          <Property Name="pbl_fitl" Type="varchar" MaxLength="1" />
+          <Property Name="pbl_funl" Type="varchar" MaxLength="1" />
+          <Property Name="pbl_fchr" Type="smallint" />
+          <Property Name="pbl_fptc" Type="smallint" />
+          <Property Name="pbl_ffce" Type="varchar" MaxLength="18" />
+          <Property Name="pbt_cmnt" Type="varchar" MaxLength="254" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatvld' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="pbcatvld">
+          <Key>
+            <PropertyRef Name="pbv_name" />
+          </Key>
+          <Property Name="pbv_name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="pbv_vald" Type="varchar" MaxLength="254" />
+          <Property Name="pbv_type" Type="smallint" />
+          <Property Name="pbv_cntr" Type="int" />
+          <Property Name="pbv_msg" Type="varchar" MaxLength="254" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="varchar" MaxLength="10" />
+          <Property Name="Contrasenia" Type="nvarchar" MaxLength="20" />
+          <Property Name="Activo" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_Cat_Cita_Cat_Servicio">
+          <End Role="Cat_Servicio" Type="ClinicaModel.Store.Cat_Servicio" Multiplicity="0..1" />
+          <End Role="Cat_Cita" Type="ClinicaModel.Store.Cat_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Servicio">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="Cat_Cita">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Cita_Paciente">
+          <End Role="Paciente" Type="ClinicaModel.Store.Paciente" Multiplicity="0..1" />
+          <End Role="Cat_Cita" Type="ClinicaModel.Store.Cat_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="Cat_Cita">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Servicio_Brindado_Paciente">
+          <End Role="Paciente" Type="ClinicaModel.Store.Paciente" Multiplicity="0..1" />
+          <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Store.Cat_Servicio_Brindado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="Cat_Servicio_Brindado">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo">
+          <End Role="Maes_Opciones_Catalogo" Type="ClinicaModel.Store.Maes_Opciones_Catalogo" Multiplicity="1" />
+          <End Role="Cat_Sub_Opcion" Type="ClinicaModel.Store.Cat_Sub_Opcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maes_Opciones_Catalogo">
+              <PropertyRef Name="IdOpcion" />
+            </Principal>
+            <Dependent Role="Cat_Sub_Opcion">
+              <PropertyRef Name="IdOpcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Servicio_Brindado_Cat_Servicio">
+          <End Role="Cat_Servicio" Type="ClinicaModel.Store.Cat_Servicio" Multiplicity="1" />
+          <End Role="Detalle_Servicio_Brindado" Type="ClinicaModel.Store.Detalle_Servicio_Brindado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Servicio">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="Detalle_Servicio_Brindado">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado">
+          <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Store.Cat_Servicio_Brindado" Multiplicity="1" />
+          <End Role="Detalle_Servicio_Brindado" Type="ClinicaModel.Store.Detalle_Servicio_Brindado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Servicio_Brindado">
+              <PropertyRef Name="IdRecibo" />
+            </Principal>
+            <Dependent Role="Detalle_Servicio_Brindado">
+              <PropertyRef Name="IdRecibo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mes_Derecho_Usuario_Cat_Usuario">
+          <End Role="Usuario" Type="ClinicaModel.Store.Usuario" Multiplicity="1" />
+          <End Role="Maes_Derecho_Usuario" Type="ClinicaModel.Store.Maes_Derecho_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Maes_Derecho_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo">
+          <End Role="Maes_Opciones_Catalogo" Type="ClinicaModel.Store.Maes_Opciones_Catalogo" Multiplicity="1" />
+          <End Role="Maes_Derecho_Usuario" Type="ClinicaModel.Store.Maes_Derecho_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maes_Opciones_Catalogo">
+              <PropertyRef Name="IdOpcion" />
+            </Principal>
+            <Dependent Role="Maes_Derecho_Usuario">
+              <PropertyRef Name="IdOpcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClinicaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ClinicaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cat_Servicio" EntityType="ClinicaModel.Cat_Servicio" />
+          <EntitySet Name="Cat_Servicio_Brindado" EntityType="ClinicaModel.Cat_Servicio_Brindado" />
+          <EntitySet Name="Cat_Sub_Opcion" EntityType="ClinicaModel.Cat_Sub_Opcion" />
+          <EntitySet Name="Clinicas" EntityType="ClinicaModel.Clinica" />
+          <EntitySet Name="Fotoes" EntityType="ClinicaModel.Foto" />
+          <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Maes_Derecho_Usuario" />
+          <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Maes_Opciones_Catalogo" />
+          <EntitySet Name="Pacientes" EntityType="ClinicaModel.Paciente" />
+          <EntitySet Name="pbcatcols" EntityType="ClinicaModel.pbcatcol" />
+          <EntitySet Name="pbcatedts" EntityType="ClinicaModel.pbcatedt" />
+          <EntitySet Name="pbcatfmts" EntityType="ClinicaModel.pbcatfmt" />
+          <EntitySet Name="pbcattbls" EntityType="ClinicaModel.pbcattbl" />
+          <EntitySet Name="pbcatvlds" EntityType="ClinicaModel.pbcatvld" />
+          <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="ClinicaModel.Usuario" />
+          <AssociationSet Name="FK_Cat_Servicio_Brindado_Paciente" Association="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo" Association="ClinicaModel.FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo">
+            <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
+            <End Role="Cat_Sub_Opcion" EntitySet="Cat_Sub_Opcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mes_Derecho_Usuario_Cat_Usuario" Association="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" Association="ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo">
+            <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
+            <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="Detalle_Servicio_Brindado" Association="ClinicaModel.Detalle_Servicio_Brindado">
+            <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+            <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
+          </AssociationSet>
+          <EntitySet Name="Cat_Cita" EntityType="ClinicaModel.Cat_Cita" />
+          <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.FK_Cat_Cita_Cat_Servicio">
+            <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+            <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Cita_Paciente" Association="ClinicaModel.FK_Cat_Cita_Paciente">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Cat_Servicio">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Precio" Type="Int32" />
+          <NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.Detalle_Servicio_Brindado" FromRole="Cat_Servicio" ToRole="Cat_Servicio_Brindado" />
+          <NavigationProperty Name="Cat_Cita" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Servicio" ToRole="Cat_Cita" />
+        </EntityType>
+        <EntityType Name="Cat_Servicio_Brindado">
+          <Key>
+            <PropertyRef Name="IdRecibo" />
+          </Key>
+          <Property Name="IdRecibo" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Fecha" Type="DateTime" />
+          <Property Name="IdPaciente" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente" FromRole="Cat_Servicio_Brindado" ToRole="Paciente" />
+          <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.Detalle_Servicio_Brindado" FromRole="Cat_Servicio_Brindado" ToRole="Cat_Servicio" />
+        </EntityType>
+        <EntityType Name="Cat_Sub_Opcion">
+          <Key>
+            <PropertyRef Name="IdSubOpcion" />
+            <PropertyRef Name="IdOpcion" />
+          </Key>
+          <Property Name="IdSubOpcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOpcion" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion_sub_opcion" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Maes_Opciones_Catalogo" Relationship="ClinicaModel.FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo" FromRole="Cat_Sub_Opcion" ToRole="Maes_Opciones_Catalogo" />
+        </EntityType>
+        <EntityType Name="Clinica">
+          <Key>
+            <PropertyRef Name="IdClinica" />
+          </Key>
+          <Property Name="IdClinica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="Celular" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="Logo" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Activo" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="IdFoto" />
+          </Key>
+          <Property Name="IdFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Maes_Derecho_Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="IdOpcion" />
+            <PropertyRef Name="IdSubOpcion" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdOpcion" Type="Int32" Nullable="false" />
+          <Property Name="IdSubOpcion" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" FromRole="Maes_Derecho_Usuario" ToRole="Usuario" />
+          <NavigationProperty Name="Maes_Opciones_Catalogo" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" FromRole="Maes_Derecho_Usuario" ToRole="Maes_Opciones_Catalogo" />
+        </EntityType>
+        <EntityType Name="Maes_Opciones_Catalogo">
+          <Key>
+            <PropertyRef Name="IdOpcion" />
+          </Key>
+          <Property Name="IdOpcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion_opcion" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Cat_Sub_Opcion" Relationship="ClinicaModel.FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo" FromRole="Maes_Opciones_Catalogo" ToRole="Cat_Sub_Opcion" />
+          <NavigationProperty Name="Maes_Derecho_Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" FromRole="Maes_Opciones_Catalogo" ToRole="Maes_Derecho_Usuario" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="IdPaciente" />
+          </Key>
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Fecha_nacimiento" Type="DateTime" />
+          <Property Name="Direccion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="Celular" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente" FromRole="Paciente" ToRole="Cat_Servicio_Brindado" />
+          <NavigationProperty Name="Cat_Cita" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Paciente" ToRole="Cat_Cita" />
+        </EntityType>
+        <EntityType Name="pbcatcol">
+          <Key>
+            <PropertyRef Name="pbc_tnam" />
+            <PropertyRef Name="pbc_ownr" />
+            <PropertyRef Name="pbc_cnam" />
+          </Key>
+          <Property Name="pbc_tnam" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_tid" Type="Int32" />
+          <Property Name="pbc_ownr" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_cnam" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_cid" Type="Int16" />
+          <Property Name="pbc_labl" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_lpos" Type="Int16" />
+          <Property Name="pbc_hdr" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_hpos" Type="Int16" />
+          <Property Name="pbc_jtfy" Type="Int16" />
+          <Property Name="pbc_mask" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_case" Type="Int16" />
+          <Property Name="pbc_hght" Type="Int16" />
+          <Property Name="pbc_wdth" Type="Int16" />
+          <Property Name="pbc_ptrn" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_bmap" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_init" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_cmnt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_edit" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Name="pbc_tag" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pbcatedt">
+          <Key>
+            <PropertyRef Name="pbe_name" />
+            <PropertyRef Name="pbe_seqn" />
+          </Key>
+          <Property Name="pbe_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="pbe_edit" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbe_type" Type="Int16" />
+          <Property Name="pbe_cntr" Type="Int32" />
+          <Property Name="pbe_seqn" Type="Int16" Nullable="false" />
+          <Property Name="pbe_flag" Type="Int32" />
+          <Property Name="pbe_work" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pbcatfmt">
+          <Key>
+            <PropertyRef Name="pbf_name" />
+          </Key>
+          <Property Name="pbf_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="pbf_frmt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbf_type" Type="Int16" />
+          <Property Name="pbf_cntr" Type="Int32" />
+        </EntityType>
+        <EntityType Name="pbcattbl">
+          <Key>
+            <PropertyRef Name="pbt_tnam" />
+            <PropertyRef Name="pbt_ownr" />
+          </Key>
+          <Property Name="pbt_tnam" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
+          <Property Name="pbt_tid" Type="Int32" />
+          <Property Name="pbt_ownr" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
+          <Property Name="pbd_fhgt" Type="Int16" />
+          <Property Name="pbd_fwgt" Type="Int16" />
+          <Property Name="pbd_fitl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbd_funl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbd_fchr" Type="Int16" />
+          <Property Name="pbd_fptc" Type="Int16" />
+          <Property Name="pbd_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
+          <Property Name="pbh_fhgt" Type="Int16" />
+          <Property Name="pbh_fwgt" Type="Int16" />
+          <Property Name="pbh_fitl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbh_funl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbh_fchr" Type="Int16" />
+          <Property Name="pbh_fptc" Type="Int16" />
+          <Property Name="pbh_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
+          <Property Name="pbl_fhgt" Type="Int16" />
+          <Property Name="pbl_fwgt" Type="Int16" />
+          <Property Name="pbl_fitl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbl_funl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="pbl_fchr" Type="Int16" />
+          <Property Name="pbl_fptc" Type="Int16" />
+          <Property Name="pbl_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
+          <Property Name="pbt_cmnt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pbcatvld">
+          <Key>
+            <PropertyRef Name="pbv_name" />
+          </Key>
+          <Property Name="pbv_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="pbv_vald" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="pbv_type" Type="Int16" />
+          <Property Name="pbv_cntr" Type="Int32" />
+          <Property Name="pbv_msg" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario1" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Contrasenia" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Activo" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Maes_Derecho_Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" FromRole="Usuario" ToRole="Maes_Derecho_Usuario" />
+        </EntityType>
+        <Association Name="FK_Cat_Servicio_Brindado_Paciente">
+          <End Role="Paciente" Type="ClinicaModel.Paciente" Multiplicity="0..1" />
+          <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="Cat_Servicio_Brindado">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo">
+          <End Role="Maes_Opciones_Catalogo" Type="ClinicaModel.Maes_Opciones_Catalogo" Multiplicity="1" />
+          <End Role="Cat_Sub_Opcion" Type="ClinicaModel.Cat_Sub_Opcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maes_Opciones_Catalogo">
+              <PropertyRef Name="IdOpcion" />
+            </Principal>
+            <Dependent Role="Cat_Sub_Opcion">
+              <PropertyRef Name="IdOpcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mes_Derecho_Usuario_Cat_Usuario">
+          <End Role="Usuario" Type="ClinicaModel.Usuario" Multiplicity="1" />
+          <End Role="Maes_Derecho_Usuario" Type="ClinicaModel.Maes_Derecho_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Maes_Derecho_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo">
+          <End Role="Maes_Opciones_Catalogo" Type="ClinicaModel.Maes_Opciones_Catalogo" Multiplicity="1" />
+          <End Role="Maes_Derecho_Usuario" Type="ClinicaModel.Maes_Derecho_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maes_Opciones_Catalogo">
+              <PropertyRef Name="IdOpcion" />
+            </Principal>
+            <Dependent Role="Maes_Derecho_Usuario">
+              <PropertyRef Name="IdOpcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Detalle_Servicio_Brindado">
+          <End Role="Cat_Servicio" Type="ClinicaModel.Cat_Servicio" Multiplicity="*" />
+          <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Cat_Cita">
+          <Key>
+            <PropertyRef Name="IdCita" />
+          </Key>
+          <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdPaciente" />
+          <Property Type="DateTime" Name="Fecha" />
+          <Property Type="String" Name="Hora" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdServicio" />
+          <Property Type="DateTime" Name="FechaRegistroCita" />
+          <Property Type="String" Name="Estado" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Cita" ToRole="Cat_Servicio" />
+          <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Cat_Cita" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="FK_Cat_Cita_Cat_Servicio">
+          <End Type="ClinicaModel.Cat_Servicio" Role="Cat_Servicio" Multiplicity="0..1" />
+          <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Servicio">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="Cat_Cita">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Cita_Paciente">
+          <End Type="ClinicaModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+          <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="Cat_Cita">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClinicaModelStoreContainer" CdmEntityContainer="ClinicaEntities">
+          <EntitySetMapping Name="Cat_Servicio"><EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio"><MappingFragment StoreEntitySet="Cat_Servicio">
+            <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+            <ScalarProperty Name="Precio" ColumnName="Precio" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Cat_Servicio_Brindado"><EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio_Brindado"><MappingFragment StoreEntitySet="Cat_Servicio_Brindado">
+            <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+            <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+            <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Cat_Sub_Opcion"><EntityTypeMapping TypeName="ClinicaModel.Cat_Sub_Opcion"><MappingFragment StoreEntitySet="Cat_Sub_Opcion">
+            <ScalarProperty Name="IdSubOpcion" ColumnName="IdSubOpcion" />
+            <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+            <ScalarProperty Name="Descripcion_sub_opcion" ColumnName="Descripcion_sub_opcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Clinicas"><EntityTypeMapping TypeName="ClinicaModel.Clinica"><MappingFragment StoreEntitySet="Clinica">
+            <ScalarProperty Name="IdClinica" ColumnName="IdClinica" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+            <ScalarProperty Name="Celular" ColumnName="Celular" />
+            <ScalarProperty Name="Logo" ColumnName="Logo" />
+            <ScalarProperty Name="Activo" ColumnName="Activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Fotoes"><EntityTypeMapping TypeName="ClinicaModel.Foto"><MappingFragment StoreEntitySet="Foto">
+            <ScalarProperty Name="IdFoto" ColumnName="IdFoto" />
+            <ScalarProperty Name="Foto1" ColumnName="Foto" />
+            <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Maes_Derecho_Usuario"><EntityTypeMapping TypeName="ClinicaModel.Maes_Derecho_Usuario"><MappingFragment StoreEntitySet="Maes_Derecho_Usuario">
+            <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+            <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+            <ScalarProperty Name="IdSubOpcion" ColumnName="IdSubOpcion" />
+            <ScalarProperty Name="Activo" ColumnName="Activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Maes_Opciones_Catalogo"><EntityTypeMapping TypeName="ClinicaModel.Maes_Opciones_Catalogo"><MappingFragment StoreEntitySet="Maes_Opciones_Catalogo">
+            <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+            <ScalarProperty Name="Descripcion_opcion" ColumnName="Descripcion_opcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Pacientes"><EntityTypeMapping TypeName="ClinicaModel.Paciente"><MappingFragment StoreEntitySet="Paciente">
+            <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+            <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+            <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+            <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+            <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+            <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+            <ScalarProperty Name="Celular" ColumnName="Celular" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pbcatcols"><EntityTypeMapping TypeName="ClinicaModel.pbcatcol"><MappingFragment StoreEntitySet="pbcatcol">
+            <ScalarProperty Name="pbc_tnam" ColumnName="pbc_tnam" />
+            <ScalarProperty Name="pbc_tid" ColumnName="pbc_tid" />
+            <ScalarProperty Name="pbc_ownr" ColumnName="pbc_ownr" />
+            <ScalarProperty Name="pbc_cnam" ColumnName="pbc_cnam" />
+            <ScalarProperty Name="pbc_cid" ColumnName="pbc_cid" />
+            <ScalarProperty Name="pbc_labl" ColumnName="pbc_labl" />
+            <ScalarProperty Name="pbc_lpos" ColumnName="pbc_lpos" />
+            <ScalarProperty Name="pbc_hdr" ColumnName="pbc_hdr" />
+            <ScalarProperty Name="pbc_hpos" ColumnName="pbc_hpos" />
+            <ScalarProperty Name="pbc_jtfy" ColumnName="pbc_jtfy" />
+            <ScalarProperty Name="pbc_mask" ColumnName="pbc_mask" />
+            <ScalarProperty Name="pbc_case" ColumnName="pbc_case" />
+            <ScalarProperty Name="pbc_hght" ColumnName="pbc_hght" />
+            <ScalarProperty Name="pbc_wdth" ColumnName="pbc_wdth" />
+            <ScalarProperty Name="pbc_ptrn" ColumnName="pbc_ptrn" />
+            <ScalarProperty Name="pbc_bmap" ColumnName="pbc_bmap" />
+            <ScalarProperty Name="pbc_init" ColumnName="pbc_init" />
+            <ScalarProperty Name="pbc_cmnt" ColumnName="pbc_cmnt" />
+            <ScalarProperty Name="pbc_edit" ColumnName="pbc_edit" />
+            <ScalarProperty Name="pbc_tag" ColumnName="pbc_tag" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pbcatedts"><EntityTypeMapping TypeName="ClinicaModel.pbcatedt"><MappingFragment StoreEntitySet="pbcatedt">
+            <ScalarProperty Name="pbe_name" ColumnName="pbe_name" />
+            <ScalarProperty Name="pbe_edit" ColumnName="pbe_edit" />
+            <ScalarProperty Name="pbe_type" ColumnName="pbe_type" />
+            <ScalarProperty Name="pbe_cntr" ColumnName="pbe_cntr" />
+            <ScalarProperty Name="pbe_seqn" ColumnName="pbe_seqn" />
+            <ScalarProperty Name="pbe_flag" ColumnName="pbe_flag" />
+            <ScalarProperty Name="pbe_work" ColumnName="pbe_work" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pbcatfmts"><EntityTypeMapping TypeName="ClinicaModel.pbcatfmt"><MappingFragment StoreEntitySet="pbcatfmt">
+            <ScalarProperty Name="pbf_name" ColumnName="pbf_name" />
+            <ScalarProperty Name="pbf_frmt" ColumnName="pbf_frmt" />
+            <ScalarProperty Name="pbf_type" ColumnName="pbf_type" />
+            <ScalarProperty Name="pbf_cntr" ColumnName="pbf_cntr" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pbcattbls"><EntityTypeMapping TypeName="ClinicaModel.pbcattbl"><MappingFragment StoreEntitySet="pbcattbl">
+            <ScalarProperty Name="pbt_tnam" ColumnName="pbt_tnam" />
+            <ScalarProperty Name="pbt_tid" ColumnName="pbt_tid" />
+            <ScalarProperty Name="pbt_ownr" ColumnName="pbt_ownr" />
+            <ScalarProperty Name="pbd_fhgt" ColumnName="pbd_fhgt" />
+            <ScalarProperty Name="pbd_fwgt" ColumnName="pbd_fwgt" />
+            <ScalarProperty Name="pbd_fitl" ColumnName="pbd_fitl" />
+            <ScalarProperty Name="pbd_funl" ColumnName="pbd_funl" />
+            <ScalarProperty Name="pbd_fchr" ColumnName="pbd_fchr" />
+            <ScalarProperty Name="pbd_fptc" ColumnName="pbd_fptc" />
+            <ScalarProperty Name="pbd_ffce" ColumnName="pbd_ffce" />
+            <ScalarProperty Name="pbh_fhgt" ColumnName="pbh_fhgt" />
+            <ScalarProperty Name="pbh_fwgt" ColumnName="pbh_fwgt" />
+            <ScalarProperty Name="pbh_fitl" ColumnName="pbh_fitl" />
+            <ScalarProperty Name="pbh_funl" ColumnName="pbh_funl" />
+            <ScalarProperty Name="pbh_fchr" ColumnName="pbh_fchr" />
+            <ScalarProperty Name="pbh_fptc" ColumnName="pbh_fptc" />
+            <ScalarProperty Name="pbh_ffce" ColumnName="pbh_ffce" />
+            <ScalarProperty Name="pbl_fhgt" ColumnName="pbl_fhgt" />
+            <ScalarProperty Name="pbl_fwgt" ColumnName="pbl_fwgt" />
+            <ScalarProperty Name="pbl_fitl" ColumnName="pbl_fitl" />
+            <ScalarProperty Name="pbl_funl" ColumnName="pbl_funl" />
+            <ScalarProperty Name="pbl_fchr" ColumnName="pbl_fchr" />
+            <ScalarProperty Name="pbl_fptc" ColumnName="pbl_fptc" />
+            <ScalarProperty Name="pbl_ffce" ColumnName="pbl_ffce" />
+            <ScalarProperty Name="pbt_cmnt" ColumnName="pbt_cmnt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pbcatvlds"><EntityTypeMapping TypeName="ClinicaModel.pbcatvld"><MappingFragment StoreEntitySet="pbcatvld">
+            <ScalarProperty Name="pbv_name" ColumnName="pbv_name" />
+            <ScalarProperty Name="pbv_vald" ColumnName="pbv_vald" />
+            <ScalarProperty Name="pbv_type" ColumnName="pbv_type" />
+            <ScalarProperty Name="pbv_cntr" ColumnName="pbv_cntr" />
+            <ScalarProperty Name="pbv_msg" ColumnName="pbv_msg" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="ClinicaModel.sysdiagram"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Usuarios"><EntityTypeMapping TypeName="ClinicaModel.Usuario"><MappingFragment StoreEntitySet="Usuario">
+            <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+            <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+            <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+            <ScalarProperty Name="Activo" ColumnName="Activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="Detalle_Servicio_Brindado" TypeName="ClinicaModel.Detalle_Servicio_Brindado" StoreEntitySet="Detalle_Servicio_Brindado">
+            <EndProperty Name="Cat_Servicio">
+              <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+            </EndProperty>
+            <EndProperty Name="Cat_Servicio_Brindado">
+              <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Cat_Cita">
+            <EntityTypeMapping TypeName="ClinicaModel.Cat_Cita">
+              <MappingFragment StoreEntitySet="Cat_Cita">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="ClinicaModel.Cat_Servicio" Width="1.5" PointX="0.75" PointY="7.75" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Cat_Servicio_Brindado" Width="1.5" PointX="3" PointY="1.125" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Cat_Sub_Opcion" Width="1.5" PointX="8" PointY="4" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Clinica" Width="1.5" PointX="2.75" PointY="8.125" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Foto" Width="1.5" PointX="7.75" PointY="7.125" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Maes_Derecho_Usuario" Width="1.5" PointX="8" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Maes_Opciones_Catalogo" Width="1.5" PointX="5.75" PointY="4" Height="1.7879850260416679" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Paciente" Width="1.5" PointX="0.75" PointY="3.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.pbcatcol" Width="1.5" PointX="4.75" PointY="10.125" Height="4.8648079427083353" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.pbcatedt" Width="1.5" PointX="6.75" PointY="10.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.pbcatfmt" Width="1.5" PointX="8.75" PointY="10.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.pbcattbl" Width="1.5" PointX="10.75" PointY="2.125" Height="5.8263151041666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.pbcatvld" Width="1.5" PointX="0.75" PointY="12.125" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.sysdiagram" Width="1.5" PointX="10.75" PointY="9.125" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Usuario" Width="1.5" PointX="5.75" PointY="6.625" Height="1.9802864583333388" IsExpanded="true" />
+        <AssociationConnector Association="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="3.75" />
+          <ConnectorPoint PointX="1.5" PointY="2.1151432291666663" />
+          <ConnectorPoint PointX="3" PointY="2.1151432291666663" />
+        </AssociationConnector>
+        <AssociationConnector Association="ClinicaModel.FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="4.8939925130208328" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="4.8939925130208319" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="4.8939925130208328" />
+          <ConnectorPoint PointX="8" PointY="4.8939925130208328" />
+        </AssociationConnector>
+        <AssociationConnector Association="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="6.625" />
+          <ConnectorPoint PointX="7.625" PointY="6.25" />
+          <ConnectorPoint PointX="7.625" PointY="1.8362939453124998" />
+          <ConnectorPoint PointX="8" PointY="1.8362939453124998" />
+        </AssociationConnector>
+        <AssociationConnector Association="ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.5" PointY="4" />
+          <ConnectorPoint PointX="6.5" PointY="2.4106934179687505" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="2.41069341796875" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="2.4106934179687505" />
+          <ConnectorPoint PointX="8" PointY="2.4106934179687505" />
+        </AssociationConnector>
+        <AssociationConnector Association="ClinicaModel.Detalle_Servicio_Brindado" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.75" />
+          <ConnectorPoint PointX="2.625" PointY="7.375" />
+          <ConnectorPoint PointX="2.625" PointY="2.6414668437499991" />
+          <ConnectorPoint PointX="3" PointY="2.6414668437499991" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ClinicaModel.Cat_Cita" Width="1.5" PointX="3" PointY="4.375" Height="2.749492187499996" />
+        <AssociationConnector Association="ClinicaModel.FK_Cat_Cita_Cat_Servicio" >
+          <ConnectorPoint PointX="2.25" PointY="7.9375025" />
+          <ConnectorPoint PointX="4.40625" PointY="7.9375025" />
+          <ConnectorPoint PointX="4.40625" PointY="7.124492187499996" />
+        </AssociationConnector>
+        <AssociationConnector Association="ClinicaModel.FK_Cat_Cita_Paciente" >
+          <ConnectorPoint PointX="2.25" PointY="5.43724609375" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="5.4372460937499989" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="5.43724609375" />
+          <ConnectorPoint PointX="3" PointY="5.43724609375" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

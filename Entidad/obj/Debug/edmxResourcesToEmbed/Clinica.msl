@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ClinicaModelStoreContainer" CdmEntityContainer="ClinicaEntities">
+    <EntitySetMapping Name="Cat_Cita">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Cita">
+        <MappingFragment StoreEntitySet="Cat_Cita">
+          <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat_Servicio">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio">
+        <MappingFragment StoreEntitySet="Cat_Servicio">
+          <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat_Servicio_Brindado">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio_Brindado">
+        <MappingFragment StoreEntitySet="Cat_Servicio_Brindado">
+          <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat_Sub_Opcion">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Sub_Opcion">
+        <MappingFragment StoreEntitySet="Cat_Sub_Opcion">
+          <ScalarProperty Name="IdSubOpcion" ColumnName="IdSubOpcion" />
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Descripcion_sub_opcion" ColumnName="Descripcion_sub_opcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clinicas">
+      <EntityTypeMapping TypeName="ClinicaModel.Clinica">
+        <MappingFragment StoreEntitySet="Clinica">
+          <ScalarProperty Name="IdClinica" ColumnName="IdClinica" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fotoes">
+      <EntityTypeMapping TypeName="ClinicaModel.Foto">
+        <MappingFragment StoreEntitySet="Foto">
+          <ScalarProperty Name="IdFoto" ColumnName="IdFoto" />
+          <ScalarProperty Name="Foto1" ColumnName="Foto" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maes_Derecho_Usuario">
+      <EntityTypeMapping TypeName="ClinicaModel.Maes_Derecho_Usuario">
+        <MappingFragment StoreEntitySet="Maes_Derecho_Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="IdSubOpcion" ColumnName="IdSubOpcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maes_Opciones_Catalogo">
+      <EntityTypeMapping TypeName="ClinicaModel.Maes_Opciones_Catalogo">
+        <MappingFragment StoreEntitySet="Maes_Opciones_Catalogo">
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Descripcion_opcion" ColumnName="Descripcion_opcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacientes">
+      <EntityTypeMapping TypeName="ClinicaModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="ClinicaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Detalle_Servicio_Brindado" TypeName="ClinicaModel.Detalle_Servicio_Brindado" StoreEntitySet="Detalle_Servicio_Brindado">
+      <EndProperty Name="Cat_Servicio">
+        <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+      </EndProperty>
+      <EndProperty Name="Cat_Servicio_Brindado">
+        <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
