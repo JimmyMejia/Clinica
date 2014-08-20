@@ -83,8 +83,8 @@ namespace Datos
                 }
             }
             catch (Exception err)
-            {                
-                throw new Exception(err.Message);
+            {
+                throw new Exception("Error en Update " + err.Message);
             }
         }
 
@@ -98,8 +98,8 @@ namespace Datos
                 return servicio;
             }
             catch (Exception err)
-            {                
-                throw new Exception(err.Message);
+            {
+                throw new Exception("Error en Find " + err.Message);
             }            
         }
 
@@ -113,8 +113,8 @@ namespace Datos
                 return descripcion;
             }
             catch (Exception err)
-            {                
-                throw new Exception(err.Message);
+            {
+                throw new Exception("Error en FindDescripcion " + err.Message);
             }
         }
 

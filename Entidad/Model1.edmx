@@ -448,6 +448,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -497,6 +500,9 @@
             <End Role="Paciente" EntitySet="Pacientes" />
             <End Role="Cat_Cita" EntitySet="Cat_Cita" />
           </AssociationSet>
+          <FunctionImport Name="CitasdelDia_SP" ReturnType="Collection(ClinicaModel.CitasdelDia_SP_Result)">
+            <Parameter Name="FechaCitas" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Cat_Servicio">
           <Key>
@@ -785,6 +791,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="CitasdelDia_SP_Result">
+          <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="IdPaciente" Nullable="true" />
+          <Property Type="String" Name="Paciente" Nullable="true" MaxLength="81" />
+          <Property Type="Int32" Name="IdServicio" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
+          <Property Type="String" Name="Hora" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -945,6 +961,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CitasdelDia_SP" FunctionName="ClinicaModel.Store.CitasdelDia_SP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.CitasdelDia_SP_Result">
+                <ScalarProperty Name="IdCita" ColumnName="IdCita" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

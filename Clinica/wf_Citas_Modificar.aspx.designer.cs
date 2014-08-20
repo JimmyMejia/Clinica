@@ -10,133 +10,169 @@
 namespace Clinica {
     
     
-    public partial class Clinica {
+    public partial class wf_Citas_Modificar {
         
         /// <summary>
-        /// Control tb_clinica.
+        /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_clinica;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control rfv_clinica.
+        /// Control tb_fechafiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_clinica;
+        protected global::System.Web.UI.WebControls.TextBox tb_fechafiltro;
         
         /// <summary>
-        /// Control lblmessage.
+        /// Control rfv_fechafiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmessage;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fechafiltro;
         
         /// <summary>
-        /// Control tb_direccion.
+        /// Control ce_fechafiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_direccion;
+        protected global::AjaxControlToolkit.CalendarExtender ce_fechafiltro;
         
         /// <summary>
-        /// Control rfv_direccion.
+        /// Control me_fechafiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_direccion;
+        protected global::AjaxControlToolkit.MaskedEditExtender me_fechafiltro;
         
         /// <summary>
-        /// Control tb_email.
+        /// Control btn_filtrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_email;
+        protected global::System.Web.UI.WebControls.Button btn_filtrar;
         
         /// <summary>
-        /// Control rev_email.
+        /// Control ddl_paciente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_email;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_paciente;
         
         /// <summary>
-        /// Control tb_telefono.
+        /// Control rfv_paciente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_telefono;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_paciente;
         
         /// <summary>
-        /// Control rvTelefono.
+        /// Control tb_fecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvTelefono;
+        protected global::System.Web.UI.WebControls.TextBox tb_fecha;
         
         /// <summary>
-        /// Control tb_celular.
+        /// Control RequiredFieldValidator1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_celular;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// Control rv_celular.
+        /// Control ce_fecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rv_celular;
+        protected global::AjaxControlToolkit.CalendarExtender ce_fecha;
         
         /// <summary>
-        /// Control fu_logo.
+        /// Control me_fecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fu_logo;
+        protected global::AjaxControlToolkit.MaskedEditExtender me_fecha;
         
         /// <summary>
-        /// Control chk_activa.
+        /// Control tb_hora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chk_activa;
+        protected global::System.Web.UI.WebControls.TextBox tb_hora;
         
         /// <summary>
-        /// Control tn_guardar.
+        /// Control rfv_hora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button tn_guardar;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_hora;
+        
+        /// <summary>
+        /// Control me_hora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender me_hora;
+        
+        /// <summary>
+        /// Control ddl_motivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_motivo;
+        
+        /// <summary>
+        /// Control rfv_motivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_motivo;
+        
+        /// <summary>
+        /// Control btn_modificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_modificar;
         
         /// <summary>
         /// Control btn_cancelar.
@@ -148,39 +184,39 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
         
         /// <summary>
-        /// Control cv_Datos.
+        /// Control lb_mensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cv_Datos;
+        protected global::System.Web.UI.WebControls.Label lb_mensajes;
         
         /// <summary>
-        /// Control cv_Satisfactorio.
+        /// Control cv_informacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cv_Satisfactorio;
+        protected global::System.Web.UI.WebControls.CustomValidator cv_informacion;
         
         /// <summary>
-        /// Control vs_Errores.
+        /// Control vs_errores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_Errores;
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_errores;
         
         /// <summary>
-        /// Control gv_clinicas.
+        /// Control gv_citas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_clinicas;
+        protected global::System.Web.UI.WebControls.GridView gv_citas;
     }
 }

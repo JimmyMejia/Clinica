@@ -443,4 +443,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
+  </Function>
 </Schema>

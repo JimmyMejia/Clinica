@@ -80,18 +80,31 @@ namespace Negocio
             }
         }
 
-        /*public int ValidarHora()
+        public List<Entidad.Cat_Cita> ObtenerCitas(DateTime fecha)
         {
+            
             try
             {
+                List<Entidad.Cat_Cita> resp = new List<Entidad.Cat_Cita>();
                 Datos.citaData dc = new Datos.citaData();
-                return dc.ValidarHoraCita(
+                List<Entidad.Cat_Cita> citas = dc.GetCitas(fecha);
+                foreach (var item in citas)
+                {
+                    Entidad.Cat_Cita p = new Entidad.Cat_Cita();
+                    p.IdCita = item.IdCita;
+                    p.IdPaciente = item.IdPaciente;
+                    p.Fecha = item.Fecha;
+                    p.Hora = item.Hora;
+                    p.IdServicio = item.IdServicio;
+                    resp.Add(p);
+                }
+                return resp;
             }
             catch (Exception err)
             {
-                 throw new Exception(err.Message);
+                throw new Exception(err.Message);
             }
-        }*/
+        }
 
     }
 }
