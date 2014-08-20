@@ -464,6 +464,28 @@ namespace Entidad
         }
 
         #endregion
+        #region Importaciones de funciones
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="fechaCitas">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<CitasdelDia_SP_Result> CitasdelDia_SP(global::System.String fechaCitas)
+        {
+            ObjectParameter fechaCitasParameter;
+            if (fechaCitas != null)
+            {
+                fechaCitasParameter = new ObjectParameter("FechaCitas", fechaCitas);
+            }
+            else
+            {
+                fechaCitasParameter = new ObjectParameter("FechaCitas", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<CitasdelDia_SP_Result>("CitasdelDia_SP", fechaCitasParameter);
+        }
+
+        #endregion
     }
     
 
@@ -4070,6 +4092,228 @@ namespace Entidad
                 }
             }
         }
+
+        #endregion
+    }
+
+    #endregion
+    #region ComplexTypes
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="CitasdelDia_SP_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class CitasdelDia_SP_Result : ComplexObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto CitasdelDia_SP_Result.
+        /// </summary>
+        /// <param name="idCita">Valor inicial de la propiedad IdCita.</param>
+        public static CitasdelDia_SP_Result CreateCitasdelDia_SP_Result(global::System.String idCita)
+        {
+            CitasdelDia_SP_Result citasdelDia_SP_Result = new CitasdelDia_SP_Result();
+            citasdelDia_SP_Result.IdCita = idCita;
+            return citasdelDia_SP_Result;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String IdCita
+        {
+            get
+            {
+                return _IdCita;
+            }
+            set
+            {
+                OnIdCitaChanging(value);
+                ReportPropertyChanging("IdCita");
+                _IdCita = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("IdCita");
+                OnIdCitaChanged();
+            }
+        }
+        private global::System.String _IdCita;
+        partial void OnIdCitaChanging(global::System.String value);
+        partial void OnIdCitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdPaciente
+        {
+            get
+            {
+                return _IdPaciente;
+            }
+            set
+            {
+                OnIdPacienteChanging(value);
+                ReportPropertyChanging("IdPaciente");
+                _IdPaciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdPaciente");
+                OnIdPacienteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdPaciente;
+        partial void OnIdPacienteChanging(Nullable<global::System.Int32> value);
+        partial void OnIdPacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Paciente
+        {
+            get
+            {
+                return _Paciente;
+            }
+            set
+            {
+                OnPacienteChanging(value);
+                ReportPropertyChanging("Paciente");
+                _Paciente = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Paciente");
+                OnPacienteChanged();
+            }
+        }
+        private global::System.String _Paciente;
+        partial void OnPacienteChanging(global::System.String value);
+        partial void OnPacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdServicio
+        {
+            get
+            {
+                return _IdServicio;
+            }
+            set
+            {
+                OnIdServicioChanging(value);
+                ReportPropertyChanging("IdServicio");
+                _IdServicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdServicio");
+                OnIdServicioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdServicio;
+        partial void OnIdServicioChanging(Nullable<global::System.Int32> value);
+        partial void OnIdServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+            set
+            {
+                OnFechaChanging(value);
+                ReportPropertyChanging("Fecha");
+                _Fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Fecha");
+                OnFechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Fecha;
+        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Hora
+        {
+            get
+            {
+                return _Hora;
+            }
+            set
+            {
+                OnHoraChanging(value);
+                ReportPropertyChanging("Hora");
+                _Hora = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Hora");
+                OnHoraChanged();
+            }
+        }
+        private global::System.String _Hora;
+        partial void OnHoraChanging(global::System.String value);
+        partial void OnHoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaRegistroCita
+        {
+            get
+            {
+                return _FechaRegistroCita;
+            }
+            set
+            {
+                OnFechaRegistroCitaChanging(value);
+                ReportPropertyChanging("FechaRegistroCita");
+                _FechaRegistroCita = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaRegistroCita");
+                OnFechaRegistroCitaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaRegistroCita;
+        partial void OnFechaRegistroCitaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaRegistroCitaChanged();
 
         #endregion
     }

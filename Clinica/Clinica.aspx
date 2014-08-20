@@ -18,6 +18,7 @@
                     <asp:TextBox ID="tb_clinica" runat="server" Width="250px" MaxLength="50"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfv_clinica" runat="server" ForeColor="red" ControlToValidate="tb_clinica" Text="*"
                         ErrorMessage="Nombre de la clinica es requerido!!!"></asp:RequiredFieldValidator>
+                    <asp:Label ID="lblmessage" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>

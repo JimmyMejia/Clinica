@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wf_Citas.aspx.cs" Inherits="Clinica.wf_Citas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wf_Citas_Modificar.aspx.cs" Inherits="Clinica.wf_Citas_Modificar" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -9,33 +9,28 @@
         }
         .style2
         {
-            width: 153px;
-        }
-        a:link
-        {
-            text-decoration: none;
-            color: Blue;
-        }
-        a:hover
-        {
-            color:Black;
+            width: 167px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <table class="style1">
-        
         <tr>
             <td class="style2">
-                &nbsp;</td>
+                Fecha de la Cita:</td>
             <td>
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/wf_Citas_Modificar.aspx" Font-Size="Small">Modificar Cita</asp:HyperLink>
-                
+                <asp:TextBox ID="tb_fechafiltro" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfv_fechafiltro" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fechafiltro"
+                    ErrorMessage="Debe digitar la fecha!!!"></asp:RequiredFieldValidator>
+                <asp:CalendarExtender ID="ce_fechafiltro" Format="dd/MM/yyyy" TargetControlID="tb_fechafiltro"  runat="server"></asp:CalendarExtender>
+                <asp:MaskedEditExtender ID="me_fechafiltro" Mask="99/99/9999" TargetControlID="tb_fechafiltro" MaskType="Date" UserDateFormat="DayMonthYear"  runat="server">
+                </asp:MaskedEditExtender>
+                <asp:Button ID="btn_filtrar" runat="server" Text="Filtrar" CausesValidation="false"
+                    onclick="btn_filtrar_Click" />
             </td>
         </tr>
-        
         <tr>
             <td class="style2">
                 Paciente:</td>
@@ -52,7 +47,7 @@
                 Fecha:</td>
             <td>
                 <asp:TextBox ID="tb_fecha" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfv_fecha" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fecha"
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fecha"
                     ErrorMessage="Debe digitar la fecha!!!"></asp:RequiredFieldValidator>
                     <asp:CalendarExtender ID="ce_fecha" Format="dd/MM/yyyy" TargetControlID="tb_fecha"  runat="server"></asp:CalendarExtender>
                 <asp:MaskedEditExtender ID="me_fecha" Mask="99/99/9999" TargetControlID="tb_fecha" MaskType="Date" UserDateFormat="DayMonthYear"  runat="server">
@@ -79,16 +74,13 @@
                 <asp:RequiredFieldValidator ID="rfv_motivo" runat="server" ForeColor="red" Text="*" ControlToValidate="ddl_motivo" InitialValue="0"
                     ErrorMessage="Debe seleccionar el motivo!!!"></asp:RequiredFieldValidator>
             </td>
-        </tr>
-        
+            </tr>
         <tr>
             <td class="style2">
                 &nbsp;</td>
             <td>
-                <asp:Button ID="btn_guardar" runat="server" Text="Guardar" 
-                    onclick="btn_guardar_Click" />
-                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" 
-                    CausesValidation="false" onclick="btn_cancelar_Click" />
+                <asp:Button ID="btn_modificar" runat="server" Text="Modificar" CausesValidation="false" />
+                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" />
             </td>
         </tr>
         <tr>
@@ -111,6 +103,34 @@
             <td>
                 <asp:ValidationSummary ID="vs_errores" runat="server" ForeColor="red" Font-Size="Smaller"/>
             </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                &nbsp;</td>
+            <td>
+                <asp:GridView ID="gv_citas" AutoGenerateSelectButton="True" PageSize="10"
+                    DataKeyNames="IdCita" AllowPaging="True" runat="server" OnPageIndexChanging="gv_citas_PageIndexChanging"
+                    onselectedindexchanged="gv_citas_SelectedIndexChanged" BackColor="White" 
+                    BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
+                    GridLines="Horizontal">
+                    <AlternatingRowStyle BackColor="#F7F7F7" />
+                    <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+                    <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+                    <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+                    <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+                    <SortedAscendingCellStyle BackColor="#F4F4FD" />
+                    <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+                    <SortedDescendingCellStyle BackColor="#D8D8F0" />
+                    <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                </asp:GridView>
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
         </tr>
     </table>
 </asp:Content>

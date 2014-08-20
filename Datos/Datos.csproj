@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="citaData.cs" />
+    <Compile Include="citasdeldia_spData.cs" />
     <Compile Include="clinicaData.cs" />
     <Compile Include="pacienteData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -57,7 +57,7 @@ namespace Datos
             }
         }
 
-       public int GetCount()
+        public int GetCount()
        {
            try
            {
@@ -70,7 +70,7 @@ namespace Datos
            }
        }
 
-       public int ValidarHoraCita(DateTime fecha, string hora)
+        public int ValidarHoraCita(DateTime fecha, string hora)
        {
            try
            {
@@ -88,6 +88,20 @@ namespace Datos
                throw new Exception("Error en ValidarHoraCita " + err.Message);
            }
            
+       }
+
+        public List<Entidad.Cat_Cita> GetCitas(DateTime fecha)
+       {
+           try
+           {
+               Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+               List<Entidad.Cat_Cita> citas = null;
+               return citas = dc.Cat_Cita.Where(c => c.Fecha == fecha).ToList();               
+           }
+           catch (Exception err)
+           {
+               throw new Exception("Error en GetCitas "+err.Message);
+           }
        }
 
         

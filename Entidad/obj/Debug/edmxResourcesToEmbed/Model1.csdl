@@ -45,6 +45,9 @@
       <End Role="Paciente" EntitySet="Pacientes" />
       <End Role="Cat_Cita" EntitySet="Cat_Cita" />
     </AssociationSet>
+    <FunctionImport Name="CitasdelDia_SP" ReturnType="Collection(ClinicaModel.CitasdelDia_SP_Result)">
+      <Parameter Name="FechaCitas" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -333,4 +336,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="CitasdelDia_SP_Result">
+    <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="IdPaciente" Nullable="true" />
+    <Property Type="String" Name="Paciente" Nullable="true" MaxLength="81" />
+    <Property Type="Int32" Name="IdServicio" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="Hora" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
+  </ComplexType>
 </Schema>

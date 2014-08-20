@@ -12,8 +12,12 @@
         
         a:link
         {
-           color: #034af3;
+           color: Blue;
            text-decoration: none;
+        }
+        a:hover
+        {
+            color:Black;
         }
     </style>
 </asp:Content>
@@ -26,7 +30,7 @@
                     <td style="width:150px;">
                         &nbsp;</td>
                     <td>
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="wf_Paciente_Modificar.aspx" ForeColor="Blue">Modificar Paciente</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Font-Size="Small" NavigateUrl="wf_Paciente_Modificar.aspx">Modificar Paciente</asp:HyperLink>
                     </td>
                 </tr>
             
