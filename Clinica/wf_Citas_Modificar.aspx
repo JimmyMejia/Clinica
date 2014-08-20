@@ -35,7 +35,7 @@
             <td class="style2">
                 Paciente:</td>
             <td>
-                <asp:DropDownList ID="ddl_paciente" runat="server" AppendDataBoundItems="true">
+                <asp:DropDownList ID="ddl_paciente" runat="server" AppendDataBoundItems="true" Enabled ="false">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfv_paciente" runat="server" ForeColor="red" Text="*" ControlToValidate="ddl_paciente" InitialValue="0" 
                     ErrorMessage="Debe seleccionar el paciente!!!"></asp:RequiredFieldValidator>
@@ -46,7 +46,7 @@
             <td class="style2">
                 Fecha:</td>
             <td>
-                <asp:TextBox ID="tb_fecha" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tb_fecha" runat="server" Enabled ="false"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fecha"
                     ErrorMessage="Debe digitar la fecha!!!"></asp:RequiredFieldValidator>
                     <asp:CalendarExtender ID="ce_fecha" Format="dd/MM/yyyy" TargetControlID="tb_fecha"  runat="server"></asp:CalendarExtender>
@@ -58,7 +58,7 @@
             <td class="style2">
                 Hora:</td>
             <td>
-                <asp:TextBox ID="tb_hora" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tb_hora" runat="server" Enabled ="false"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_hora" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_hora" 
                     ErrorMessage="Debe digitar la hora!!!"></asp:RequiredFieldValidator>
                 <asp:MaskedEditExtender ID="me_hora"  Mask="99:99" AcceptAMPM="true" MaskType="Time" TargetControlID="tb_hora" runat="server">
@@ -69,7 +69,7 @@
             <td class="style2">
                 Motivo:</td>
             <td>
-                <asp:DropDownList ID="ddl_motivo" runat="server" AppendDataBoundItems="true">
+                <asp:DropDownList ID="ddl_motivo" runat="server" AppendDataBoundItems="true" Enabled="false" >
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfv_motivo" runat="server" ForeColor="red" Text="*" ControlToValidate="ddl_motivo" InitialValue="0"
                     ErrorMessage="Debe seleccionar el motivo!!!"></asp:RequiredFieldValidator>
@@ -79,8 +79,9 @@
             <td class="style2">
                 &nbsp;</td>
             <td>
-                <asp:Button ID="btn_modificar" runat="server" Text="Modificar" CausesValidation="false" />
-                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" />
+                <asp:Button ID="btn_modificar" runat="server" Text="Modificar" 
+                    CausesValidation="false" Enabled ="false" onclick="btn_modificar_Click"/>
+                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" CausesValidation="false"/>
             </td>
         </tr>
         <tr>
@@ -108,7 +109,7 @@
             <td class="style2">
                 &nbsp;</td>
             <td>
-                <asp:GridView ID="gv_citas" AutoGenerateSelectButton="True" PageSize="10"
+                <asp:GridView ID="gv_citas" AutoGenerateSelectButton="True" PageSize="2"
                     DataKeyNames="IdCita" AllowPaging="True" runat="server" OnPageIndexChanging="gv_citas_PageIndexChanging"
                     onselectedindexchanged="gv_citas_SelectedIndexChanged" BackColor="White" 
                     BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" 

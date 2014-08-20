@@ -66,10 +66,15 @@ namespace Clinica
                 if (cs != null)
                 {
                     Session["s_idcita"] = cs.IdCita;
-                    ddl_paciente.SelectedIndex = int.Parse(cs.IdPaciente.ToString());
+                    ddl_paciente.SelectedValue = cs.IdPaciente.ToString();
                     tb_fecha.Text = cs.Fecha.ToString();
                     tb_hora.Text = cs.Hora;
-                    ddl_motivo.SelectedIndex = int.Parse(cs.IdServicio.ToString());
+                    ddl_motivo.SelectedValue = cs.IdServicio.ToString();
+
+                    tb_fecha.Enabled = true;
+                    tb_hora.Enabled = true;
+                    ddl_motivo.Enabled = true;
+                    btn_modificar.Enabled = true;
                 }
             }
             catch (Exception err)
@@ -84,6 +89,7 @@ namespace Clinica
             try
             {
                 gv_citas.PageIndex = e.NewPageIndex;
+                CleanControl(this.Controls);
                 CargarGrid((string)Session["s_fecha"]);
             }
             catch (Exception err)
@@ -100,8 +106,17 @@ namespace Clinica
                 Negocio.citasdeldia_spNegocio dc = new Negocio.citasdeldia_spNegocio();
                 List<Entidad.CitasdelDia_SP_Result> citas = null;
                 citas = dc.CitasdelDia(fecha);
-                gv_citas.DataSource = citas;
-                gv_citas.DataBind();
+                if (citas.Count != 0)
+                {
+                    gv_citas.DataSource = citas;
+                    gv_citas.DataBind();                    
+                }
+                else
+                {
+                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    lb_mensajes.Text = "No hay citas para la fecha seleccionada!!!";
+                    tb_fechafiltro.Focus();
+                }
             }
             catch (Exception err)
             {
@@ -114,17 +129,69 @@ namespace Clinica
         {
             try
             {
+                lb_mensajes.Text = "";                
                 string fechafiltro = tb_fechafiltro.Text;
                 Session["s_fecha"] = fechafiltro;
                 CargarGrid((string)Session["s_fecha"]);
+                //CleanControl(this.Controls);
             }
             catch (Exception err)
             {
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = err.Message;
             }
-        }        
+        }
 
+        protected void CleanControl(ControlCollection controls)
+        {
+            try
+            {
+                foreach (Control controles in controls)
+                {
+                    if (controles is TextBox)
+                        ((TextBox)controles).Text = string.Empty;
+                    else if (controles is DropDownList)
+                        ((DropDownList)controles).ClearSelection();
+                    else if (controles is RadioButton)
+                        ((RadioButton)controles).Checked = false;
+                    else if (controles is CheckBox)
+                        ((CheckBox)controles).Checked = false;                    
+                    else if (controles.HasControls())
+                        CleanControl(controles.Controls);
+                }
+            }
+            catch (Exception err)
+            {
+                cv_informacion.IsValid = false;
+                cv_informacion.ErrorMessage = err.Message;
+            }
+        }
+
+        protected void btn_modificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidad.Cat_Cita cs = new Entidad.Cat_Cita();
+                cs.IdCita = (string)Session["s_idcita"];
+                cs.IdPaciente = int.Parse(ddl_paciente.SelectedValue);
+                cs.Fecha = DateTime.Parse(tb_fecha.Text);
+                cs.Hora = tb_hora.Text;
+                cs.IdServicio = int.Parse(ddl_motivo.SelectedValue);
+                cs.Estado = "Activa";
+                Negocio.citaNegocio dc = new Negocio.citaNegocio();
+                dc.UpdateCita(cs);
+                lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                lb_mensajes.Text = "Datos actualizados correctamente!!!";
+                CargarGrid((string)Session["s_fecha"]);
+                CleanControl(this.Controls);
+                btn_modificar.Enabled = false;
+            }
+            catch (Exception err)
+            {
+                cv_informacion.IsValid = false;
+                cv_informacion.ErrorMessage = err.Message;
+            }
+        }
 
     }
 }
