@@ -166,6 +166,24 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_motivo;
         
         /// <summary>
+        /// Control rb_activa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rb_activa;
+        
+        /// <summary>
+        /// Control rb_cancelada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rb_cancelada;
+        
+        /// <summary>
         /// Control btn_modificar.
         /// </summary>
         /// <remarks>

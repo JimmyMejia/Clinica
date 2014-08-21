@@ -8,6 +8,10 @@ namespace Datos
 {
     public class citaData
     {
+        /// <summary>
+        /// METODO QUE OBTIENEN LA INFORMACION EXISTENTE EN LA TABLA CAT_CITA
+        /// </summary>
+        /// <returns>LISTA DE TODOS LOS DATOS EN LA TABLA</returns>
         public List<Entidad.Cat_Cita> GetList()
         {
             try
@@ -21,6 +25,10 @@ namespace Datos
             }            
         }
 
+        /// <summary>
+        /// METODO QUE PERMITE AGREGAR UNA NUEVA CITA A LA TABLA
+        /// </summary>
+        /// <param name="cita"></param>
         public void Insert(Entidad.Cat_Cita cita)
         {
             try
@@ -35,6 +43,10 @@ namespace Datos
             }            
         }
 
+        /// <summary>
+        /// METODO QUE PERMITE ACTUALIZAR LA INFORMACION DEL ELEMENTO CON EL ID ESPECIFICADO 
+        /// </summary>
+        /// <param name="cita"></param>
         public void Update(Entidad.Cat_Cita cita)
         {
             try
@@ -47,6 +59,7 @@ namespace Datos
                     db_cita.Fecha = cita.Fecha;
                     db_cita.Hora = cita.Hora;
                     db_cita.IdServicio = cita.IdServicio;
+                    db_cita.FechaModificacion = cita.FechaModificacion;
                     db_cita.Estado = cita.Estado;
                     dc.SaveChanges();
                 }
@@ -57,6 +70,11 @@ namespace Datos
             }
         }
 
+        /// <summary>
+        /// METODO QUE NOS PERMITE OBTENER LA CANTIDAD DE CITAS REGISTRADAS EN LA TABLA PARA ASI PODER CREAR EL IDCITA DESDE LA CAPA
+        /// DE NEGOCIO
+        /// </summary>
+        /// <returns></returns>
         public int GetCount()
        {
            try
@@ -70,7 +88,13 @@ namespace Datos
            }
        }
 
-        public int ValidarHoraCita(DateTime fecha, string hora)
+        /// <summary>
+        /// METODO QUE NOS PERMITE VALIDAR LA FECHA Y HORA DE LA CITA QUE SE DESEA REGISTRAR
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <param name="hora"></param>
+        /// <returns></returns>
+        public int ValidarFechaHoraCita(DateTime fecha, string hora)
        {
            try
            {
@@ -90,6 +114,11 @@ namespace Datos
            
        }
 
+        /// <summary>
+        /// METODO QUE PERMITE DEVOLVERNOS LA LISTA DE LAS CITAS DE LA FECHA DADA
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <returns></returns>
         public List<Entidad.Cat_Cita> GetCitas(DateTime fecha)
        {
            try

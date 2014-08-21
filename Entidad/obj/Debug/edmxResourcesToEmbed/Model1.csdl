@@ -308,6 +308,7 @@
     <Property Type="String" Name="Hora" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="IdServicio" />
     <Property Type="DateTime" Name="FechaRegistroCita" />
+    <Property Type="DateTime" Name="FechaModificacion" />
     <Property Type="String" Name="Estado" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Cita" ToRole="Cat_Servicio" />
     <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Cat_Cita" ToRole="Paciente" />
@@ -345,5 +346,6 @@
     <Property Type="DateTime" Name="Fecha" Nullable="true" />
     <Property Type="String" Name="Hora" Nullable="true" MaxLength="10" />
     <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>

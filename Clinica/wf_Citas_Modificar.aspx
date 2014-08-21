@@ -77,11 +77,20 @@
             </tr>
         <tr>
             <td class="style2">
+                Estado:</td>
+            <td>
+                <asp:RadioButton ID="rb_activa" runat="server" Text="Activa" GroupName="estado" Enabled="false"/>
+                <asp:RadioButton ID="rb_cancelada" runat="server" Text="Cancelada" GroupName="estado" Enabled="false"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
                 &nbsp;</td>
             <td>
                 <asp:Button ID="btn_modificar" runat="server" Text="Modificar" 
                     CausesValidation="false" Enabled ="false" onclick="btn_modificar_Click"/>
-                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" CausesValidation="false"/>
+                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" 
+                    CausesValidation="false" onclick="btn_cancelar_Click"/>
             </td>
         </tr>
         <tr>

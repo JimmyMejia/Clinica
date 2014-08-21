@@ -142,6 +142,7 @@
           <Property Name="Hora" Type="varchar" MaxLength="10" />
           <Property Name="IdServicio" Type="int" />
           <Property Name="FechaRegistroCita" Type="date" />
+          <Property Name="FechaModificacion" Type="date" />
           <Property Name="Estado" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Cat_Servicio">
@@ -763,6 +764,7 @@
           <Property Type="String" Name="Hora" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="IdServicio" />
           <Property Type="DateTime" Name="FechaRegistroCita" />
+          <Property Type="DateTime" Name="FechaModificacion" />
           <Property Type="String" Name="Estado" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Cita" ToRole="Cat_Servicio" />
           <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Cat_Cita" ToRole="Paciente" />
@@ -800,6 +802,7 @@
           <Property Type="DateTime" Name="Fecha" Nullable="true" />
           <Property Type="String" Name="Hora" Nullable="true" MaxLength="10" />
           <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -952,6 +955,7 @@
             <EntityTypeMapping TypeName="ClinicaModel.Cat_Cita">
               <MappingFragment StoreEntitySet="Cat_Cita">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
                 <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
@@ -972,6 +976,7 @@
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1041,17 +1046,17 @@
           <ConnectorPoint PointX="2.625" PointY="2.6414668437499991" />
           <ConnectorPoint PointX="3" PointY="2.6414668437499991" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ClinicaModel.Cat_Cita" Width="1.5" PointX="3" PointY="4.375" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="ClinicaModel.Cat_Cita" Width="1.5" PointX="3" PointY="4.25" Height="2.9417936197916674" />
         <AssociationConnector Association="ClinicaModel.FK_Cat_Cita_Cat_Servicio" >
           <ConnectorPoint PointX="2.25" PointY="7.9375025" />
           <ConnectorPoint PointX="4.40625" PointY="7.9375025" />
-          <ConnectorPoint PointX="4.40625" PointY="7.124492187499996" />
+          <ConnectorPoint PointX="4.40625" PointY="7.1917936197916674" />
         </AssociationConnector>
         <AssociationConnector Association="ClinicaModel.FK_Cat_Cita_Paciente" >
-          <ConnectorPoint PointX="2.25" PointY="5.43724609375" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="5.4372460937499989" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="5.43724609375" />
-          <ConnectorPoint PointX="3" PointY="5.43724609375" />
+          <ConnectorPoint PointX="2.25" PointY="5.37474609375" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="5.3747460937499989" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="5.37474609375" />
+          <ConnectorPoint PointX="3" PointY="5.37474609375" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

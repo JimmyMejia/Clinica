@@ -137,6 +137,7 @@
     <Property Name="Hora" Type="varchar" MaxLength="10" />
     <Property Name="IdServicio" Type="int" />
     <Property Name="FechaRegistroCita" Type="date" />
+    <Property Name="FechaModificacion" Type="date" />
     <Property Name="Estado" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Cat_Servicio">
