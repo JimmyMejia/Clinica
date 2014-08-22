@@ -669,6 +669,30 @@ namespace Entidad
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaModificacion
+        {
+            get
+            {
+                return _FechaModificacion;
+            }
+            set
+            {
+                OnFechaModificacionChanging(value);
+                ReportPropertyChanging("FechaModificacion");
+                _FechaModificacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaModificacion");
+                OnFechaModificacionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaModificacion;
+        partial void OnFechaModificacionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaModificacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Estado
         {
             get
@@ -4314,6 +4338,30 @@ namespace Entidad
         private Nullable<global::System.DateTime> _FechaRegistroCita;
         partial void OnFechaRegistroCitaChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaRegistroCitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.String _Estado;
+        partial void OnEstadoChanging(global::System.String value);
+        partial void OnEstadoChanged();
 
         #endregion
     }

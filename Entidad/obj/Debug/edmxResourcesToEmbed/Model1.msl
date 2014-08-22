@@ -206,6 +206,7 @@
       <EntityTypeMapping TypeName="ClinicaModel.Cat_Cita">
         <MappingFragment StoreEntitySet="Cat_Cita">
           <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
           <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
           <ScalarProperty Name="Hora" ColumnName="Hora" />
@@ -226,6 +227,7 @@
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Hora" ColumnName="Hora" />
           <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
