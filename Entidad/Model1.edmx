@@ -452,6 +452,15 @@
         <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Insertar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Activo" Type="char" Mode="In" />
+        </Function>
+        <Function Name="Validar_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -502,7 +511,16 @@
             <End Role="Cat_Cita" EntitySet="Cat_Cita" />
           </AssociationSet>
           <FunctionImport Name="CitasdelDia_SP" ReturnType="Collection(ClinicaModel.CitasdelDia_SP_Result)">
-            <Parameter Name="FechaCitas" Mode="In" Type="String" />
+          <Parameter Name="FechaCitas" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Usuario" ReturnType="Collection(ClinicaModel.Insertar_Usuario_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Contrasenia" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Validar_Login" ReturnType="Collection(ClinicaModel.Validar_Login_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Contrasenia" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Cat_Servicio">
@@ -804,6 +822,13 @@
           <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
           <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
         </ComplexType>
+        <ComplexType Name="Insertar_Usuario_Result">
+          <Property Type="Int32" Name="Retorno" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Validar_Login_Result">
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Contrasenia" Nullable="true" MaxLength="20" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -977,6 +1002,21 @@
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="FechaRegistroCita" ColumnName="FechaRegistroCita" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Insertar_Usuario" FunctionName="ClinicaModel.Store.Insertar_Usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.Insertar_Usuario_Result">
+                <ScalarProperty Name="Retorno" ColumnName="Retorno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Validar_Login" FunctionName="ClinicaModel.Store.Validar_Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.Validar_Login_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

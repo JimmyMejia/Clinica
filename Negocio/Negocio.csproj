@@ -47,6 +47,8 @@
     <Compile Include="pacienteNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="serviciosNegocio.cs" />
+    <Compile Include="usuariosNegocio.cs" />
+    <Compile Include="validar_login_spNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">

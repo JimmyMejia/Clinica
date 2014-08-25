@@ -484,6 +484,77 @@ namespace Entidad
     
             return base.ExecuteFunction<CitasdelDia_SP_Result>("CitasdelDia_SP", fechaCitasParameter);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="usuario">No hay documentación de metadatos disponible.</param>
+        /// <param name="contrasenia">No hay documentación de metadatos disponible.</param>
+        /// <param name="activo">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Insertar_Usuario_Result> Insertar_Usuario(global::System.String usuario, global::System.String contrasenia, global::System.String activo)
+        {
+            ObjectParameter usuarioParameter;
+            if (usuario != null)
+            {
+                usuarioParameter = new ObjectParameter("Usuario", usuario);
+            }
+            else
+            {
+                usuarioParameter = new ObjectParameter("Usuario", typeof(global::System.String));
+            }
+    
+            ObjectParameter contraseniaParameter;
+            if (contrasenia != null)
+            {
+                contraseniaParameter = new ObjectParameter("Contrasenia", contrasenia);
+            }
+            else
+            {
+                contraseniaParameter = new ObjectParameter("Contrasenia", typeof(global::System.String));
+            }
+    
+            ObjectParameter activoParameter;
+            if (activo != null)
+            {
+                activoParameter = new ObjectParameter("Activo", activo);
+            }
+            else
+            {
+                activoParameter = new ObjectParameter("Activo", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Insertar_Usuario_Result>("Insertar_Usuario", usuarioParameter, contraseniaParameter, activoParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="usuario">No hay documentación de metadatos disponible.</param>
+        /// <param name="contrasenia">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Validar_Login_Result> Validar_Login(global::System.String usuario, global::System.String contrasenia)
+        {
+            ObjectParameter usuarioParameter;
+            if (usuario != null)
+            {
+                usuarioParameter = new ObjectParameter("Usuario", usuario);
+            }
+            else
+            {
+                usuarioParameter = new ObjectParameter("Usuario", typeof(global::System.String));
+            }
+    
+            ObjectParameter contraseniaParameter;
+            if (contrasenia != null)
+            {
+                contraseniaParameter = new ObjectParameter("Contrasenia", contrasenia);
+            }
+            else
+            {
+                contraseniaParameter = new ObjectParameter("Contrasenia", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Validar_Login_Result>("Validar_Login", usuarioParameter, contraseniaParameter);
+        }
 
         #endregion
     }
@@ -4362,6 +4433,104 @@ namespace Entidad
         private global::System.String _Estado;
         partial void OnEstadoChanging(global::System.String value);
         partial void OnEstadoChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="Insertar_Usuario_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class Insertar_Usuario_Result : ComplexObject
+    {
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Retorno
+        {
+            get
+            {
+                return _Retorno;
+            }
+            set
+            {
+                OnRetornoChanging(value);
+                ReportPropertyChanging("Retorno");
+                _Retorno = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Retorno");
+                OnRetornoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Retorno;
+        partial void OnRetornoChanging(Nullable<global::System.Int32> value);
+        partial void OnRetornoChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="Validar_Login_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class Validar_Login_Result : ComplexObject
+    {
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Usuario
+        {
+            get
+            {
+                return _Usuario;
+            }
+            set
+            {
+                OnUsuarioChanging(value);
+                ReportPropertyChanging("Usuario");
+                _Usuario = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Usuario");
+                OnUsuarioChanged();
+            }
+        }
+        private global::System.String _Usuario;
+        partial void OnUsuarioChanging(global::System.String value);
+        partial void OnUsuarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Contrasenia
+        {
+            get
+            {
+                return _Contrasenia;
+            }
+            set
+            {
+                OnContraseniaChanging(value);
+                ReportPropertyChanging("Contrasenia");
+                _Contrasenia = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Contrasenia");
+                OnContraseniaChanged();
+            }
+        }
+        private global::System.String _Contrasenia;
+        partial void OnContraseniaChanging(global::System.String value);
+        partial void OnContraseniaChanged();
 
         #endregion
     }

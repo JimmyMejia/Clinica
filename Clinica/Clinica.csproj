@@ -61,8 +61,15 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="BuscarServicio.aspx" />
     <Content Include="Clinica.aspx" />
+    <Content Include="Images\7AF2Qzt.png" />
+    <Content Include="Images\8bcLQqF.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\favicon.jpg" />
+    <Content Include="Images\faviconlogin.ico" />
+    <Content Include="Images\favicon_login.jpg" />
     <Content Include="Paciente.aspx" />
     <Content Include="Servicios.aspx" />
+    <Content Include="Styles\Login.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -78,7 +85,9 @@
     </Content>
     <Content Include="wf_Citas.aspx" />
     <Content Include="wf_Citas_Modificar.aspx" />
+    <Content Include="wf_Login.aspx" />
     <Content Include="wf_Paciente_Modificar.aspx" />
+    <Content Include="wf_Usuarios.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -176,6 +185,13 @@
     <Compile Include="wf_Citas_Modificar.aspx.designer.cs">
       <DependentUpon>wf_Citas_Modificar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="wf_Login.aspx.cs">
+      <DependentUpon>wf_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Login.aspx.designer.cs">
+      <DependentUpon>wf_Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="wf_Paciente_Modificar.aspx.cs">
       <DependentUpon>wf_Paciente_Modificar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,10 +199,16 @@
     <Compile Include="wf_Paciente_Modificar.aspx.designer.cs">
       <DependentUpon>wf_Paciente_Modificar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="wf_Usuarios.aspx.cs">
+      <DependentUpon>wf_Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Usuarios.aspx.designer.cs">
+      <DependentUpon>wf_Usuarios.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

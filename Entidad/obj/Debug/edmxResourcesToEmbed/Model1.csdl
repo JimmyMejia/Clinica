@@ -48,6 +48,15 @@
     <FunctionImport Name="CitasdelDia_SP" ReturnType="Collection(ClinicaModel.CitasdelDia_SP_Result)">
       <Parameter Name="FechaCitas" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Insertar_Usuario" ReturnType="Collection(ClinicaModel.Insertar_Usuario_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Contrasenia" Mode="In" Type="String" />
+      <Parameter Name="Activo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Validar_Login" ReturnType="Collection(ClinicaModel.Validar_Login_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Contrasenia" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -347,5 +356,12 @@
     <Property Type="String" Name="Hora" Nullable="true" MaxLength="10" />
     <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
     <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Insertar_Usuario_Result">
+    <Property Type="Int32" Name="Retorno" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Validar_Login_Result">
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Contrasenia" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

@@ -39,6 +39,8 @@
                         <asp:MenuItem NavigateUrl="~/Clinica.aspx" Text="Clinica"/>
                         <asp:MenuItem NavigateUrl="~/BuscarServicio.aspx" Text="Buscar Servicio"/>
                         <asp:MenuItem NavigateUrl="~/wf_Citas.aspx" Text="Citas"/>
+                        <asp:MenuItem NavigateUrl="~/wf_Usuarios.aspx" Text="Usuarios"/>                        
+                        <asp:MenuItem NavigateUrl="~/wf_Login.aspx" Text="Login"/>
                     </Items>
                 </asp:Menu>
             </div>
