@@ -84,6 +84,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="wf_Citas.aspx" />
+    <Content Include="wf_Citas_Atender.aspx" />
     <Content Include="wf_Citas_Modificar.aspx" />
     <Content Include="wf_Login.aspx" />
     <Content Include="wf_Paciente_Modificar.aspx" />
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="wf_Citas.aspx.designer.cs">
       <DependentUpon>wf_Citas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wf_Citas_Atender.aspx.cs">
+      <DependentUpon>wf_Citas_Atender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Citas_Atender.aspx.designer.cs">
+      <DependentUpon>wf_Citas_Atender.aspx</DependentUpon>
     </Compile>
     <Compile Include="wf_Citas_Modificar.aspx.cs">
       <DependentUpon>wf_Citas_Modificar.aspx</DependentUpon>

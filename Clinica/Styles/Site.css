@@ -131,11 +131,16 @@ first child of the left and right table columns */
 
 .footer
 {
-    color: #4e5766;
-    padding: 8px 0px 0px 0px;
-    margin: 0px auto;
+    /*color: #4e5766;*/
+    background: #4b6c9e;
+    border: 1px solid #496077;
+    margin: 10px auto 10px auto;
+    padding: 2px auto 2px auto;
     text-align: center;
     line-height: normal;
+    width:960px;
+    
+    
 }
 
 

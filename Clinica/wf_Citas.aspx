@@ -33,6 +33,9 @@
             <td>
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/wf_Citas_Modificar.aspx" Font-Size="Small">Modificar Cita</asp:HyperLink>
                 
+            &nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/wf_Citas_Atender.aspx" Font-Size="Small">Atender Cita</asp:HyperLink>
+                
             </td>
         </tr>
         

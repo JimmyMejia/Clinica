@@ -51,8 +51,8 @@
         <div class="clear">
         </div>
     </div>
-    <div class="footer">
-        
+    <div class="footer">    
+        <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
     </div>
     </form>
 </body>

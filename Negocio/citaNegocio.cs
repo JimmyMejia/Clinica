@@ -145,5 +145,27 @@ namespace Negocio
             }
         }
 
+        /*public List<Entidad.Cat_Cita> ObteberCitaByIdPaciente(int idpaciente) //DateTime fecha,
+        {
+            try
+            {
+                Datos.citaData dc = new Datos.citaData();
+                List<Entidad.Cat_Cita> resp = new List<Entidad.Cat_Cita>();
+                List<Entidad.Cat_Cita> citas = dc.GetCitasByIdPaciente(idpaciente); //fecha,
+                foreach (var item in citas)
+                {
+                    Entidad.Cat_Cita c = new Entidad.Cat_Cita();
+                    c.Fecha = item.Fecha;
+                    c.Hora = item.Hora;
+                    resp.Add(c);
+                }
+                return resp;
+            }
+            catch (Exception err)
+            {                
+                throw new Exception(err.Message);
+            }
+        }*/
+
     }
 }

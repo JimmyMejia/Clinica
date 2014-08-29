@@ -133,6 +133,19 @@ namespace Datos
            }
        }
 
+        /*public List<Entidad.Cat_Cita> GetCitasByIdPaciente(int idpaciente) //DateTime fechacita, 
+        {
+            try
+            {
+                Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+                List<Entidad.Cat_Cita> citas = null;
+                return citas = dc.Cat_Cita.Where(c => c.IdPaciente == idpaciente && c.Estado == "Activa").ToList(); // c.Fecha == fechacita &&
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Error en GetCitasByIdUsuario " + err.Message);
+            }
+        }*/
         
     }
 }

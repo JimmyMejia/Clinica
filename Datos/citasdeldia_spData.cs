@@ -18,8 +18,8 @@ namespace Datos
             catch (Exception err)
             {
                 throw new Exception("Error en GetCitas " + err.Message);
-            }
-            
+            }            
         }
+       
     }
 }
