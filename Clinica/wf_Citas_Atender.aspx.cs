@@ -18,11 +18,15 @@ namespace Clinica
         {
             try
             {
+                //LIMPIAMOS EN CONTROL POR CUALQUIER COSA
                 ddl_paciente.Items.Clear();
+                //INSTANCIAMOS LO NECESARIO PARA OBTENER LA INFORMACION REQUERIDA
                 Negocio.citasdeldia_spNegocio dc = new Negocio.citasdeldia_spNegocio();
                 List<Entidad.CitasdelDia_SP_Result> p = null;
                 p = dc.CitasdelDia(fecha);
+                //ASIGNAMOS EN UNA VARIABLE SESSION LA LISTA DEVUELTA POR EL METODO CITASDELDIA 
                 Session.Add("s_PacienteCitas", p);
+                //CARGAMOS EL CONTROL PARA MOSTRAR LA LISTA DE PACIENTES
                 ListItem item = new ListItem();
                 item.Text = "Seleccione...";
                 item.Value = "0";
@@ -34,6 +38,7 @@ namespace Clinica
             }
             catch (Exception err)
             {
+                //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = "Error al cargar los pacientes " + err.Message;
             }
@@ -43,6 +48,7 @@ namespace Clinica
         {
             try
             {
+                //VALIDAMOS QUE LA FECHA A BUSCAR CONTENGA INFORMACION
                 if (tb_fechafiltro.Text == "")
                 {
                     lb_mensajes.ForeColor = System.Drawing.Color.Red;
@@ -50,30 +56,29 @@ namespace Clinica
                 }
                 else
                 {
+                    //DECLARAMOS LAS INSTANCIAS NECESARIA PARA CONSUMIR Y OBTENER LA INFORMACION
                     Negocio.citasdeldia_spNegocio dc = new Negocio.citasdeldia_spNegocio();
                     List<Entidad.CitasdelDia_SP_Result> sd = null;
                     sd = dc.CitasdelDia(tb_fechafiltro.Text);
+                    //VERIFICAMOS SI SE ENCUENTRAN CITAS PARA EL DIA SELECCIONADO
                     if (sd.Count != 0)
                     {
+                        //CARGAMOS LOS PACIENTES EN EL DROPDOWNLIST
                         CargarPacientes(tb_fechafiltro.Text);
-                        //foreach (var item in sd)
-                        //{
-                        //    ddl_paciente.SelectedValue = item.IdPaciente.ToString();
-                        //    tb_fecha.Text = item.Fecha.ToString();
-                        //    tb_hora.Text = item.Hora.ToString();
-                        //    tb_motivo.Text = item.Descripcion.ToString();                        
-                        //}
+                        lb_mensajes.Text = "";
                     }
                     else
                     {
                         /*SI EL METODO NO RETORNA DATOS SE MUESTRA UN MENSAJE AL USUARIO*/
                         lb_mensajes.ForeColor = System.Drawing.Color.Red;
                         lb_mensajes.Text = "No hay citas para la fecha seleccionada!!!";
+                        ddl_paciente.Items.Clear();
                     }
                 }
             }
             catch (Exception err)
             {
+                //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = "Error al filtrar las citas del dia " + err.Message;
             }
@@ -83,10 +88,15 @@ namespace Clinica
         {
             try
             {
+                //DECLARAMOS UNA LISTA DEL TIPO DEL RESULTADO DEL SP Y LE ASIGNAMOS EL CONTENIDO DE LA VARIABLE SESSION
                 List<Entidad.CitasdelDia_SP_Result> citas = (List<Entidad.CitasdelDia_SP_Result>)Session["s_PacienteCitas"];
+                //VERIFICAMOS SI LA VARIABLE TIENE INFORMACION
                 if (citas != null)
                 {
+                    //SI LA VARIABLE CONTINE INFORMACION SE OBTIENE EL ID DEL PACIENTE QUE TIENE LA LISTA Y SE COMPARA PARA OBTENER
+                    //LA INFORMACION REFERENTE A ESE PACIENTE
                     Entidad.CitasdelDia_SP_Result c = citas.Where(ct=>ct.IdPaciente == int.Parse(ddl_paciente.SelectedValue)).FirstOrDefault();
+                    //CARGAMOS LA INFORMACION EN LOS CONTROLES CORRESPONDIENTES
                     tb_fecha.Text = c.Fecha.ToString(); 
                     tb_hora.Text = c.Hora.ToString();
                     tb_motivo.Text = c.Descripcion;
@@ -95,11 +105,16 @@ namespace Clinica
             }
             catch (Exception err)
             {
+                //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = "Error al cargar la información de la cita " + err.Message;
             }
         }
 
+        /// <summary>
+        /// METODO PARA LIMPIAR LOS CONTROLES
+        /// </summary>
+        /// <param name="controls"></param>
         protected void CleanControl(ControlCollection controls)
         {
             try
@@ -117,7 +132,8 @@ namespace Clinica
                 }
             }
             catch (Exception err)
-            {                
+            {
+                //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = "Error al limpiar los controles " + err.Message;
             }
@@ -125,21 +141,36 @@ namespace Clinica
 
         protected void tb_fechafiltro_TextChanged(object sender, EventArgs e)
         {
-            tb_fecha.Text = "";
-            tb_hora.Text = "";
-            tb_motivo.Text = "";
-            btn_atender.Enabled = false;
+            try
+            {
+                //LIMPIAMOS LOS CONTROLES
+                tb_fecha.Text = "";
+                tb_hora.Text = "";
+                tb_motivo.Text = "";
+                //RESETEAMOS EL CONTROL PARA LIMPIARLO
+                ddl_paciente.Items.Clear();
+                btn_atender.Enabled = false;
+            }
+            catch (Exception err)
+            {
+                //MANEJAMOS EL ERROR
+                cv_informacion.IsValid = false;
+                cv_informacion.ErrorMessage = err.Message;
+            }
+            
         }
 
         protected void btn_atender_Click(object sender, EventArgs e)
         {
             try
             {
+                //LIMPIAMOS LOS CONTROLES 
                 CleanControl(this.Controls);
                 btn_atender.Enabled = false;
             }
             catch (Exception err)
             {
+                //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = "Error al limpiar los controles " + err.Message;
             }
@@ -149,23 +180,21 @@ namespace Clinica
         {
             try
             {
-                /*List<Entidad.CitasdelDia_SP_Result> c = null;
-                ddl_paciente.DataSource = c;
-                ddl_paciente.DataTextField = "";
-                ddl_paciente.DataValueField = "";
-                ddl_paciente.DataBind();*/
-
+                //LIMPIAMOS LA LISTA DE LOS PACIENTES
                 ddl_paciente.Items.Clear();
-
+                //LIMPIAMOSLOS CONTROLES
                 CleanControl(this.Controls);
+                //ELIMINAMOS LA SESSION
+                Session.Remove("s_PacienteCitas");
             }
             catch (Exception err)
             {
+                //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = "Error al cancelar " + err.Message;
-            }
-            
+            }            
         }
+
 
     }
 }
