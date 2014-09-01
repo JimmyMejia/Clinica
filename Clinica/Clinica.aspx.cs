@@ -33,8 +33,8 @@ namespace Clinica
                     int estado = cn.VerificarActiva(ec);
                     if (estado == 1)
                     {
-                        cv_Datos.IsValid = false;
-                        cv_Datos.ErrorMessage = "Ya existe una clinica con estado activo, por favor verifique!!!";
+                        lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                        lb_mensajes.Text = "Ya existe una clinica con estado activo, por favor verifique!!!";
                     }
                 }
                 else
@@ -43,8 +43,8 @@ namespace Clinica
                     CopiarImagen();
                     ec.Logo = (String)Session["s_Ruta_Imagen"];
                     cn.InsertarClinica(ec);
-                    cv_Satisfactorio.IsValid = false;
-                    cv_Satisfactorio.ErrorMessage = "Datos almacenados satisfacatoriamente!!!";
+                    lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                    lb_mensajes.Text = "Datos almacenados satisfacatoriamente!!!";
                     //Cuando se llama el método limpiar se pasa como parámetro
                     //la colección de controles de la página Web.
                     CleanControl(this.Controls);

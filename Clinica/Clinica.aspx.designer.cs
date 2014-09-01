@@ -157,13 +157,13 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.CustomValidator cv_Datos;
         
         /// <summary>
-        /// Control cv_Satisfactorio.
+        /// Control lb_mensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cv_Satisfactorio;
+        protected global::System.Web.UI.WebControls.Label lb_mensajes;
         
         /// <summary>
         /// Control vs_Errores.
