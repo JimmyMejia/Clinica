@@ -103,14 +103,7 @@ namespace Clinica
                     CleanControl(control.Controls);
             }
         }
-        //Evento del control Button Limpiar controles de la página ASPX
-        //protected void BtLimpiar_Click(object sender, EventArgs e)
-        //{
-        //    //Cuando se llama el método limpiar se pasa como parámetro
-        //    //la colección de controles de la página Web.
-        //    CleanControl(this.Controls);
-        //}
-
+       
         protected void LlenarGrid()
         {
             Negocio.clinicaNegocio dc = new Negocio.clinicaNegocio();
@@ -122,7 +115,7 @@ namespace Clinica
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-           
+            CleanControl(this.Controls);
 
         }
 

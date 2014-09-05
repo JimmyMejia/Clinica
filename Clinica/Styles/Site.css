@@ -37,7 +37,7 @@ p
 /* HEADINGS   
 ----------------------------------------------------------*/
 
-h1, h2, h3, h4, h5, h6
+/*h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
     color: #666666;
@@ -73,7 +73,7 @@ h4
 h5, h6
 {
     font-size: 1em;
-}
+}*/
 
 /* this rule styles <h1> and <h2> tags that are the 
 first child of the left and right table columns */
@@ -88,7 +88,7 @@ first child of the left and right table columns */
 
 .page
 {
-    width: 960px;
+    width: 100%;
     background-color: #fff;
     margin: 20px auto 0px auto;
     border: 1px solid #496077;
@@ -118,7 +118,8 @@ first child of the left and right table columns */
 {
     padding: 0px 12px;
     margin: 12px 8px 8px 8px;
-    min-height: 420px;
+    /*min-height: 420px;*/
+    width:100%;
 }
 
 .leftCol
@@ -133,14 +134,10 @@ first child of the left and right table columns */
 {
     /*color: #4e5766;*/
     background: #4b6c9e;
-    border: 1px solid #496077;
-    margin: 10px auto 10px auto;
-    padding: 2px auto 2px auto;
-    text-align: center;
-    line-height: normal;
-    width:960px;
-    
-    
+    /*border: 1px solid #496077;*/
+    margin: 2px auto 15px auto;
+    /*padding: 2px auto 2px auto;*/
+    width:100%;    
 }
 
 

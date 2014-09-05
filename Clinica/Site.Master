@@ -12,50 +12,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-    <form runat="server">
-    <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                    Mi aplicación ASP.NET
-                </h1>
+    <div class="container">    
+         <form runat="server">
+         <div class="page-header">         
+            <div class="page">
+            <div class="header">
+                <div class="title">
+                    <h1>Mi aplicación ASP.NET</h1>
+                </div>
+                <div class="clear hideSkiplink">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
+                            <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
+                            <asp:MenuItem NavigateUrl="~/Paciente.aspx" Text="Paciente"/>
+                            <asp:MenuItem NavigateUrl="~/Servicios.aspx" Text="Servicios"/>
+                            <asp:MenuItem NavigateUrl="~/Clinica.aspx" Text="Clinica"/>
+                            <asp:MenuItem NavigateUrl="~/BuscarServicio.aspx" Text="Buscar Servicio"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Citas.aspx" Text="Citas"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Usuarios.aspx" Text="Usuarios"/>                        
+                            <asp:MenuItem NavigateUrl="~/wf_Login.aspx" Text="Login"/>
+                        </Items>
+                    </asp:Menu>
+                </div>
             </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
-                        <asp:MenuItem NavigateUrl="~/Paciente.aspx" Text="Paciente"/>
-                        <asp:MenuItem NavigateUrl="~/Servicios.aspx" Text="Servicios"/>
-                        <asp:MenuItem NavigateUrl="~/Clinica.aspx" Text="Clinica"/>
-                        <asp:MenuItem NavigateUrl="~/BuscarServicio.aspx" Text="Buscar Servicio"/>
-                        <asp:MenuItem NavigateUrl="~/wf_Citas.aspx" Text="Citas"/>
-                        <asp:MenuItem NavigateUrl="~/wf_Usuarios.aspx" Text="Usuarios"/>                        
-                        <asp:MenuItem NavigateUrl="~/wf_Login.aspx" Text="Login"/>
-                    </Items>
-                </asp:Menu>
-            </div>
-        </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
         <div class="clear">
         </div>
-    </div>
-    <div class="footer">    
-        <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
-    </div>
+        </div>
+        </div>
+        <div class="footer">   
+            <div class="container">           
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">               
+                <p class="text-center">               
+                    <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
+                </p>
+                 </div>
+             </div> 
+        </div>
     </form>
+    </div>
 </body>
 </html>
