@@ -130,6 +130,15 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.TextBox tb_motivo;
         
         /// <summary>
+        /// Control tb_observaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_observaciones;
+        
+        /// <summary>
         /// Control btn_atender.
         /// </summary>
         /// <remarks>
@@ -146,15 +155,6 @@ namespace Clinica {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
-        
-        /// <summary>
-        /// Control tb_observaciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_observaciones;
         
         /// <summary>
         /// Control lb_mensajes.
