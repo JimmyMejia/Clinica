@@ -14,7 +14,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-    <table class="style1">
+
+    <div class="container">    
+            <table class="style1">
         <tr>
             <td class="style2">
                 Usuario:</td>
@@ -85,4 +87,5 @@
                 &nbsp;</td>
         </tr>
     </table>
+    </div>
 </asp:Content>

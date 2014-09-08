@@ -4,34 +4,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Login</title>
+    <link href="~/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Login.css" rel="stylesheet" type="text/css" />
     <link href="/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
    
-    <div class="container">
+    <div class="container1">
 	<section id="content">
-		<form action="" runat="server">
-<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-			<h1>Formulario de Logueo</h1>
-			<div>
-				<input type="text" placeholder="Username" required="required" id="username" runat="server" />
-			</div>
-			<div>
-				<input type="password" placeholder="Password" required="required" id="password" runat="server" />
-			</div>
-			<div>
-                <asp:Button ID="btn_entrar" runat="server" Text="Entrar" 
-                    onclick="btn_entrar_Click"></asp:Button>
-				<!--<input type="submit" value="Entrar" />-->
-				<a href="#">Lost your password?</a>
-				<a href="wf_Usuarios.aspx">Registrarse</a>
-			    <br />
-                <asp:Label ID="lb_mensajes" runat="server"></asp:Label>
-                <asp:CustomValidator ID="cv_datos" runat="server"></asp:CustomValidator>
 
-			</div>
-		</form><!-- form -->
+        <div class="row">
+        <%--<div class="table-responsive">
+            <table class="table">--%>
+		        <form action="" runat="server">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			                <h1>Iniciar Sesión</h1>
+                        </div>
+			                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				                <input type="text" placeholder="Username" required="required" id="username" runat="server" />
+			                </div>                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				            <input type="password" placeholder="Password" required="required" id="password" runat="server" />
+                        </div>
+			        </div>
+
+                    <asp:Label ID="lb_mensajes" runat="server"></asp:Label>
+
+			        <div class="row">
+                        <div class="col-xs-5 col-sm-3 col-md-3 col-lg-3">
+                            <asp:Button ID="btn_entrar" runat="server" Text="Entrar" 
+                                onclick="btn_entrar_Click"></asp:Button>
+				            <!--<input type="submit" value="Entrar" />-->
+                        </div> 
+                    </div>      
+                    <div class="row">             
+                        <div class="form-group">           
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				              <p><a href="#" CssClass="btn btn-link">Olvidó su contraseña?</a></p>
+                         </div>    
+                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				               <p><a href="wf_Usuarios.aspx" CssClass="btn btn-link">Registrarse</a></p>
+                         </div>
+                         </div>
+                    </div>
+
+			            <br />                        
+                        <asp:CustomValidator ID="cv_datos" runat="server"></asp:CustomValidator>
+
+			        </div>
+		        </form>
+            <%--</table>
+        </div>--%>
+    </div>
+        <!-- form -->
 		<!--<div class="button">
 			<a href="#">Download source file</a>
 		</div><!-- button -->

@@ -49,15 +49,6 @@ namespace Clinica {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
         
         /// <summary>
-        /// Control btn_entrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_entrar;
-        
-        /// <summary>
         /// Control lb_mensajes.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace Clinica {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lb_mensajes;
+        
+        /// <summary>
+        /// Control btn_entrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_entrar;
         
         /// <summary>
         /// Control cv_datos.

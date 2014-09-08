@@ -47,7 +47,8 @@ form:after {
 	clear: both;
 	visibility: hidden;
 }
-.container { margin: 200px auto; position: relative; width: 900px; }
+/*.container { margin: 200px auto; position: relative;  }*/
+.container1 { margin: 22% auto; position: relative;  }
 #content {
 	background: #f9f9f9;
 	background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
@@ -63,18 +64,19 @@ form:after {
 	box-shadow: 0 1px 0 #fff inset;
 	border: 1px solid #c4c6ca;
 	margin: 0 auto;
-	padding: 25px 0 0;
+	padding: 2% 0 0;
 	position: relative;
 	text-align: center;
 	text-shadow: 0 1px 0 #fff;
-	width: 400px;
+	/*width: 400px;*/
+	width: 40%;
 }
 #content h1 {
 	color: #7E7E7E;
 	font: bold 25px Helvetica, Arial, sans-serif;
 	letter-spacing: -0.05em;
-	line-height: 20px;
-	margin: 10px 0 30px;
+	/*line-height: 20px;*/
+	margin: 2% 0 7%;
 }
 #content h1:before,
 #content h1:after {
@@ -137,14 +139,14 @@ form:after {
 	top: 0;
 	z-index: -2;
 }
-#content form { margin: 0 20px; position: relative }
+#content form { margin: 0 5%; position: relative }
 #content form input[type="text"],
 #content form input[type="password"] {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
 	-o-border-radius: 3px;
-	border-radius: 3px;
+	border-radius: 15px;
 	-webkit-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
 	-moz-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
 	-ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
@@ -160,8 +162,9 @@ form:after {
 	border: 1px solid #c8c8c8;
 	color: #777;
 	font: 13px Helvetica, Arial, sans-serif;
-	margin: 0 0 10px;
-	padding: 15px 10px 15px 40px;
+	margin: 0 0 6%;
+	padding: 4% 2% 4% 11%;
+	/*padding: 15px 10px 15px 40px;*/
 	width: 80%;
 }
 #content form input[type="text"]:focus,
@@ -202,10 +205,12 @@ form:after {
 	font: bold 15px Helvetica, Arial, sans-serif;
 	height: 35px;
 	margin: 20px 0 35px 15px;
+	/*margin: 10% 0 0 100%;*/
 	/*padding-top: 1px;*/
 	position: relative;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-	width: 120px;
+	/*width: 120px;*/
+	width: 150%;
 }
 #content form input[type="submit"]:hover {
 	background: rgb(254,193,81);
@@ -218,10 +223,14 @@ form:after {
 }
 #content form div a {
 	color: #004a80;
-    float: right;
-    font-size: 12px;
-    margin: 30px 15px 0 0;
-    text-decoration: underline;
+    /*float: right;*/
+    /*float: left;*/
+    font-size: 14px;
+    /*margin: 30px 15px 0 0;*/
+    /*margin: 3% 1% 0 7%;*/
+    margin-bottom: 3%;
+    margin-top: 3%;
+    /*text-decoration: underline;*/
 }
 .button {
 	background: rgb(247,249,250);

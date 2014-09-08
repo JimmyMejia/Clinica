@@ -130,8 +130,7 @@
             </div>
             <div class="col-md-12">
                 <p class="text-left">
-                <asp:ValidationSummary ID="vs_errores" runat="server" ForeColor="red" Font-Size="Smaller"/>
-                </p>
+                    &nbsp;<asp:ValidationSummary ID="vs_errores" runat="server" ForeColor="red" Font-Size="Smaller"/>
              </div>                
          </div>
 
