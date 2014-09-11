@@ -6,7 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Clinica</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <link href="Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+    <%--<link href="~/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.4.1.min.js></script>--%>
+    <link href="~/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script> 
+
+    <%--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>--%>
+    <%--<style type="text/css">
+	    .bs-example{
+    	    margin: 2%;
+        }
+    </style>--%>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,7 +34,62 @@
             <div class="header">
                 <div class="title">
                     <h1>Mi aplicación ASP.NET</h1>
+                    
+                    <div class="container">                    
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+                       
+                        <div class="bs-example">
+                        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#"><strong>Menu</strong></a>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Profile</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Inbox</a></li>
+                                                <li><a href="#">Drafts</a></li>
+                                                <li><a href="#">Sent Items</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Trash</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-left">
+                                        <li class="dropdown">
+                                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Settings</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </div>
+                        </nav>
                 </div>
+
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+
                 <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                         <Items>
@@ -32,6 +102,7 @@
                             <asp:MenuItem NavigateUrl="~/wf_Citas.aspx" Text="Citas"/>
                             <asp:MenuItem NavigateUrl="~/wf_Usuarios.aspx" Text="Usuarios"/>                        
                             <asp:MenuItem NavigateUrl="~/wf_Login.aspx" Text="Login"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Envio_Correo.aspx" Text="Correo"/>
                         </Items>
                     </asp:Menu>
                 </div>
@@ -49,8 +120,8 @@
                 <p class="text-center">               
                     <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
                 </p>
-                 </div>
-             </div> 
+                </div>
+            </div> 
         </div>
     </form>
     </div>

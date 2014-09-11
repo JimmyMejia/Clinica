@@ -70,6 +70,7 @@
     <Content Include="Paciente.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Styles\bootstrap-theme.css" />
     <Content Include="Styles\bootstrap-theme.min.css" />
@@ -92,6 +93,7 @@
     <Content Include="wf_Citas.aspx" />
     <Content Include="wf_Citas_Atender.aspx" />
     <Content Include="wf_Citas_Modificar.aspx" />
+    <Content Include="wf_Envio_Correo.aspx" />
     <Content Include="wf_Login.aspx" />
     <Content Include="wf_Paciente_Modificar.aspx" />
     <Content Include="wf_Usuarios.aspx" />
@@ -198,6 +200,13 @@
     </Compile>
     <Compile Include="wf_Citas_Modificar.aspx.designer.cs">
       <DependentUpon>wf_Citas_Modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wf_Envio_Correo.aspx.cs">
+      <DependentUpon>wf_Envio_Correo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Envio_Correo.aspx.designer.cs">
+      <DependentUpon>wf_Envio_Correo.aspx</DependentUpon>
     </Compile>
     <Compile Include="wf_Login.aspx.cs">
       <DependentUpon>wf_Login.aspx</DependentUpon>
