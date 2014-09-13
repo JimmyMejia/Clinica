@@ -34,7 +34,13 @@
                         </div>
 			        </div>
 
-                    <asp:Label ID="lb_mensajes" runat="server"></asp:Label>
+                    <div class="row">
+                        <div class="form-group"> 
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p><asp:Label ID="lb_mensajes" runat="server"></asp:Label></p>
+                        </div>
+                        </div> 
+			        </div>
 
 			        <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-3 col-lg-3">

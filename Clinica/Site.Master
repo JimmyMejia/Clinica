@@ -22,6 +22,16 @@
     	    margin: 2%;
         }
     </style>--%>
+    <style type="text/css">
+        .user
+        {
+            color: #f8f8f8;
+            float: right;
+            font-size: medium;
+        }        
+       
+    </style>
+
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,63 +39,76 @@
 <body>
     <div class="container">    
          <form runat="server">
-         <div class="page-header">         
-            <div class="page">
-            <div class="header">
+             <div class="page-header">         
+                <div class="page">
+                                                                                                                                                                                                                                                                                                                                                                        <div class="header">
                 <div class="title">
-                    <h1>Mi aplicación ASP.NET</h1>
+                    <asp:Image ID="Image1" ImageUrl="~/Images/Clinica-silla.jpg" runat="server"  CssClass="img-circle img-responsive" AlternateText="Logo Clinica"/>
+                    <div class="row"> 
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">                                               
+                            <h1>Mi aplicación ASP.NET</h1>
+                        </div>
+                        <% Entidad.Validar_Login_Result login = null;
+                            login = (Entidad.Validar_Login_Result)Session["S_Login"];
+                            string user = "";                     
+                            if (login != null)
+                            {
+                                user = login.Usuario;%>
+                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                              <p class="user">Bienvenido: <%=user%><a href="wf_Logout.aspx" class="btn btn-link">[Salir]</a></p>
+                         </div>
+                        <%}%>
+                    </div>                    
                     
                     <div class="container">                    
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
-                       
-                        <div class="bs-example">
-                        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="container">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="#"><strong>Menu</strong></a>
-                                </div>
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Profile</a></li>
-                                        <li class="dropdown">
-                                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Inbox</a></li>
-                                                <li><a href="#">Drafts</a></li>
-                                                <li><a href="#">Sent Items</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Trash</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="nav navbar-nav navbar-left">
-                                        <li class="dropdown">
-                                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Action</a></li>
-                                                <li><a href="#">Another action</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Settings</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">                       
+                                <div class="bs-example">
+                                    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+                                        <!-- Brand and toggle get grouped for better mobile display -->
+                                        <div class="container">
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                                <a class="navbar-brand" href="#"><strong>Menu</strong></a>
+                                            </div>
+                                            <!-- Collect the nav links, forms, and other content for toggling -->
+                                                                                                                                                                                                                                                                                                                                                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#">Catálogos</a></li>
+                                            <li><a href="#">Profile</a></li>
+                                            <li class="dropdown">
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Inbox</a></li>
+                                                    <li><a href="#">Drafts</a></li>
+                                                    <li><a href="#">Sent Items</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Trash</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <ul class="nav navbar-nav navbar-left">
+                                            <li class="dropdown">
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Settings</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                 </div><!-- /.navbar-collapse -->
+                                        </div>
+                                    </nav>
+                                </div>
                             </div>
-                        </nav>
-                </div>
-
                         </div>
-                    </div>
                     </div>
 
                 </div>
@@ -107,23 +130,26 @@
                     </asp:Menu>
                 </div>
             </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <div class="clear">
-        </div>
-        </div>
-        </div>
-        <div class="footer">   
-            <div class="container">           
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">               
-                <p class="text-center">               
-                    <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
-                </p>
+
+                    <div class="main">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                    </div>
+                    <div class="clear">
+                    </div>
                 </div>
-            </div> 
-        </div>
-    </form>
+            </div>
+            
+            <div class="footer">   
+                <div class="container">           
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">               
+                        <p class="text-center">               
+                            <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
+                        </p>
+                    </div>
+                </div> 
+            </div>
+
+        </form>
     </div>
 </body>
 </html>

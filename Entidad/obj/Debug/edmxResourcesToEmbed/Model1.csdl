@@ -15,7 +15,6 @@
     <EntitySet Name="pbcattbls" EntityType="ClinicaModel.pbcattbl" />
     <EntitySet Name="pbcatvlds" EntityType="ClinicaModel.pbcatvld" />
     <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.sysdiagram" />
-    <EntitySet Name="Usuarios" EntityType="ClinicaModel.Usuario" />
     <AssociationSet Name="FK_Cat_Servicio_Brindado_Paciente" Association="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente">
       <End Role="Paciente" EntitySet="Pacientes" />
       <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
@@ -23,10 +22,6 @@
     <AssociationSet Name="FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo" Association="ClinicaModel.FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo">
       <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
       <End Role="Cat_Sub_Opcion" EntitySet="Cat_Sub_Opcion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Mes_Derecho_Usuario_Cat_Usuario" Association="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario">
-      <End Role="Usuario" EntitySet="Usuarios" />
-      <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
     </AssociationSet>
     <AssociationSet Name="FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" Association="ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo">
       <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
@@ -56,6 +51,19 @@
     <FunctionImport Name="Validar_Login" ReturnType="Collection(ClinicaModel.Validar_Login_Result)">
       <Parameter Name="Usuario" Mode="In" Type="String" />
       <Parameter Name="Contrasenia" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Cat_Rol" EntityType="ClinicaModel.Cat_Rol" />
+    <EntitySet Name="Usuarios" EntityType="ClinicaModel.Usuario" />
+    <AssociationSet Name="FK_Usuario_Cat_Rol" Association="ClinicaModel.FK_Usuario_Cat_Rol">
+      <End Role="Cat_Rol" EntitySet="Cat_Rol" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mes_Derecho_Usuario_Cat_Usuario" Association="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
+    </AssociationSet>
+    <FunctionImport Name="OpcionesXRol" ReturnType="Collection(ClinicaModel.OpcionesXRol_Result)">
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
@@ -119,8 +127,8 @@
     <Property Name="IdOpcion" Type="Int32" Nullable="false" />
     <Property Name="IdSubOpcion" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
-    <NavigationProperty Name="Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" FromRole="Maes_Derecho_Usuario" ToRole="Usuario" />
     <NavigationProperty Name="Maes_Opciones_Catalogo" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo" FromRole="Maes_Derecho_Usuario" ToRole="Maes_Opciones_Catalogo" />
+    <NavigationProperty Name="Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" FromRole="Maes_Derecho_Usuario" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Maes_Opciones_Catalogo">
     <Key>
@@ -189,8 +197,8 @@
     <Key>
       <PropertyRef Name="pbf_name" />
     </Key>
-    <Property Name="pbf_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="pbf_frmt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="pbf_name" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="pbf_frmt" MaxLength="254" FixedLength="false" Unicode="false" Type="String" />
     <Property Name="pbf_type" Type="Int16" />
     <Property Name="pbf_cntr" Type="Int32" />
   </EntityType>
@@ -245,16 +253,6 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Usuario">
-    <Key>
-      <PropertyRef Name="IdUsuario" />
-    </Key>
-    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Usuario1" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-    <Property Name="Contrasenia" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-    <Property Name="Activo" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
-    <NavigationProperty Name="Maes_Derecho_Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" FromRole="Usuario" ToRole="Maes_Derecho_Usuario" />
-  </EntityType>
   <Association Name="FK_Cat_Servicio_Brindado_Paciente">
     <End Role="Paciente" Type="ClinicaModel.Paciente" Multiplicity="0..1" />
     <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
@@ -276,18 +274,6 @@
       </Principal>
       <Dependent Role="Cat_Sub_Opcion">
         <PropertyRef Name="IdOpcion" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Mes_Derecho_Usuario_Cat_Usuario">
-    <End Role="Usuario" Type="ClinicaModel.Usuario" Multiplicity="1" />
-    <End Role="Maes_Derecho_Usuario" Type="ClinicaModel.Maes_Derecho_Usuario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuario">
-        <PropertyRef Name="IdUsuario" />
-      </Principal>
-      <Dependent Role="Maes_Derecho_Usuario">
-        <PropertyRef Name="IdUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -363,5 +349,60 @@
   <ComplexType Name="Validar_Login_Result">
     <Property Type="String" Name="Usuario" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="Contrasenia" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="Int32" Name="IdRol" Nullable="true" />
+    <Property Type="String" Name="Rol" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="Cat_Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Type="Int32" Name="IdRol" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Rol" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="ClinicaModel.FK_Usuario_Cat_Rol" FromRole="Cat_Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IdRol" />
+    <Property Type="String" Name="Nombre" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Usuario1" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Contrasenia" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Activo" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="DateTime" Name="Fecha_Creacion" />
+    <NavigationProperty Name="Cat_Rol" Relationship="ClinicaModel.FK_Usuario_Cat_Rol" FromRole="Usuario" ToRole="Cat_Rol" />
+    <NavigationProperty Name="Maes_Derecho_Usuario" Relationship="ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario" FromRole="Usuario" ToRole="Maes_Derecho_Usuario" />
+  </EntityType>
+  <Association Name="FK_Usuario_Cat_Rol">
+    <End Type="ClinicaModel.Cat_Rol" Role="Cat_Rol" Multiplicity="0..1" />
+    <End Type="ClinicaModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mes_Derecho_Usuario_Cat_Usuario">
+    <End Type="ClinicaModel.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="ClinicaModel.Maes_Derecho_Usuario" Role="Maes_Derecho_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Maes_Derecho_Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="OpcionesXRol_Result">
+    <Property Type="Int32" Name="IdOpcion" Nullable="true" />
+    <Property Type="String" Name="Opcion" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="IdRol" Nullable="true" />
+    <Property Type="String" Name="Rol" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

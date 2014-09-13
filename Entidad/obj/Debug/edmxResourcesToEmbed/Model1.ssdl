@@ -2,6 +2,7 @@
 <Schema Namespace="ClinicaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ClinicaModelStoreContainer">
     <EntitySet Name="Cat_Cita" EntityType="ClinicaModel.Store.Cat_Cita" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cat_Rol" EntityType="ClinicaModel.Store.Cat_Rol" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Cat_Servicio" EntityType="ClinicaModel.Store.Cat_Servicio" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Cat_Servicio_Brindado" EntityType="ClinicaModel.Store.Cat_Servicio_Brindado" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Cat_Sub_Opcion" EntityType="ClinicaModel.Store.Cat_Sub_Opcion" store:Type="Tables" Schema="dbo" />
@@ -126,6 +127,10 @@
       <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
       <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
     </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Cat_Rol" Association="ClinicaModel.Store.FK_Usuario_Cat_Rol">
+      <End Role="Cat_Rol" EntitySet="Cat_Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cat_Cita">
     <Key>
@@ -139,6 +144,13 @@
     <Property Name="FechaRegistroCita" Type="date" />
     <Property Name="FechaModificacion" Type="date" />
     <Property Name="Estado" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Cat_Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Rol" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -344,9 +356,12 @@
       <PropertyRef Name="IdUsuario" />
     </Key>
     <Property Name="IdUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdRol" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="80" />
     <Property Name="Usuario" Type="varchar" MaxLength="10" />
     <Property Name="Contrasenia" Type="nvarchar" MaxLength="20" />
     <Property Name="Activo" Type="char" MaxLength="1" />
+    <Property Name="Fecha_Creacion" Type="date" />
   </EntityType>
   <Association Name="FK_Cat_Cita_Cat_Servicio">
     <End Role="Cat_Servicio" Type="ClinicaModel.Store.Cat_Servicio" Multiplicity="0..1" />
@@ -444,6 +459,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Usuario_Cat_Rol">
+    <End Role="Cat_Rol" Type="ClinicaModel.Store.Cat_Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="ClinicaModel.Store.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
   </Function>
@@ -451,6 +478,13 @@
     <Parameter Name="Usuario" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
     <Parameter Name="Activo" Type="char" Mode="In" />
+  </Function>
+  <Function Name="OpcionesXRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdRol" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Validar_Contrasenia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Validar_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Usuario" Type="varchar" Mode="In" />

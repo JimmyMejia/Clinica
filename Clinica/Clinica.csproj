@@ -63,6 +63,8 @@
     <Content Include="Clinica.aspx" />
     <Content Include="Images\7AF2Qzt.png" />
     <Content Include="Images\8bcLQqF.png" />
+    <Content Include="Images\Clinica-silla.jpg" />
+    <Content Include="Images\Clinica-silla1.jpg" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\favicon.jpg" />
     <Content Include="Images\faviconlogin.ico" />
@@ -95,6 +97,7 @@
     <Content Include="wf_Citas_Modificar.aspx" />
     <Content Include="wf_Envio_Correo.aspx" />
     <Content Include="wf_Login.aspx" />
+    <Content Include="wf_Logout.aspx" />
     <Content Include="wf_Paciente_Modificar.aspx" />
     <Content Include="wf_Usuarios.aspx" />
   </ItemGroup>
@@ -214,6 +217,13 @@
     </Compile>
     <Compile Include="wf_Login.aspx.designer.cs">
       <DependentUpon>wf_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wf_Logout.aspx.cs">
+      <DependentUpon>wf_Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Logout.aspx.designer.cs">
+      <DependentUpon>wf_Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="wf_Paciente_Modificar.aspx.cs">
       <DependentUpon>wf_Paciente_Modificar.aspx</DependentUpon>

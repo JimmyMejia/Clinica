@@ -44,8 +44,10 @@
     <Compile Include="citaNegocio.cs" />
     <Compile Include="citasdeldia_spNegocio.cs" />
     <Compile Include="clinicaNegocio.cs" />
+    <Compile Include="opcionesxrol_spData.cs" />
     <Compile Include="pacienteNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rolNegocio.cs" />
     <Compile Include="serviciosNegocio.cs" />
     <Compile Include="usuariosNegocio.cs" />
     <Compile Include="validar_login_spNegocio.cs" />

@@ -12,7 +12,16 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LlenarGrid();
+            if (!IsPostBack)
+            {
+                LlenarGrid();
+            }
+            else
+            {
+                Entidad.Validar_Login_Result login = null;
+                login = (Entidad.Validar_Login_Result)Session["S_Login"];
+                
+            }
         }
 
         protected void tn_guardar_Click(object sender, EventArgs e)

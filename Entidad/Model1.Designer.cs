@@ -20,11 +20,12 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Servicio_Brindado_Paciente", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Paciente), "Cat_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Servicio_Brindado), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo", "Maes_Opciones_Catalogo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Maes_Opciones_Catalogo), "Cat_Sub_Opcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Sub_Opcion), true)]
-[assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Usuario), "Maes_Derecho_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Maes_Derecho_Usuario), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo", "Maes_Opciones_Catalogo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Maes_Opciones_Catalogo), "Maes_Derecho_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Maes_Derecho_Usuario), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "Detalle_Servicio_Brindado", "Cat_Servicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Servicio), "Cat_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Servicio_Brindado))]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Cita_Cat_Servicio", "Cat_Servicio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Cat_Servicio), "Cat_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Cita), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Cita_Paciente", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Paciente), "Cat_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Cita), true)]
+[assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Usuario_Cat_Rol", "Cat_Rol", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Cat_Rol), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Usuario), true)]
+[assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Usuario), "Maes_Derecho_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Maes_Derecho_Usuario), true)]
 
 #endregion
 
@@ -303,22 +304,6 @@ namespace Entidad
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<Usuario> Usuarios
-        {
-            get
-            {
-                if ((_Usuarios == null))
-                {
-                    _Usuarios = base.CreateObjectSet<Usuario>("Usuarios");
-                }
-                return _Usuarios;
-            }
-        }
-        private ObjectSet<Usuario> _Usuarios;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<Cat_Cita> Cat_Cita
         {
             get
@@ -331,6 +316,38 @@ namespace Entidad
             }
         }
         private ObjectSet<Cat_Cita> _Cat_Cita;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Cat_Rol> Cat_Rol
+        {
+            get
+            {
+                if ((_Cat_Rol == null))
+                {
+                    _Cat_Rol = base.CreateObjectSet<Cat_Rol>("Cat_Rol");
+                }
+                return _Cat_Rol;
+            }
+        }
+        private ObjectSet<Cat_Rol> _Cat_Rol;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Usuario> Usuarios
+        {
+            get
+            {
+                if ((_Usuarios == null))
+                {
+                    _Usuarios = base.CreateObjectSet<Usuario>("Usuarios");
+                }
+                return _Usuarios;
+            }
+        }
+        private ObjectSet<Usuario> _Usuarios;
 
         #endregion
         #region Métodos AddTo
@@ -448,19 +465,27 @@ namespace Entidad
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Usuarios. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToUsuarios(Usuario usuario)
-        {
-            base.AddObject("Usuarios", usuario);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet Cat_Cita. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToCat_Cita(Cat_Cita cat_Cita)
         {
             base.AddObject("Cat_Cita", cat_Cita);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Cat_Rol. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCat_Rol(Cat_Rol cat_Rol)
+        {
+            base.AddObject("Cat_Rol", cat_Rol);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Usuarios. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToUsuarios(Usuario usuario)
+        {
+            base.AddObject("Usuarios", usuario);
         }
 
         #endregion
@@ -554,6 +579,25 @@ namespace Entidad
             }
     
             return base.ExecuteFunction<Validar_Login_Result>("Validar_Login", usuarioParameter, contraseniaParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="idRol">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<OpcionesXRol_Result> OpcionesXRol(Nullable<global::System.Int32> idRol)
+        {
+            ObjectParameter idRolParameter;
+            if (idRol.HasValue)
+            {
+                idRolParameter = new ObjectParameter("IdRol", idRol);
+            }
+            else
+            {
+                idRolParameter = new ObjectParameter("IdRol", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<OpcionesXRol_Result>("OpcionesXRol", idRolParameter);
         }
 
         #endregion
@@ -859,6 +903,110 @@ namespace Entidad
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Paciente>("ClinicaModel.FK_Cat_Cita_Paciente", "Paciente", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ClinicaModel", Name="Cat_Rol")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Cat_Rol : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Cat_Rol.
+        /// </summary>
+        /// <param name="idRol">Valor inicial de la propiedad IdRol.</param>
+        public static Cat_Rol CreateCat_Rol(global::System.Int32 idRol)
+        {
+            Cat_Rol cat_Rol = new Cat_Rol();
+            cat_Rol.IdRol = idRol;
+            return cat_Rol;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdRol
+        {
+            get
+            {
+                return _IdRol;
+            }
+            set
+            {
+                if (_IdRol != value)
+                {
+                    OnIdRolChanging(value);
+                    ReportPropertyChanging("IdRol");
+                    _IdRol = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdRol");
+                    OnIdRolChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdRol;
+        partial void OnIdRolChanging(global::System.Int32 value);
+        partial void OnIdRolChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Rol
+        {
+            get
+            {
+                return _Rol;
+            }
+            set
+            {
+                OnRolChanging(value);
+                ReportPropertyChanging("Rol");
+                _Rol = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Rol");
+                OnRolChanged();
+            }
+        }
+        private global::System.String _Rol;
+        partial void OnRolChanging(global::System.String value);
+        partial void OnRolChanged();
+
+        #endregion
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Usuario_Cat_Rol", "Usuario")]
+        public EntityCollection<Usuario> Usuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Usuario>("ClinicaModel.FK_Usuario_Cat_Rol", "Usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Usuario>("ClinicaModel.FK_Usuario_Cat_Rol", "Usuario", value);
                 }
             }
         }
@@ -1800,44 +1948,6 @@ namespace Entidad
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario")]
-        public Usuario Usuario
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Usuario> UsuarioReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo", "Maes_Opciones_Catalogo")]
         public Maes_Opciones_Catalogo Maes_Opciones_Catalogo
         {
@@ -1866,6 +1976,44 @@ namespace Entidad
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Maes_Opciones_Catalogo>("ClinicaModel.FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo", "Maes_Opciones_Catalogo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario")]
+        public Usuario Usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Usuario> UsuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuario>("ClinicaModel.FK_Mes_Derecho_Usuario_Cat_Usuario", "Usuario", value);
                 }
             }
         }
@@ -4095,6 +4243,54 @@ namespace Entidad
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdRol
+        {
+            get
+            {
+                return _IdRol;
+            }
+            set
+            {
+                OnIdRolChanging(value);
+                ReportPropertyChanging("IdRol");
+                _IdRol = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdRol");
+                OnIdRolChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdRol;
+        partial void OnIdRolChanging(Nullable<global::System.Int32> value);
+        partial void OnIdRolChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Usuario1
         {
             get
@@ -4161,10 +4357,72 @@ namespace Entidad
         private global::System.String _Activo;
         partial void OnActivoChanging(global::System.String value);
         partial void OnActivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Fecha_Creacion
+        {
+            get
+            {
+                return _Fecha_Creacion;
+            }
+            set
+            {
+                OnFecha_CreacionChanging(value);
+                ReportPropertyChanging("Fecha_Creacion");
+                _Fecha_Creacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Fecha_Creacion");
+                OnFecha_CreacionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Fecha_Creacion;
+        partial void OnFecha_CreacionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFecha_CreacionChanged();
 
         #endregion
     
         #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Usuario_Cat_Rol", "Cat_Rol")]
+        public Cat_Rol Cat_Rol
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cat_Rol>("ClinicaModel.FK_Usuario_Cat_Rol", "Cat_Rol").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cat_Rol>("ClinicaModel.FK_Usuario_Cat_Rol", "Cat_Rol").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cat_Rol> Cat_RolReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cat_Rol>("ClinicaModel.FK_Usuario_Cat_Rol", "Cat_Rol");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cat_Rol>("ClinicaModel.FK_Usuario_Cat_Rol", "Cat_Rol", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4477,11 +4735,134 @@ namespace Entidad
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="OpcionesXRol_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class OpcionesXRol_Result : ComplexObject
+    {
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdOpcion
+        {
+            get
+            {
+                return _IdOpcion;
+            }
+            set
+            {
+                OnIdOpcionChanging(value);
+                ReportPropertyChanging("IdOpcion");
+                _IdOpcion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdOpcion");
+                OnIdOpcionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdOpcion;
+        partial void OnIdOpcionChanging(Nullable<global::System.Int32> value);
+        partial void OnIdOpcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Opcion
+        {
+            get
+            {
+                return _Opcion;
+            }
+            set
+            {
+                OnOpcionChanging(value);
+                ReportPropertyChanging("Opcion");
+                _Opcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Opcion");
+                OnOpcionChanged();
+            }
+        }
+        private global::System.String _Opcion;
+        partial void OnOpcionChanging(global::System.String value);
+        partial void OnOpcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdRol
+        {
+            get
+            {
+                return _IdRol;
+            }
+            set
+            {
+                OnIdRolChanging(value);
+                ReportPropertyChanging("IdRol");
+                _IdRol = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdRol");
+                OnIdRolChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdRol;
+        partial void OnIdRolChanging(Nullable<global::System.Int32> value);
+        partial void OnIdRolChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Rol
+        {
+            get
+            {
+                return _Rol;
+            }
+            set
+            {
+                OnRolChanging(value);
+                ReportPropertyChanging("Rol");
+                _Rol = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Rol");
+                OnRolChanged();
+            }
+        }
+        private global::System.String _Rol;
+        partial void OnRolChanging(global::System.String value);
+        partial void OnRolChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="Validar_Login_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
     public partial class Validar_Login_Result : ComplexObject
     {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Validar_Login_Result.
+        /// </summary>
+        /// <param name="idUsuario">Valor inicial de la propiedad IdUsuario.</param>
+        public static Validar_Login_Result CreateValidar_Login_Result(global::System.Int32 idUsuario)
+        {
+            Validar_Login_Result validar_Login_Result = new Validar_Login_Result();
+            validar_Login_Result.IdUsuario = idUsuario;
+            return validar_Login_Result;
+        }
+
+        #endregion
         #region Propiedades primitivas
     
         /// <summary>
@@ -4531,6 +4912,78 @@ namespace Entidad
         private global::System.String _Contrasenia;
         partial void OnContraseniaChanging(global::System.String value);
         partial void OnContraseniaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdUsuario
+        {
+            get
+            {
+                return _IdUsuario;
+            }
+            set
+            {
+                OnIdUsuarioChanging(value);
+                ReportPropertyChanging("IdUsuario");
+                _IdUsuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdUsuario");
+                OnIdUsuarioChanged();
+            }
+        }
+        private global::System.Int32 _IdUsuario;
+        partial void OnIdUsuarioChanging(global::System.Int32 value);
+        partial void OnIdUsuarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdRol
+        {
+            get
+            {
+                return _IdRol;
+            }
+            set
+            {
+                OnIdRolChanging(value);
+                ReportPropertyChanging("IdRol");
+                _IdRol = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdRol");
+                OnIdRolChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdRol;
+        partial void OnIdRolChanging(Nullable<global::System.Int32> value);
+        partial void OnIdRolChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Rol
+        {
+            get
+            {
+                return _Rol;
+            }
+            set
+            {
+                OnRolChanging(value);
+                ReportPropertyChanging("Rol");
+                _Rol = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Rol");
+                OnRolChanged();
+            }
+        }
+        private global::System.String _Rol;
+        partial void OnRolChanging(global::System.String value);
+        partial void OnRolChanged();
 
         #endregion
     }

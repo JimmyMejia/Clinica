@@ -11,7 +11,43 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {                
+                Entidad.Validar_Login_Result login = (Entidad.Validar_Login_Result)Session["S_Login"];                
+                if (login == null)
+                {
+                    lb_rol.Visible = false;
+                    ddl_rol.Visible = false;
+                }
+                else
+                {
+                    CargarRoles();
+                }
+            }
+        }
 
+        protected void CargarRoles()
+        {
+            try
+            {
+                List<Entidad.Cat_Rol> roles = null;
+                Negocio.rolNegocio dc = new Negocio.rolNegocio();
+                roles = dc.GetListRol();
+                ListItem item = new ListItem();
+                item.Value = "0";
+                item.Text = "Seleccione...";
+                ddl_rol.Items.Add(item);
+                ddl_rol.DataSource = roles;
+                ddl_rol.DataValueField = "IdRol";
+                ddl_rol.DataTextField = "Rol";
+                ddl_rol.DataBind();
+            }
+            catch (Exception err)
+            {
+                cv_datos.IsValid = false;
+                cv_datos.ErrorMessage = "Error al cargar los roles en ddl_rol: " + err.Message;
+            }
+        
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
