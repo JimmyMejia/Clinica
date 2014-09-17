@@ -60,7 +60,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="BuscarServicio.aspx" />
-    <Content Include="Clinica.aspx" />
+    <Content Include="wf_Clinica.aspx" />
     <Content Include="Images\7AF2Qzt.png" />
     <Content Include="Images\8bcLQqF.png" />
     <Content Include="Images\Clinica-silla.jpg" />
@@ -68,12 +68,13 @@
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\favicon.jpg" />
     <Content Include="Images\faviconlogin.ico" />
+    <Content Include="Images\faviconsgc.ico" />
     <Content Include="Images\favicon_login.jpg" />
-    <Content Include="Paciente.aspx" />
+    <Content Include="wf_Paciente.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
-    <Content Include="Servicios.aspx" />
+    <Content Include="wf_Servicios.aspx" />
     <Content Include="Styles\bootstrap-theme.css" />
     <Content Include="Styles\bootstrap-theme.min.css" />
     <Content Include="Styles\bootstrap.css" />
@@ -144,19 +145,19 @@
     <Compile Include="BuscarServicio.aspx.designer.cs">
       <DependentUpon>BuscarServicio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clinica.aspx.cs">
-      <DependentUpon>Clinica.aspx</DependentUpon>
+    <Compile Include="wf_Clinica.aspx.cs">
+      <DependentUpon>wf_Clinica.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Clinica.aspx.designer.cs">
-      <DependentUpon>Clinica.aspx</DependentUpon>
+    <Compile Include="wf_Clinica.aspx.designer.cs">
+      <DependentUpon>wf_Clinica.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paciente.aspx.cs">
-      <DependentUpon>Paciente.aspx</DependentUpon>
+    <Compile Include="wf_Paciente.aspx.cs">
+      <DependentUpon>wf_Paciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paciente.aspx.designer.cs">
-      <DependentUpon>Paciente.aspx</DependentUpon>
+    <Compile Include="wf_Paciente.aspx.designer.cs">
+      <DependentUpon>wf_Paciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -169,12 +170,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicios.aspx.cs">
-      <DependentUpon>Servicios.aspx</DependentUpon>
+    <Compile Include="wf_Servicios.aspx.cs">
+      <DependentUpon>wf_Servicios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Servicios.aspx.designer.cs">
-      <DependentUpon>Servicios.aspx</DependentUpon>
+    <Compile Include="wf_Servicios.aspx.designer.cs">
+      <DependentUpon>wf_Servicios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

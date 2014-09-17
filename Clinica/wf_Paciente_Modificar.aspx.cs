@@ -29,7 +29,7 @@ namespace Clinica
             {
                 GridViewRow row = gv_Pacientes.SelectedRow;
                 string sel = gv_Pacientes.DataKeys[row.RowIndex].Values["IdPaciente"].ToString();
-                Session["s_idpaciente"] = sel;
+                Session["S_IdPaciente"] = sel;
                 Seleccion_Paciente(int.Parse(sel));                
                 btn_Modificar.Enabled = true;
             }
@@ -61,9 +61,9 @@ namespace Clinica
                Negocio.pacienteNegocio dc = new Negocio.pacienteNegocio();
                Entidad.Paciente cs = dc.ConsultarPaciente(id);
                if (cs != null)
-               {                   
-                   Session["s_idpaciente"] = cs.IdPaciente;
-                   tb_id.Text = Session["s_idpaciente"].ToString();
+               {
+                   Session["S_IdPaciente"] = cs.IdPaciente;
+                   tb_id.Text = Session["S_IdPaciente"].ToString();
                    tb_nombres.Text = cs.Nombres;
                    tb_apellidos.Text = cs.Apellidos;
                    tb_fechaNacimiento.Text = Convert.ToString(cs.Fecha_nacimiento);
@@ -84,7 +84,7 @@ namespace Clinica
             try
             {
                 Entidad.Paciente dc = new Entidad.Paciente();
-                dc.IdPaciente = int.Parse(tb_id.Text);                               
+                dc.IdPaciente = (int) Session["S_IdPaciente"];//int.Parse(tb_id.Text);                               
                 //dc.IdPaciente = (int)Session["s_idpaciente"];
                 dc.Nombres = tb_nombres.Text.Trim().ToUpper();
                 dc.Apellidos = tb_apellidos.Text.Trim().ToUpper();

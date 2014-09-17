@@ -50,6 +50,7 @@
     <Compile Include="rolData.cs" />
     <Compile Include="serviciosData.cs" />
     <Compile Include="usuariosData.cs" />
+    <Compile Include="validarexistenciapaciente_spData.cs" />
     <Compile Include="validar_login_spData.cs" />
   </ItemGroup>
   <ItemGroup>

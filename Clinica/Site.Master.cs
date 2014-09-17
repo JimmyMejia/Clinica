@@ -12,7 +12,7 @@ namespace Clinica
         protected void Page_Load(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 /*if (!IsPostBack)
                 {
                     Entidad.Validar_Login_Result login = null;

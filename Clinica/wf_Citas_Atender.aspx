@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wf_Citas_Atender.aspx.cs" Inherits="Clinica.wf_Citas_Atender" %>
+﻿<%@ Page Title="Atender Cita" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="wf_Citas_Atender.aspx.cs" Inherits="Clinica.wf_Citas_Atender" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <%--<div class="form-group">--%>
-                <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">     
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">     
                     <p class="text-left"> Fecha de la Cita:</p>
                 </div>
                 <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">

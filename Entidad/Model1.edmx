@@ -562,7 +562,7 @@
             <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
           </AssociationSet>
           <FunctionImport Name="OpcionesXRol" ReturnType="Collection(ClinicaModel.OpcionesXRol_Result)">
-            <Parameter Name="IdRol" Mode="In" Type="Int32" />
+          <Parameter Name="IdRol" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Cat_Servicio">

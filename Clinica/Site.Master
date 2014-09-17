@@ -3,8 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Clinica</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>    
+    <title>SGC</title>
+    <link href="/Images/faviconsgc.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <%--<link href="~/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="~/Scripts/jquery-1.4.1.min.js></script>--%>
@@ -40,12 +41,12 @@
     <div class="container">    
          <form runat="server">
              <div class="page-header">         
-                <div class="page">
+                <div class="page">                
                                                                                                                                                                                                                                                                                                                                                                         <div class="header">
-                <div class="title">
-                    <asp:Image ID="Image1" ImageUrl="~/Images/Clinica-silla.jpg" runat="server"  CssClass="img-circle img-responsive" AlternateText="Logo Clinica"/>
+                <div class="title">  
+                    <asp:Image ID="Image1" ImageUrl="~/Images/Clinica-silla.jpg" runat="server"  CssClass="img-circle img-responsive" AlternateText="Logo Clinica"/>                                                                
                     <div class="row"> 
-                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">                                               
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">                             
                             <h1>Mi aplicación ASP.NET</h1>
                         </div>
                         <% Entidad.Validar_Login_Result login = null;
@@ -78,8 +79,17 @@
                                             </div>
                                             <!-- Collect the nav links, forms, and other content for toggling -->
                                                                                                                                                                                                                                                                                                                                                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Catálogos</a></li>
+                                        <ul class="nav navbar-nav navbar-left">
+                                            <li class="dropdown">
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Catálogos<b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="Paciente.aspx">Catálogo de Paciente</a></li>
+                                                    <li><a href="Clinica.aspx">Catálogo de Clinica</a></li>
+                                                    <li><a href="Servicios.aspx">Catálogo de Servicios</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Settings</a></li>
+                                                </ul>
+                                            </li>
                                             <li><a href="#">Profile</a></li>
                                             <li class="dropdown">
                                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
@@ -118,9 +128,9 @@
                         <Items>
                             <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
                             <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
-                            <asp:MenuItem NavigateUrl="~/Paciente.aspx" Text="Paciente"/>
-                            <asp:MenuItem NavigateUrl="~/Servicios.aspx" Text="Servicios"/>
-                            <asp:MenuItem NavigateUrl="~/Clinica.aspx" Text="Clinica"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Paciente.aspx" Text="Paciente"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Servicios.aspx" Text="Servicios"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Clinica.aspx" Text="Clinica"/>
                             <asp:MenuItem NavigateUrl="~/BuscarServicio.aspx" Text="Buscar Servicio"/>
                             <asp:MenuItem NavigateUrl="~/wf_Citas.aspx" Text="Citas"/>
                             <asp:MenuItem NavigateUrl="~/wf_Usuarios.aspx" Text="Usuarios"/>                        
