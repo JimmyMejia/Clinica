@@ -513,11 +513,33 @@ namespace Entidad
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        /// <param name="nombre">No hay documentación de metadatos disponible.</param>
+        /// <param name="idRol">No hay documentación de metadatos disponible.</param>
         /// <param name="usuario">No hay documentación de metadatos disponible.</param>
         /// <param name="contrasenia">No hay documentación de metadatos disponible.</param>
         /// <param name="activo">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<Insertar_Usuario_Result> Insertar_Usuario(global::System.String usuario, global::System.String contrasenia, global::System.String activo)
+        public ObjectResult<Insertar_Usuario_Result> Insertar_Usuario(global::System.String nombre, Nullable<global::System.Int32> idRol, global::System.String usuario, global::System.String contrasenia, global::System.String activo)
         {
+            ObjectParameter nombreParameter;
+            if (nombre != null)
+            {
+                nombreParameter = new ObjectParameter("Nombre", nombre);
+            }
+            else
+            {
+                nombreParameter = new ObjectParameter("Nombre", typeof(global::System.String));
+            }
+    
+            ObjectParameter idRolParameter;
+            if (idRol.HasValue)
+            {
+                idRolParameter = new ObjectParameter("IdRol", idRol);
+            }
+            else
+            {
+                idRolParameter = new ObjectParameter("IdRol", typeof(global::System.Int32));
+            }
+    
             ObjectParameter usuarioParameter;
             if (usuario != null)
             {
@@ -548,7 +570,7 @@ namespace Entidad
                 activoParameter = new ObjectParameter("Activo", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction<Insertar_Usuario_Result>("Insertar_Usuario", usuarioParameter, contraseniaParameter, activoParameter);
+            return base.ExecuteFunction<Insertar_Usuario_Result>("Insertar_Usuario", nombreParameter, idRolParameter, usuarioParameter, contraseniaParameter, activoParameter);
         }
     
         /// <summary>
@@ -598,6 +620,55 @@ namespace Entidad
             }
     
             return base.ExecuteFunction<OpcionesXRol_Result>("OpcionesXRol", idRolParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="apellidos">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Buscar_Pacientes_Result> Buscar_Pacientes(global::System.String apellidos)
+        {
+            ObjectParameter apellidosParameter;
+            if (apellidos != null)
+            {
+                apellidosParameter = new ObjectParameter("Apellidos", apellidos);
+            }
+            else
+            {
+                apellidosParameter = new ObjectParameter("Apellidos", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Buscar_Pacientes_Result>("Buscar_Pacientes", apellidosParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="nombres">No hay documentación de metadatos disponible.</param>
+        /// <param name="apellidos">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Validar_Existencia_Paciente_Result> Validar_Existencia_Paciente(global::System.String nombres, global::System.String apellidos)
+        {
+            ObjectParameter nombresParameter;
+            if (nombres != null)
+            {
+                nombresParameter = new ObjectParameter("Nombres", nombres);
+            }
+            else
+            {
+                nombresParameter = new ObjectParameter("Nombres", typeof(global::System.String));
+            }
+    
+            ObjectParameter apellidosParameter;
+            if (apellidos != null)
+            {
+                apellidosParameter = new ObjectParameter("Apellidos", apellidos);
+            }
+            else
+            {
+                apellidosParameter = new ObjectParameter("Apellidos", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Validar_Existencia_Paciente_Result>("Validar_Existencia_Paciente", nombresParameter, apellidosParameter);
         }
 
         #endregion
@@ -4455,6 +4526,81 @@ namespace Entidad
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="Buscar_Pacientes_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class Buscar_Pacientes_Result : ComplexObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Buscar_Pacientes_Result.
+        /// </summary>
+        /// <param name="idPaciente">Valor inicial de la propiedad IdPaciente.</param>
+        public static Buscar_Pacientes_Result CreateBuscar_Pacientes_Result(global::System.Int32 idPaciente)
+        {
+            Buscar_Pacientes_Result buscar_Pacientes_Result = new Buscar_Pacientes_Result();
+            buscar_Pacientes_Result.IdPaciente = idPaciente;
+            return buscar_Pacientes_Result;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdPaciente
+        {
+            get
+            {
+                return _IdPaciente;
+            }
+            set
+            {
+                OnIdPacienteChanging(value);
+                ReportPropertyChanging("IdPaciente");
+                _IdPaciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdPaciente");
+                OnIdPacienteChanged();
+            }
+        }
+        private global::System.Int32 _IdPaciente;
+        partial void OnIdPacienteChanging(global::System.Int32 value);
+        partial void OnIdPacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NombreCompleto
+        {
+            get
+            {
+                return _NombreCompleto;
+            }
+            set
+            {
+                OnNombreCompletoChanging(value);
+                ReportPropertyChanging("NombreCompleto");
+                _NombreCompleto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NombreCompleto");
+                OnNombreCompletoChanged();
+            }
+        }
+        private global::System.String _NombreCompleto;
+        partial void OnNombreCompletoChanging(global::System.String value);
+        partial void OnNombreCompletoChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="CitasdelDia_SP_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -4837,6 +4983,105 @@ namespace Entidad
         private global::System.String _Rol;
         partial void OnRolChanging(global::System.String value);
         partial void OnRolChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="Validar_Existencia_Paciente_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class Validar_Existencia_Paciente_Result : ComplexObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Validar_Existencia_Paciente_Result.
+        /// </summary>
+        /// <param name="idPaciente">Valor inicial de la propiedad IdPaciente.</param>
+        public static Validar_Existencia_Paciente_Result CreateValidar_Existencia_Paciente_Result(global::System.Int32 idPaciente)
+        {
+            Validar_Existencia_Paciente_Result validar_Existencia_Paciente_Result = new Validar_Existencia_Paciente_Result();
+            validar_Existencia_Paciente_Result.IdPaciente = idPaciente;
+            return validar_Existencia_Paciente_Result;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdPaciente
+        {
+            get
+            {
+                return _IdPaciente;
+            }
+            set
+            {
+                OnIdPacienteChanging(value);
+                ReportPropertyChanging("IdPaciente");
+                _IdPaciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdPaciente");
+                OnIdPacienteChanged();
+            }
+        }
+        private global::System.Int32 _IdPaciente;
+        partial void OnIdPacienteChanging(global::System.Int32 value);
+        partial void OnIdPacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombres
+        {
+            get
+            {
+                return _Nombres;
+            }
+            set
+            {
+                OnNombresChanging(value);
+                ReportPropertyChanging("Nombres");
+                _Nombres = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombres");
+                OnNombresChanged();
+            }
+        }
+        private global::System.String _Nombres;
+        partial void OnNombresChanging(global::System.String value);
+        partial void OnNombresChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Apellidos
+        {
+            get
+            {
+                return _Apellidos;
+            }
+            set
+            {
+                OnApellidosChanging(value);
+                ReportPropertyChanging("Apellidos");
+                _Apellidos = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Apellidos");
+                OnApellidosChanged();
+            }
+        }
+        private global::System.String _Apellidos;
+        partial void OnApellidosChanging(global::System.String value);
+        partial void OnApellidosChanged();
 
         #endregion
     }

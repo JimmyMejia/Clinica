@@ -270,5 +270,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Buscar_Pacientes" FunctionName="ClinicaModel.Store.Buscar_Pacientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicaModel.Buscar_Pacientes_Result">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Validar_Existencia_Paciente" FunctionName="ClinicaModel.Store.Validar_Existencia_Paciente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicaModel.Validar_Existencia_Paciente_Result">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

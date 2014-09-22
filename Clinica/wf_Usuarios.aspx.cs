@@ -13,17 +13,24 @@ namespace Clinica
         {
             if (!IsPostBack)
             {                
-                Entidad.Validar_Login_Result login = (Entidad.Validar_Login_Result)Session["S_Login"];                
-                if (login == null)
+                Entidad.Validar_Login_Result login = (Entidad.Validar_Login_Result)Session["S_Login"];
+                if (login != null)
                 {
-                    lb_rol.Visible = false;
-                    ddl_rol.Visible = false;
-                }
-                else
-                {
-                    CargarRoles();
+                    //    CargarRoles();
+                    //    //ddl_rol.SelectedValue = "Invitado";
+                    //    ddl_rol.Items.FindByText("Invitado").Selected = true;
+                    //    //ddl_rol.Enabled = false;
+
+                    //else 
+                    if (login.Rol == "Administrador")
+                    {
+                        CargarRoles();
+                        lb_rol.Visible = true;
+                        ddl_rol.Visible = true;
+                    }
                 }
             }
+
         }
 
         protected void CargarRoles()
@@ -56,6 +63,17 @@ namespace Clinica
             {
                 Negocio.usuariosNegocio dc = new Negocio.usuariosNegocio();
                 Entidad.Insertar_Usuario_Result  resp = null;
+                string nombre = tb_nombre.Text;
+                int idrol ;
+                Entidad.Validar_Login_Result login = (Entidad.Validar_Login_Result)Session["S_Login"];
+                if (login == null)
+                {
+                    idrol = 3;
+                }
+                else
+                {
+                    idrol = int.Parse(ddl_rol.SelectedValue);
+                }
                 string user = tb_usuario.Text;
                 string pass = tb_contraseniaverificacion.Text;
                 string activo = "1";
@@ -63,11 +81,11 @@ namespace Clinica
                 existe = dc.VerificarUsuario(user);
                 if (existe != true)
                 {
-                    resp = dc.InsertarUsuario(user, pass, activo);
+                    resp = dc.InsertarUsuario(nombre, idrol, user, pass, activo);
                     if (resp != null)
                     {
                         lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                        lb_mensajes.Text = "Datos almacenados sin problemas!!!";
+                        lb_mensajes.Text = "Datos almacenados satisfactoriamente!!!";
                         CleanControls(this.Controls);
                     }
                     else

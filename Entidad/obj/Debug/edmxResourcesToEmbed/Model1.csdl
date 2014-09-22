@@ -44,6 +44,8 @@
       <Parameter Name="FechaCitas" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Insertar_Usuario" ReturnType="Collection(ClinicaModel.Insertar_Usuario_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="IdRol" Mode="In" Type="Int32" />
       <Parameter Name="Usuario" Mode="In" Type="String" />
       <Parameter Name="Contrasenia" Mode="In" Type="String" />
       <Parameter Name="Activo" Mode="In" Type="String" />
@@ -64,6 +66,13 @@
     </AssociationSet>
     <FunctionImport Name="OpcionesXRol" ReturnType="Collection(ClinicaModel.OpcionesXRol_Result)">
       <Parameter Name="IdRol" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Buscar_Pacientes" ReturnType="Collection(ClinicaModel.Buscar_Pacientes_Result)">
+      <Parameter Name="Apellidos" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Validar_Existencia_Paciente" ReturnType="Collection(ClinicaModel.Validar_Existencia_Paciente_Result)">
+      <Parameter Name="Nombres" Mode="In" Type="String" />
+      <Parameter Name="Apellidos" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
@@ -404,5 +413,14 @@
     <Property Type="String" Name="Opcion" Nullable="true" MaxLength="20" />
     <Property Type="Int32" Name="IdRol" Nullable="true" />
     <Property Type="String" Name="Rol" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Buscar_Pacientes_Result">
+    <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="81" />
+  </ComplexType>
+  <ComplexType Name="Validar_Existencia_Paciente_Result">
+    <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="40" />
   </ComplexType>
 </Schema>

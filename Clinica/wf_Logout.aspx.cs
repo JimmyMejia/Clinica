@@ -16,7 +16,7 @@ namespace Clinica
                 Session.RemoveAll();
                 Response.Redirect("~/Default.aspx");
             }
-            catch (Exception err)
+            catch (Exception)
             {                
                 throw;
             }

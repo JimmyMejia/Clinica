@@ -7,12 +7,12 @@ namespace Datos
 {
     public class usuariosData
     {
-        public Entidad.Insertar_Usuario_Result InsertUser(string user, string pass, string activo)
+        public Entidad.Insertar_Usuario_Result InsertUser(string nombre, int idrol, string user, string pass, string activo)
         {
             try
             {
                 Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
-                return dc.Insertar_Usuario(user, pass, activo).FirstOrDefault();
+                return dc.Insertar_Usuario(nombre, idrol, user, pass, activo).FirstOrDefault();
             }
             catch (Exception err)
             {                

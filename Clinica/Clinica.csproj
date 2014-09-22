@@ -60,6 +60,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="BuscarServicio.aspx" />
+    <Content Include="Scripts\sdk.js" />
     <Content Include="wf_Clinica.aspx" />
     <Content Include="Images\7AF2Qzt.png" />
     <Content Include="Images\8bcLQqF.png" />

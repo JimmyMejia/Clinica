@@ -476,10 +476,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Buscar_Pacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Apellidos" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Insertar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdRol" Type="int" Mode="In" />
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
           <Parameter Name="Activo" Type="char" Mode="In" />
@@ -490,6 +495,10 @@
         <Function Name="Validar_Contrasenia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Validar_Existencia_Paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombres" Type="varchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Validar_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
@@ -543,6 +552,8 @@
           <Parameter Name="FechaCitas" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Insertar_Usuario" ReturnType="Collection(ClinicaModel.Insertar_Usuario_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdRol" Mode="In" Type="Int32" />
             <Parameter Name="Usuario" Mode="In" Type="String" />
             <Parameter Name="Contrasenia" Mode="In" Type="String" />
             <Parameter Name="Activo" Mode="In" Type="String" />
@@ -563,6 +574,13 @@
           </AssociationSet>
           <FunctionImport Name="OpcionesXRol" ReturnType="Collection(ClinicaModel.OpcionesXRol_Result)">
           <Parameter Name="IdRol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Buscar_Pacientes" ReturnType="Collection(ClinicaModel.Buscar_Pacientes_Result)">
+          <Parameter Name="Apellidos" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Validar_Existencia_Paciente" ReturnType="Collection(ClinicaModel.Validar_Existencia_Paciente_Result)">
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Cat_Servicio">
@@ -904,6 +922,15 @@
           <Property Type="Int32" Name="IdRol" Nullable="true" />
           <Property Type="String" Name="Rol" Nullable="true" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="Buscar_Pacientes_Result">
+          <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="81" />
+        </ComplexType>
+        <ComplexType Name="Validar_Existencia_Paciente_Result">
+          <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="40" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1120,6 +1147,23 @@
                 <ScalarProperty Name="Opcion" ColumnName="Opcion" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Buscar_Pacientes" FunctionName="ClinicaModel.Store.Buscar_Pacientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.Buscar_Pacientes_Result">
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Validar_Existencia_Paciente" FunctionName="ClinicaModel.Store.Validar_Existencia_Paciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.Validar_Existencia_Paciente_Result">
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
