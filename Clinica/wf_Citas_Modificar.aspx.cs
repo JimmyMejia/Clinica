@@ -140,7 +140,7 @@ namespace Clinica
         {
             try
             {
-                /*CARGAMOS EL CRID CON LA INFORMACION OBTENIDA EN LA ENTIDAD CITASDELDIA_SP_RESULT*/
+                /*CARGAMOS EL GRID CON LA INFORMACION OBTENIDA EN LA ENTIDAD CITASDELDIA_SP_RESULT*/
                 Negocio.citasdeldia_spNegocio dc = new Negocio.citasdeldia_spNegocio();
                 List<Entidad.CitasdelDia_SP_Result> citas = null;
                 citas = dc.CitasdelDia(fecha);

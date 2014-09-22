@@ -7,13 +7,13 @@ namespace Negocio
 {
     public class usuariosNegocio
     {
-        public Entidad.Insertar_Usuario_Result InsertarUsuario(string user, string pass, string activo)
+        public Entidad.Insertar_Usuario_Result InsertarUsuario(string nombre, int idrol, string user, string pass, string activo)
         {
             try
             {
                 Datos.usuariosData dc = new Datos.usuariosData();
                 //activo = "1";
-                return dc.InsertUser(user,pass,activo);
+                return dc.InsertUser(nombre,idrol,user,pass,activo);
             }
             catch (Exception err)
             {                

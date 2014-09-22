@@ -2,7 +2,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head runat="server">
+<head id="Head1" runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>    
     <title>SGC</title>
     <link href="/Images/faviconsgc.ico" rel="shortcut icon" type="image/x-icon" />
@@ -39,7 +39,7 @@
 </head>
 <body>
     <div class="container">    
-         <form runat="server">
+         <form id="Form1" runat="server">
              <div class="page-header">         
                 <div class="page">                
                                                                                                                                                                                                                                                                                                                                                                         <div class="header">
@@ -47,14 +47,21 @@
                     <asp:Image ID="Image1" ImageUrl="~/Images/Clinica-silla.jpg" runat="server"  CssClass="img-circle img-responsive" AlternateText="Logo Clinica"/>                                                                
                     <div class="row"> 
                         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">                             
-                            <h1>Mi aplicación ASP.NET</h1>
+                            <%--<h1>Mi aplicación ASP.NET</h1>--%>
                         </div>
                         <% Entidad.Validar_Login_Result login = null;
                             login = (Entidad.Validar_Login_Result)Session["S_Login"];
-                            string user = "";                     
+                            string user = "";
+                            string rol = "";
+                            if (login == null)
+                            {
+                                rol = "Invitado";
+                            }                     
                             if (login != null)
                             {
-                                user = login.Usuario;%>
+                                user = login.Usuario;
+                                rol = login.Rol;
+                            %>
                          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                               <p class="user">Bienvenido: <%=user%><a href="wf_Logout.aspx" class="btn btn-link">[Salir]</a></p>
                          </div>
@@ -80,38 +87,67 @@
                                             <!-- Collect the nav links, forms, and other content for toggling -->
                                                                                                                                                                                                                                                                                                                                                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                         <ul class="nav navbar-nav navbar-left">
+                                            <% if (rol == "Administrador")
+                                               { %>
                                             <li class="dropdown">
                                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Catálogos<b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="Paciente.aspx">Catálogo de Paciente</a></li>
-                                                    <li><a href="Clinica.aspx">Catálogo de Clinica</a></li>
-                                                    <li><a href="Servicios.aspx">Catálogo de Servicios</a></li>
+                                                <ul class="dropdown-menu">                                              
+                                                    <li><a href="wf_Clinica.aspx">Catálogo de Clinica</a></li>
+                                                    <li><a href="wf_Paciente.aspx">Catálogo de Paciente</a></li>
+                                                    <li><a href="wf_Servicios.aspx">Catálogo de Servicios</a></li>                                                
+                                                    <li><a href="wf_Usuarios.aspx">Catálogo de Usuarios</a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="#">Settings</a></li>
                                                 </ul>
+                                            <%}%>
                                             </li>
                                             <li><a href="#">Profile</a></li>
+                                            <% if (rol == "Paciente" || rol == "Administrador" || rol == "Medico")
+                                               { %>
                                             <li class="dropdown">
-                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Citas<b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">Inbox</a></li>
-                                                    <li><a href="#">Drafts</a></li>
-                                                    <li><a href="#">Sent Items</a></li>
+                                                <% if (rol == "Paciente" || rol == "Administrador")
+                                                   { %>
+                                                    <li><a href="wf_Citas.aspx">Solicitar Cita</a></li><%}%>
+                                                <% if (rol == "Paciente" || rol == "Administrador")
+                                                   { %>
+                                                    <li><a href="wf_Citas_Modificar.aspx">Modificar Cita</a></li><%}%>
+                                                 <% if (rol == "Medico" || rol == "Administrador")
+                                                    { %>
+                                                    <li><a href="wf_Citas_Atender.aspx">Atender Cita</a></li><%}%>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Trash</a></li>
+                                                </ul>
+                                                <%}%>
+                                            </li>
+                                        </ul>
+
+                                        <ul class="nav navbar-nav navbar-left">
+                                            <% if (rol == "Administrador")
+                                               { %>
+                                            <li class="dropdown">
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Facturación<b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Facturar Servicio</a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="#">Trash</a></li>
                                                 </ul>
                                             </li>
-                                        </ul>
-                                        <ul class="nav navbar-nav navbar-left">
+                                            <%}%>
+
+                                            <% if (rol == "Administrador")
+                                               { %>
                                             <li class="dropdown">
-                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Administración<b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Asignar Opciones</a></li>
                                                     <li><a href="#">Another action</a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="#">Settings</a></li>
                                                 </ul>
                                             </li>
+                                            <%}%>
                                         </ul>
                                 </div><!-- /.navbar-collapse -->
                                         </div>
@@ -153,6 +189,20 @@
                 <div class="container">           
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">               
                         <p class="text-center">               
+                            <div id="fb-root"></div>
+                            <script type="text/javascript">
+                                (function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id)) return;
+                                    js = d.createElement(s); js.id = id;
+                                    /*js.src = "Scripts/sdk.js";*/
+                                    js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                } (document, 'script', 'facebook-jssdk'));</script>
+
+            
+                                <div class="fb-like" data-href="http://www.elnuevodiario.com.ni/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
                             <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
                         </p>
                     </div>

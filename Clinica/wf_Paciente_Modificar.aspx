@@ -19,16 +19,28 @@
 
     <div class="container">
 
+        <div class="row"> 
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <p><strong>Apellidos:</strong></p>   
+                </div>            
+                <div class="col-xs-9 col-sm-4 col-md-3 col-lg-3">
+                    <asp:TextBox ID="tb_apellidosfiltro" runat="server" CssClass="form-control" AutoPostBack="true"></asp:TextBox>                     
+                </div> 
+                <asp:Button ID="btn_filtrar" runat="server" Text="Filtrar"
+                    CausesValidation="false" CssClass="btn btn-success btn-sm" 
+                    onclick="btn_filtrar_Click" />
+        </div>
+        </br>
+
         <div class="row">
             <div class="form-group">
             <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">
                 <p>Nombres:</p>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <asp:TextBox ID="tb_nombres" runat="server" MaxLength="40" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="tb_nombres" runat="server" MaxLength="40" CssClass="form-control" Enabled="false"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_nombres" runat="server" ControlToValidate="tb_nombres" Text="*" ForeColor="red"
                             ErrorMessage="Debe digitar los nombres del paciente!!!"></asp:RequiredFieldValidator>
-                <asp:TextBox ID="tb_id" runat="server" Enabled="false" Width="60px"></asp:TextBox>
             </div>
             </div>
         </div>
@@ -39,7 +51,7 @@
                 <p>Apellidos:</p>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <asp:TextBox ID="tb_apellidos" runat="server" MaxLength="40" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="tb_apellidos" runat="server" MaxLength="40" CssClass="form-control" Enabled="false"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_apellidos" runat="server" ControlToValidate="tb_apellidos" Text="*" ForeColor="red"
                             ErrorMessage="Debe digitar los apellidos del paciente!!!"></asp:RequiredFieldValidator>
             </div>
@@ -52,7 +64,7 @@
                 <p>Fecha de Nacimiento:</p>
             </div>
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
-                <asp:TextBox ID="tb_fechaNacimiento" runat="server" CssClass="form-control" ></asp:TextBox>
+                <asp:TextBox ID="tb_fechaNacimiento" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
                 <asp:CalendarExtender ID="ce1_fecha" runat="server" Format="dd/MM/yyyy" TargetControlID="tb_fechaNacimiento"></asp:CalendarExtender> 
                 <asp:MaskedEditExtender ID="me1_fecha"  TargetControlID="tb_fechaNacimiento" Mask="99/99/9999" MaskType="Date"
                     UserDateFormat="DayMonthYear" runat="server">
@@ -71,7 +83,7 @@
                 <p>Dirección:</p>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <asp:TextBox ID="tb_direccion" runat="server" TextMode="MultiLine" CssClass="form-control" MaxLength="150"></asp:TextBox>
+                <asp:TextBox ID="tb_direccion" runat="server" TextMode="MultiLine" CssClass="form-control" MaxLength="150" Enabled="false"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_direccion" runat="server" ControlToValidate="tb_direccion" Text="*" ForeColor="red"
                             ErrorMessage="Debe digitar la dirección del paciente!!!"></asp:RequiredFieldValidator>      
             </div>
@@ -84,7 +96,7 @@
                 <p>Celular:</p>
             </div>
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
-                <asp:TextBox ID="tb_celular" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="tb_celular" runat="server" MaxLength="8" CssClass="form-control" Enabled="false"></asp:TextBox>
                 <asp:RangeValidator ID="rv_celular" runat="server" ControlToValidate="tb_celular" Type="Integer" ForeColor="Red"
                             ErrorMessage="Número de celular inválido!!!" MinimumValue="1" MaximumValue="99999999"></asp:RangeValidator>      
             </div>
@@ -97,7 +109,7 @@
                 <p>Teléfono:</p>
             </div>
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
-                <asp:TextBox ID="tb_telefono" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="tb_telefono" runat="server" MaxLength="8" CssClass="form-control" Enabled="false"></asp:TextBox>
                 <asp:RangeValidator ID="rv_telefono" runat="server" ControlToValidate="tb_telefono" Type="Integer" ForeColor="Red"
                             ErrorMessage="Número de teléfono inválido!!!" MinimumValue="1" MaximumValue="99999999"></asp:RangeValidator>      
             </div>
@@ -130,7 +142,7 @@
                 <asp:ValidationSummary ID="vs_errores" runat="server" ForeColor="red" Font-Size="Smaller" />                       
             </div>
         </div>   
-
+        
     </div>
 
     <div class="container">
@@ -138,8 +150,8 @@
                 <div class="col-xs-12 col-sm-4 col-md-11 col-lg-11">
                     <div class="table-responsive">
                         <asp:GridView ID="gv_Pacientes" AutoGenerateSelectButton="true" DataKeyNames="IdPaciente" runat="server" BackColor="White" 
-                                BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="table"
-                                GridLines="Vertical" AllowPaging="true" PageSize="2" OnPageIndexChanging="gv_Pacientes_PageIndexChanging"
+                                BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="table" PageSize="5"
+                                GridLines="Vertical" AllowPaging="true" OnPageIndexChanging="gv_Pacientes_PageIndexChanging"
                                 onselectedindexchanged="gv_Pacientes_SelectedIndexChanged">
                                 <AlternatingRowStyle BackColor="#DCDCDC" />
                                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
