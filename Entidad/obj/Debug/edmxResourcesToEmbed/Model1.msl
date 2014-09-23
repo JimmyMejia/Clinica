@@ -287,6 +287,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="Medicos">
       <EntityTypeMapping TypeName="ClinicaModel.Medico">
         <MappingFragment StoreEntitySet="Medico">
@@ -300,5 +301,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+=======
+>>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
   </EntityContainerMapping>
 </Mapping>

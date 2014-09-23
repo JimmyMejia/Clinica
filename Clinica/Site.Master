@@ -94,7 +94,10 @@
                                                 <ul class="dropdown-menu">                                              
                                                     <li><a href="wf_Clinica.aspx">Catálogo de Clinica</a></li>
                                                     <li><a href="wf_Paciente.aspx">Catálogo de Paciente</a></li>
+<<<<<<< HEAD
                                                     <li><a href="wf_Medicos.aspx">Catálogo de Medico</a></li>
+=======
+>>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
                                                     <li><a href="wf_Servicios.aspx">Catálogo de Servicios</a></li>                                                
                                                     <li><a href="wf_Usuarios.aspx">Catálogo de Usuarios</a></li>
                                                     <li class="divider"></li>
@@ -191,7 +194,11 @@
                 <div class="container">           
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">               
                         <p class="text-center">               
+<<<<<<< HEAD
                             <%--<div id="fb-root"></div>
+=======
+                            <div id="fb-root"></div>
+>>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
                             <script type="text/javascript">
                                 (function (d, s, id) {
                                     var js, fjs = d.getElementsByTagName(s)[0];
@@ -203,7 +210,11 @@
                                 } (document, 'script', 'facebook-jssdk'));</script>
 
             
+<<<<<<< HEAD
                                 <div class="fb-like" data-href="http://www.elnuevodiario.com.ni/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>--%>
+=======
+                                <div class="fb-like" data-href="http://www.elnuevodiario.com.ni/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+>>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
 
                             <asp:Label ID="Label1" runat="server" ForeColor="White" Font-Size="Medium"><%= "&copy; Derechos Reservados " + DateTime.Now.Year %></asp:Label>
                         </p>
