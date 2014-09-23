@@ -11,7 +11,7 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write("<script>window.confirm('Hello');</script>");
+            //Response.Write("<script>window.confirm('Hello');</script>");
             //try
             //{
             //    if(!IsPostBack)
