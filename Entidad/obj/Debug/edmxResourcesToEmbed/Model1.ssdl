@@ -11,6 +11,7 @@
     <EntitySet Name="Foto" EntityType="ClinicaModel.Store.Foto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Store.Maes_Derecho_Usuario" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Store.Maes_Opciones_Catalogo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Medico" EntityType="ClinicaModel.Store.Medico" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paciente" EntityType="ClinicaModel.Store.Paciente" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="pbcatcol" EntityType="ClinicaModel.Store.pbcatcol" store:Type="Tables" store:Schema="dbo" store:Name="pbcatcol">
       <DefiningQuery>SELECT 
@@ -223,6 +224,18 @@
     </Key>
     <Property Name="IdOpcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion_opcion" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="NroCedula" />
+    </Key>
+    <Property Name="NroCedula" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="Nombres" Type="varchar" MaxLength="40" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="40" />
+    <Property Name="Fecha_nacimiento" Type="date" />
+    <Property Name="Direccion" Type="varchar" MaxLength="150" />
+    <Property Name="Telefono" Type="varchar" MaxLength="8" />
+    <Property Name="Celular" Type="varchar" MaxLength="8" />
   </EntityType>
   <EntityType Name="Paciente">
     <Key>
@@ -471,10 +484,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Buscar_Pacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Apellidos" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Insertar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="IdRol" Type="int" Mode="In" />
     <Parameter Name="Usuario" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
     <Parameter Name="Activo" Type="char" Mode="In" />
@@ -485,6 +503,10 @@
   <Function Name="Validar_Contrasenia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Usuario" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Validar_Existencia_Paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombres" Type="varchar" Mode="In" />
+    <Parameter Name="Apellidos" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Validar_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Usuario" Type="varchar" Mode="In" />

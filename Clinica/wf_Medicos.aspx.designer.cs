@@ -10,7 +10,7 @@
 namespace Clinica {
     
     
-    public partial class wf_Paciente_Modificar {
+    public partial class wf_Medicos {
         
         /// <summary>
         /// Control ScriptManager1.
@@ -22,22 +22,22 @@ namespace Clinica {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control tb_apellidosfiltro.
+        /// Control tb_cedula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_apellidosfiltro;
+        protected global::System.Web.UI.WebControls.TextBox tb_cedula;
         
         /// <summary>
-        /// Control btn_filtrar.
+        /// Control rfv_cedula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_filtrar;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_cedula;
         
         /// <summary>
         /// Control tb_nombres.
@@ -85,33 +85,6 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.TextBox tb_fechaNacimiento;
         
         /// <summary>
-        /// Control ce1_fecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ce1_fecha;
-        
-        /// <summary>
-        /// Control me1_fecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender me1_fecha;
-        
-        /// <summary>
-        /// Control rfv_fecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fecha;
-        
-        /// <summary>
         /// Control ce_fecha.
         /// </summary>
         /// <remarks>
@@ -128,6 +101,15 @@ namespace Clinica {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.MaskedEditExtender me_fecha;
+        
+        /// <summary>
+        /// Control rfv_fecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fecha;
         
         /// <summary>
         /// Control tb_direccion.
@@ -157,6 +139,15 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.TextBox tb_celular;
         
         /// <summary>
+        /// Control rfv_celular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_celular;
+        
+        /// <summary>
         /// Control rv_celular.
         /// </summary>
         /// <remarks>
@@ -184,13 +175,13 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.RangeValidator rv_telefono;
         
         /// <summary>
-        /// Control btn_Modificar.
+        /// Control btn_Guardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Modificar;
+        protected global::System.Web.UI.WebControls.Button btn_Guardar;
         
         /// <summary>
         /// Control btn_Cancelar.
@@ -211,13 +202,13 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.Label lb_mensajes;
         
         /// <summary>
-        /// Control cv_informacion.
+        /// Control cv_datos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cv_informacion;
+        protected global::System.Web.UI.WebControls.CustomValidator cv_datos;
         
         /// <summary>
         /// Control vs_errores.
@@ -227,14 +218,5 @@ namespace Clinica {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vs_errores;
-        
-        /// <summary>
-        /// Control gv_Pacientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Pacientes;
     }
 }

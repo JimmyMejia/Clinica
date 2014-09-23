@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="buscarpacientes_spData.cs" />
     <Compile Include="citaData.cs" />
     <Compile Include="citasdeldia_spData.cs" />
     <Compile Include="clinicaData.cs" />
+    <Compile Include="medicoData.cs" />
     <Compile Include="opcionesxrol_spData.cs" />
     <Compile Include="pacienteData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

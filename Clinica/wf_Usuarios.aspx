@@ -38,7 +38,7 @@
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">                
                 <asp:TextBox ID="tb_usuario" runat="server" MaxLength="10"  CssClass="form-control"
-                    ToolTip="Nombre de usuario"></asp:TextBox>
+                    ToolTip="Usuario"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_usuario" runat="server" ErrorMessage="Debe digitar el usuario!!!" Text="*" 
                 ControlToValidate="tb_usuario" ForeColor="Red" ></asp:RequiredFieldValidator>
             </div>
@@ -79,10 +79,10 @@
         <div class="row">
             <div class="form-group">
             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                    <p><asp:Label ID="lb_rol" runat="server" Text="Rol:"></asp:Label></p>
+                    <p><asp:Label ID="lb_rol" runat="server" Text="Rol:" Visible="false"></asp:Label></p>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-                    <asp:DropDownList ID="ddl_rol" runat="server" AppendDataBoundItems="true" CssClass="form-control">
+                    <asp:DropDownList ID="ddl_rol" runat="server" AppendDataBoundItems="true" CssClass="form-control" Visible="false">
                 </asp:DropDownList>
             </div>                
             </div>

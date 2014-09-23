@@ -16,6 +16,7 @@
           <EntitySet Name="Foto" EntityType="ClinicaModel.Store.Foto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Store.Maes_Derecho_Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Store.Maes_Opciones_Catalogo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Medico" EntityType="ClinicaModel.Store.Medico" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Paciente" EntityType="ClinicaModel.Store.Paciente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="pbcatcol" EntityType="ClinicaModel.Store.pbcatcol" store:Type="Tables" store:Schema="dbo" store:Name="pbcatcol">
             <DefiningQuery>SELECT 
@@ -228,6 +229,18 @@
           </Key>
           <Property Name="IdOpcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion_opcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="NroCedula" />
+          </Key>
+          <Property Name="NroCedula" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="Nombres" Type="varchar" MaxLength="40" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="40" />
+          <Property Name="Fecha_nacimiento" Type="date" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" />
+          <Property Name="Telefono" Type="varchar" MaxLength="8" />
+          <Property Name="Celular" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -476,10 +489,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Buscar_Pacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Apellidos" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="CitasdelDia_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaCitas" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Insertar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdRol" Type="int" Mode="In" />
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
           <Parameter Name="Activo" Type="char" Mode="In" />
@@ -490,6 +508,10 @@
         <Function Name="Validar_Contrasenia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenia" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Validar_Existencia_Paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombres" Type="varchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Validar_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
@@ -543,6 +565,8 @@
           <Parameter Name="FechaCitas" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Insertar_Usuario" ReturnType="Collection(ClinicaModel.Insertar_Usuario_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdRol" Mode="In" Type="Int32" />
             <Parameter Name="Usuario" Mode="In" Type="String" />
             <Parameter Name="Contrasenia" Mode="In" Type="String" />
             <Parameter Name="Activo" Mode="In" Type="String" />
@@ -564,6 +588,14 @@
           <FunctionImport Name="OpcionesXRol" ReturnType="Collection(ClinicaModel.OpcionesXRol_Result)">
           <Parameter Name="IdRol" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Buscar_Pacientes" ReturnType="Collection(ClinicaModel.Buscar_Pacientes_Result)">
+          <Parameter Name="Apellidos" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Validar_Existencia_Paciente" ReturnType="Collection(ClinicaModel.Validar_Existencia_Paciente_Result)">
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Medicos" EntityType="ClinicaModel.Medico" />
           </EntityContainer>
         <EntityType Name="Cat_Servicio">
           <Key>
@@ -904,6 +936,27 @@
           <Property Type="Int32" Name="IdRol" Nullable="true" />
           <Property Type="String" Name="Rol" Nullable="true" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="Buscar_Pacientes_Result">
+          <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="81" />
+        </ComplexType>
+        <ComplexType Name="Validar_Existencia_Paciente_Result">
+          <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="NroCedula" />
+          </Key>
+          <Property Type="String" Name="NroCedula" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nombres" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Apellidos" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Fecha_nacimiento" />
+          <Property Type="String" Name="Direccion" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Telefono" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Celular" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1123,6 +1176,36 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Buscar_Pacientes" FunctionName="ClinicaModel.Store.Buscar_Pacientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.Buscar_Pacientes_Result">
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Validar_Existencia_Paciente" FunctionName="ClinicaModel.Store.Validar_Existencia_Paciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.Validar_Existencia_Paciente_Result">
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="ClinicaModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="NroCedula" ColumnName="NroCedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1204,6 +1287,7 @@
           <ConnectorPoint PointX="6.583333333333333" PointY="2.4106934179687509" />
           <ConnectorPoint PointX="8" PointY="2.4106934179687509" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="ClinicaModel.Medico" Width="1.5" PointX="9.375" PointY="12.75" Height="2.3648893229166674" />
         </Diagram>
     </Diagrams>
   </Designer>
