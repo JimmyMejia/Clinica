@@ -69,17 +69,23 @@ namespace Clinica
                 existe = dc.ExisteCedula(cedula);
                 if (existe == 1)
                 {
-                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "Número de cedula ya existe, por favor verifique!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    //lb_mensajes.Text = "Número de cedula ya existe, por favor verifique!!!";
+                    string mensaje = "MostrarMensaje('ERROR','Número de cedula ya existe, por favor verifique!!!')";                   
+                    //MOSTRAMOS EL MENSAJE
+                    ClientScript.RegisterStartupScript(GetType(), "ocultar",mensaje, true); 
+                    
                 }
                 else
-                {
+                {                    
                     dc.InsertarMedico(med);
-                    lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                    lb_mensajes.Text = "Datos del médico insertado satisfactoriamente!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                    //lb_mensajes.Text = "Datos del médico insertado satisfactoriamente!!!";
                     CleanControls(this.Controls);
+                    //MOSTRAMOS EL MENSAJE
+                    string mensaje = "MostrarMensaje('SUCCESS','Datos del médico insertados satisfactoriamente!!!')";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "ocultar1", mensaje, true);
                 }
-
             }
             catch (Exception err)
             {
@@ -88,6 +94,6 @@ namespace Clinica
             }
         }
 
-
+       
     }
 }

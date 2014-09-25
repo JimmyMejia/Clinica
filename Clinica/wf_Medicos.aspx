@@ -2,11 +2,14 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <%--<link href="~/Styles/toastr.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="Scripts/toastr.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    
 
-    <div class="container">
+   <div class="container">
 
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">
@@ -97,8 +100,8 @@
                     CausesValidation="false" CssClass="btn btn-primary" 
                     onclick="btn_Cancelar_Click"/>
              </div>
-         </div>
-    
+         </div>        
+         
          <div class="row">
             <div class="col-md-12">
                   <asp:Label ID="lb_mensajes" runat="server" Font-Size="Medium" ></asp:Label>
@@ -118,4 +121,53 @@
           </div>
 
     </div>
+
+   <%-- <script type="text/javascript">
+        //$(document).ready(function () {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "200",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        function OcultarMensaje() {
+            //setInterval(function () {
+            //function OcultarMensaje() {
+            $("#<%= lb_mensajes.ClientID %>").hide(8000) //Esta es la velocidad con la que desaparece el texto
+            //}, 3000); //Tiempo que tarde en desaparecer el label
+            //});
+
+        }
+
+
+        function MostrarMensaje(tipo,mensaje) {            
+            if (tipo == "ERROR") {
+                toastr.error(mensaje);
+            }
+            else if (tipo == "CORRECTO") {
+                toastr.success(mensaje);
+            }
+        };
+            function ExisteCedula() {                             
+                toastr.error("Número de cedula ya existe, por favor verifique!!!","Error");
+            }
+
+            function DatosInsertados() {
+                toastr.success("Datos del médico insertado satisfactoriamente!!!","Correcto");
+            }
+        //});
+
+     </script>--%>
+
+     
+    
 </asp:Content>

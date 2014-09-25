@@ -74,10 +74,7 @@
       <Parameter Name="Nombres" Mode="In" Type="String" />
       <Parameter Name="Apellidos" Mode="In" Type="String" />
     </FunctionImport>
-<<<<<<< HEAD
     <EntitySet Name="Medicos" EntityType="ClinicaModel.Medico" />
-=======
->>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -427,7 +424,6 @@
     <Property Type="String" Name="Nombres" Nullable="true" MaxLength="40" />
     <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="40" />
   </ComplexType>
-<<<<<<< HEAD
   <EntityType Name="Medico">
     <Key>
       <PropertyRef Name="NroCedula" />
@@ -440,6 +436,4 @@
     <Property Type="String" Name="Telefono" MaxLength="8" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Celular" MaxLength="8" FixedLength="false" Unicode="false" />
   </EntityType>
-=======
->>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
 </Schema>

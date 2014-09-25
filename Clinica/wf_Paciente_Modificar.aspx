@@ -24,7 +24,7 @@
                     <p><strong>Apellidos:</strong></p>   
                 </div>            
                 <div class="col-xs-9 col-sm-4 col-md-3 col-lg-3">
-                    <asp:TextBox ID="tb_apellidosfiltro" runat="server" CssClass="form-control" AutoPostBack="true"></asp:TextBox>                     
+                    <asp:TextBox ID="tb_apellidosfiltro" runat="server" CssClass="form-control"></asp:TextBox>                     
                 </div> 
                 <asp:Button ID="btn_filtrar" runat="server" Text="Filtrar"
                     CausesValidation="false" CssClass="btn btn-success btn-sm" 
@@ -127,7 +127,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <p><asp:Label ID="lb_mensajes" runat="server" Font-Size="Medium"></asp:Label></p>                       
+                <p><asp:Label ID="lb_mensajes" runat="server" Font-Size="Medium"></asp:Label></p>                   
             </div>
         </div>
 
@@ -167,6 +167,8 @@
                     </div>
                 </div>
             </div>
+
+            
      </div>
 
     <%--<table class="style1">

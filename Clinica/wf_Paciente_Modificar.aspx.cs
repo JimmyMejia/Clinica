@@ -11,11 +11,7 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             //Response.Write("<script>window.confirm('Hello');</script>");
-=======
-            Response.Write("<script>window.confirm('Hello');</script>");
->>>>>>> 32767b92d03be95f1568da6740ea1da4ae4f5eb7
             //try
             //{
             //    if(!IsPostBack)
@@ -26,6 +22,7 @@ namespace Clinica
             //    cv_informacion.IsValid = false;
             //    cv_informacion.ErrorMessage = err.Message;
             //}           
+
         }
 
         protected void gv_Pacientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,10 +110,13 @@ namespace Clinica
                 else
                 {*/
                     pn.UpdatePaciente(dc);
-                    lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                    lb_mensajes.Text = "Datos actualizados correctamente!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                    //lb_mensajes.Text = "Datos actualizados correctamente!!!";
+                    string mensaje = "MostrarMensaje('SUCCESS','Datos actualizados correctamente!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     //CargarGrid();
                     BuscarPaciente();
+                    Session.Remove("S_IdPaciente");
                     CleanControls(this.Controls);
                     btn_Modificar.Enabled = false;
                     //DESHABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
@@ -140,6 +140,10 @@ namespace Clinica
             CleanControls(this.Controls);
             btn_Modificar.Enabled = false;
             lb_mensajes.Text = "";
+            //LIMPIAMOS LOS DATOS DEL GRID
+            List<Entidad.Paciente> pa = null;
+            gv_Pacientes.DataSource = pa;
+            gv_Pacientes.DataBind();
         }
 
         protected void CargarGrid()
@@ -158,6 +162,7 @@ namespace Clinica
                 cv_informacion.ErrorMessage = err.Message;
             }
         }
+
         public void CleanControls(ControlCollection controles)
         {
             foreach (Control control in controles)
@@ -179,6 +184,20 @@ namespace Clinica
         {
             try
             {
+                tb_nombres.Text = "";
+                tb_apellidos.Text = "";
+                tb_fechaNacimiento.Text = "";
+                tb_direccion.Text = "";
+                tb_telefono.Text = "";
+                tb_celular.Text = "";
+                btn_Modificar.Enabled = false;
+                //DESHABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
+                tb_nombres.Enabled = false;
+                tb_apellidos.Enabled = false;
+                tb_fechaNacimiento.Enabled = false;
+                tb_direccion.Enabled = false;
+                tb_telefono.Enabled = false;
+                tb_celular.Enabled = false;
                 BuscarPaciente();
             }
             catch (Exception err)
@@ -205,14 +224,24 @@ namespace Clinica
                     }
                     else
                     {
-                        lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                        lb_mensajes.Text = "No se pudieron encontrar pacientes con la coincidencia: " + apellidos.ToUpper() + ", por favor verifique.";
+                        Entidad.Paciente p = null;
+                        gv_Pacientes.DataSource = p;
+                        gv_Pacientes.DataBind();
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                        //lb_mensajes.Text = "No se pudieron encontrar pacientes con la coincidencia: " + apellidos.ToUpper() + ", por favor verifique.";
+                        string mensaje = "MostrarMensaje('ERROR','No se pudieron encontrar pacientes con la coincidencia: " + apellidos.ToUpper() + ", por favor verifique.')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     }
                 }
                 else
                 {
-                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "Por favor digite los apellidos a buscar.";
+                    Entidad.Paciente p = null;
+                    gv_Pacientes.DataSource = p;
+                    gv_Pacientes.DataBind();
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    //lb_mensajes.Text = "Por favor digite los apellidos a buscar.";
+                    string mensaje = "MostrarMensaje('INFO','Por favor digite los apellidos a filtrar')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje1", mensaje, true);
                 }
             }
             catch (Exception err)
@@ -222,7 +251,7 @@ namespace Clinica
             }
         }
 
-        //protected void tb_apellidosfiltro_TextChanged(object sender, EventArgs e)
+       //protected void tb_apellidosfiltro_TextChanged(object sender, EventArgs e)
         //{
         //    try
         //    {
