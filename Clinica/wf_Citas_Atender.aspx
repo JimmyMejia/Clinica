@@ -98,7 +98,7 @@
                 <p class="text-left">Observaciones:</p>
             </div>
             <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
-                <asp:TextBox ID="tb_observaciones" TextMode="MultiLine" Rows="10" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tb_observaciones" TextMode="MultiLine" Rows="10" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox>
             </div>
             </div>
         </div>
@@ -106,7 +106,9 @@
         <br />  
         <div class="row">
             <div class="col-xs-12 col-md-3 col-md-offset-2">
-                <asp:Button ID="btn_atender" runat="server" Text="Atender"  CssClass="btn btn-primary" CausesValidation="false" Enabled ="false" />
+                <asp:Button ID="btn_atender" runat="server" Text="Atender"  
+                    CssClass="btn btn-primary" CausesValidation="false" Enabled ="false" 
+                    onclick="btn_atender_Click" />
            
                 <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" CssClass="btn btn-primary" OnClick="btn_cancelar_Click" CausesValidation="false"/>
             </div>

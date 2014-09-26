@@ -39,68 +39,77 @@ namespace Clinica
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (btn_guardar.Text == "Guardar")
-            {
-                try
-                {                    
-                    Entidad.Cat_Servicio es = new Entidad.Cat_Servicio();
-                    es.Descripcion = tb_descripcion.Text.ToUpper().Trim();
-                    es.Precio = Convert.ToInt32(tb_precio.Text.Trim());
-                    Negocio.serviciosNegocio sn = new Negocio.serviciosNegocio();
-                    if (sn.InsertarServicio(es) == true)
-                    {
-                        lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                        lb_mensajes.Text = "Registro insertado satisfactoriamente!!!";
-                        CargarGrid();
-                        CleanControl(this.Controls);
-                    }
-                    else
-                    {
-                        lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                        lb_mensajes.Text = "Ya existe el servicio!!!";
-                        tb_descripcion.Focus();
-                    }
-                }
-                catch (Exception err)
-                {
-                    cv_servicios.IsValid = false;
-                    cv_servicios.ErrorMessage = err.Message;
-                }
-            }
-            else
-            {
-                try
-                {
-                    Entidad.Cat_Servicio es = new Entidad.Cat_Servicio();
-                    es.IdServicio = int.Parse(Session["S_IdServicio"].ToString());
-                    es.Descripcion = tb_descripcion.Text.ToUpper().Trim();
-                    es.Precio = Convert.ToInt32(tb_precio.Text);
-                    Negocio.serviciosNegocio sn = new Negocio.serviciosNegocio();
-                    sn.ActualizarServicio(es);
-                    {
-                        //Response.Write("<script>window.alert('Servicio actualizado!!!');</script>");                        
-                        lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                        lb_mensajes.Text = "Registro actualizado satisfactoriamente!!!";
-                        Session.Remove("S_IdServicio");
-                        CargarGrid();                        
-                        CleanControl(this.Controls);
-                        //btn_Eliminar.Enabled = false;
-                        btn_guardar.Text = "Guardar";
-                    }
-                }
-                catch (Exception err)
-                {
-                    cv_servicios.IsValid = false;
-                    cv_servicios.ErrorMessage = err.Message;
-                }
-            }
-           
-        }
 
-        //protected void btn_buscar_Click(object sender, EventArgs e)
-        //{
-        //    Response.Redirect("BuscarServicio.aspx");
-        //}
+            try
+            {
+                if (btn_guardar.Text == "Guardar")
+                {
+                    //try
+                    //{                    
+                        Entidad.Cat_Servicio es = new Entidad.Cat_Servicio();
+                        es.Descripcion = tb_descripcion.Text.ToUpper().Trim();
+                        es.Precio = Convert.ToInt32(tb_precio.Text.Trim());
+                        Negocio.serviciosNegocio sn = new Negocio.serviciosNegocio();
+                        if (sn.InsertarServicio(es) == true)
+                        {
+                            //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                            //lb_mensajes.Text = "Registro insertado satisfactoriamente!!!";
+                            string mensaje = "MostrarMensaje('SUCCESS','Registro insertado satisfactoriamente!!!')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                            CargarGrid();
+                            CleanControl(this.Controls);
+                        }
+                        else
+                        {
+                            //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                            //lb_mensajes.Text = "Ya existe el servicio!!!";
+                            string mensaje = "MostrarMensaje('INFO','El servicio ya existe por favor verifique!!!')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                            tb_descripcion.Focus();
+                        }
+                    //}
+                    //catch (Exception err)
+                    //{
+                    //    cv_servicios.IsValid = false;
+                    //    cv_servicios.ErrorMessage = err.Message;
+                    //}
+                }
+                else
+                {
+                
+                        Entidad.Cat_Servicio es = new Entidad.Cat_Servicio();
+                        es.IdServicio = int.Parse(Session["S_IdServicio"].ToString());
+                        es.Descripcion = tb_descripcion.Text.ToUpper().Trim();
+                        es.Precio = Convert.ToInt32(tb_precio.Text);
+                        Negocio.serviciosNegocio sn = new Negocio.serviciosNegocio();
+                        bool actualiza = true;
+                        actualiza = sn.ActualizarServicio(es);
+                        if (actualiza == false)
+                        {
+                            string mensaje = "MostrarMensaje('INFO','El servicio ya existe por favor verifique!!!')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                        }
+                        else
+                        {
+                            //Response.Write("<script>window.alert('Servicio actualizado!!!');</script>");                        
+                            //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                            //lb_mensajes.Text = "Registro actualizado satisfactoriamente!!!";
+                            string mensaje = "MostrarMensaje('SUCCESS','Registro actualizado satisfactoriamente!!!')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                            Session.Remove("S_IdServicio");
+                            CargarGrid();
+                            CleanControl(this.Controls);
+                            //btn_Eliminar.Enabled = false;
+                            btn_guardar.Text = "Guardar";
+                        }    
+                }
+            }            
+            catch (Exception err)
+            {
+                cv_servicios.IsValid = false;
+                cv_servicios.ErrorMessage = err.Message;
+            }           
+        }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
@@ -196,6 +205,9 @@ namespace Clinica
                 servicios = sn.ListaServicios();
                 gv_servicios.DataSource = servicios;
                 gv_servicios.DataBind();
+                gv_servicios.HeaderRow.Cells[0].Text = "Seleccione";
+                gv_servicios.HeaderRow.Cells[1].Text = "Cod. Servicio";
+                gv_servicios.HeaderRow.Cells[2].Text = "Descripción";
             }
             catch (Exception err)
             {
@@ -263,7 +275,6 @@ namespace Clinica
         //        cv_servicios.ErrorMessage = err.Message;
         //    }        
         //}
-
       
                
     }

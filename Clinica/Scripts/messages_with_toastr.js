@@ -1,7 +1,7 @@
 ﻿toastr.options = {
     "closeButton": true,
     "debug": false,
-    "positionClass": "toast-top-full-width",
+    "positionClass": "toast-top-full-width", //"toast-top-right", "toast-bottom-right", "toast-bottom-left", "toast-top-left", "toast-bottom-full-width",
     "onclick": null,
     "showDuration": "200",
     "hideDuration": "1000",

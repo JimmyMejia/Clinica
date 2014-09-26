@@ -43,12 +43,18 @@ namespace Negocio
             }
         }
 
-        public void ActualizarServicio(Entidad.Cat_Servicio servicioNegocio)
+        public bool ActualizarServicio(Entidad.Cat_Servicio servicioNegocio)
         {
+            bool resp = false;
             try
             {
                 Datos.serviciosData dc = new Datos.serviciosData();
-                dc.Update(servicioNegocio);
+                if(!dc.ExisteServicio(servicioNegocio))
+                {
+                    dc.Update(servicioNegocio);
+                    resp = true;
+                }
+                return resp;
             }
             catch (Exception err)
             {                

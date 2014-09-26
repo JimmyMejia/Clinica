@@ -147,10 +147,10 @@
 
     <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-11 col-lg-11">
+                <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
                     <div class="table-responsive">
                         <asp:GridView ID="gv_Pacientes" AutoGenerateSelectButton="true" DataKeyNames="IdPaciente" runat="server" BackColor="White" 
-                                BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="table" PageSize="5"
+                                BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="table" PageSize="10"
                                 GridLines="Vertical" AllowPaging="true" OnPageIndexChanging="gv_Pacientes_PageIndexChanging"
                                 onselectedindexchanged="gv_Pacientes_SelectedIndexChanged">
                                 <AlternatingRowStyle BackColor="#DCDCDC" />

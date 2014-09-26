@@ -11,18 +11,7 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Response.Write("<script>window.confirm('Hello');</script>");
-            //try
-            //{
-            //    if(!IsPostBack)
-            //    //CargarGrid();
-            //}
-            //catch (Exception err)
-            //{
-            //    cv_informacion.IsValid = false;
-            //    cv_informacion.ErrorMessage = err.Message;
-            //}           
-
+            
         }
 
         protected void gv_Pacientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,25 +49,25 @@ namespace Clinica
         {
             try
             {
-               Negocio.pacienteNegocio dc = new Negocio.pacienteNegocio();
-               Entidad.Paciente cs = dc.ConsultarPaciente(id);
-               if (cs != null)
-               {
-                   Session["S_IdPaciente"] = cs.IdPaciente;
-                   tb_nombres.Text = cs.Nombres;
-                   tb_apellidos.Text = cs.Apellidos;
-                   tb_fechaNacimiento.Text = Convert.ToString(cs.Fecha_nacimiento);
-                   tb_direccion.Text = cs.Direccion;
-                   tb_telefono.Text = cs.Telefono;
-                   tb_celular.Text = cs.Celular;
-                   //HABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
-                   tb_nombres.Enabled = true;
-                   tb_apellidos.Enabled = true;
-                   tb_fechaNacimiento.Enabled = true;
-                   tb_direccion.Enabled = true;
-                   tb_telefono.Enabled = true;
-                   tb_celular.Enabled = true;
-               }
+                Negocio.pacienteNegocio dc = new Negocio.pacienteNegocio();
+                Entidad.Paciente cs = dc.ConsultarPaciente(id);
+                if (cs != null)
+                {
+                    Session["S_IdPaciente"] = cs.IdPaciente;
+                    tb_nombres.Text = cs.Nombres;
+                    tb_apellidos.Text = cs.Apellidos;
+                    tb_fechaNacimiento.Text = Convert.ToString(cs.Fecha_nacimiento);
+                    tb_direccion.Text = cs.Direccion;
+                    tb_telefono.Text = cs.Telefono;
+                    tb_celular.Text = cs.Celular;
+                    //HABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
+                    tb_nombres.Enabled = true;
+                    tb_apellidos.Enabled = true;
+                    tb_fechaNacimiento.Enabled = true;
+                    tb_direccion.Enabled = true;
+                    tb_telefono.Enabled = true;
+                    tb_celular.Enabled = true;
+                }
             }
             catch (Exception err)
             {
@@ -115,17 +104,15 @@ namespace Clinica
                     string mensaje = "MostrarMensaje('SUCCESS','Datos actualizados correctamente!!!')";
                     ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     //CargarGrid();
-                    BuscarPaciente();
+                    
+                    string busqueda = tb_apellidosfiltro.Text;
                     Session.Remove("S_IdPaciente");
                     CleanControls(this.Controls);
-                    btn_Modificar.Enabled = false;
+                    tb_apellidosfiltro.Text = busqueda;
+                    BuscarPaciente();                    
                     //DESHABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
-                    tb_nombres.Enabled = false;
-                    tb_apellidos.Enabled = false;
-                    tb_fechaNacimiento.Enabled = false;
-                    tb_direccion.Enabled = false;
-                    tb_telefono.Enabled = false;
-                    tb_celular.Enabled = false;
+                    DeshabilitarCajasdeTexto();
+                    btn_Modificar.Enabled = false;
                 //}
             }
             catch (Exception err)
@@ -180,6 +167,24 @@ namespace Clinica
             }
         }
 
+        protected void DeshabilitarCajasdeTexto()
+        {
+            try
+            {
+                 tb_nombres.Enabled = false;
+                 tb_apellidos.Enabled = false;
+                 tb_fechaNacimiento.Enabled = false;
+                 tb_direccion.Enabled = false;
+                 tb_telefono.Enabled = false;
+                 tb_celular.Enabled = false;                    
+            }
+            catch (Exception err)
+            {
+                cv_informacion.IsValid = false;
+                cv_informacion.ErrorMessage = "Error al deshabilitar las cajas de texto :" + err.Message;
+            }
+        }
+
         protected void btn_filtrar_Click(object sender, EventArgs e)
         {
             try
@@ -192,12 +197,7 @@ namespace Clinica
                 tb_celular.Text = "";
                 btn_Modificar.Enabled = false;
                 //DESHABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
-                tb_nombres.Enabled = false;
-                tb_apellidos.Enabled = false;
-                tb_fechaNacimiento.Enabled = false;
-                tb_direccion.Enabled = false;
-                tb_telefono.Enabled = false;
-                tb_celular.Enabled = false;
+                DeshabilitarCajasdeTexto();
                 BuscarPaciente();
             }
             catch (Exception err)
@@ -221,6 +221,9 @@ namespace Clinica
                     {
                         gv_Pacientes.DataSource = pacientes;
                         gv_Pacientes.DataBind();
+                        gv_Pacientes.HeaderRow.Cells[0].Text = "Seleccione";
+                        gv_Pacientes.HeaderRow.Cells[1].Text = "Cod. paciente";
+                        gv_Pacientes.HeaderRow.Cells[2].Text = "Nombre del paciente";
                     }
                     else
                     {
@@ -251,19 +254,6 @@ namespace Clinica
             }
         }
 
-       //protected void tb_apellidosfiltro_TextChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (tb_apellidosfiltro.Text.Trim() != "")
-        //            btn_filtrar.Enabled = true;
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        cv_informacion.IsValid = false;
-        //        cv_informacion.ErrorMessage = err.Message;
-        //    }
-        //}
-      
+          
     }
 }

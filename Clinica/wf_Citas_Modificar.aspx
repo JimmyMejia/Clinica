@@ -23,7 +23,8 @@
                 <p>Fecha de la Cita:</p>
             </div>
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
-                <asp:TextBox ID="tb_fechafiltro" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="tb_fechafiltro" runat="server" CssClass="form-control" 
+                    ontextchanged="tb_fechafiltro_TextChanged"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechafiltro" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fechafiltro"
                     ErrorMessage="Debe digitar la fecha!!!"></asp:RequiredFieldValidator>
                 <asp:CalendarExtender ID="ce_fechafiltro" Format="dd/MM/yyyy" TargetControlID="tb_fechafiltro"  runat="server"></asp:CalendarExtender>

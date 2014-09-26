@@ -100,6 +100,7 @@ namespace Clinica
                     tb_fecha.Text = c.Fecha.ToString(); 
                     tb_hora.Text = c.Hora.ToString();
                     tb_motivo.Text = c.Descripcion;
+                    tb_observaciones.Enabled = true;
                     btn_atender.Enabled = true;
                 }
             }
@@ -147,6 +148,7 @@ namespace Clinica
                 tb_fecha.Text = "";
                 tb_hora.Text = "";
                 tb_motivo.Text = "";
+                tb_observaciones.Text = "";
                 //RESETEAMOS EL CONTROL PARA LIMPIARLO
                 ddl_paciente.Items.Clear();
                 btn_atender.Enabled = false;
@@ -156,8 +158,7 @@ namespace Clinica
                 //MANEJAMOS EL ERROR
                 cv_informacion.IsValid = false;
                 cv_informacion.ErrorMessage = err.Message;
-            }
-            
+            }            
         }
 
         protected void btn_atender_Click(object sender, EventArgs e)
@@ -166,6 +167,8 @@ namespace Clinica
             {
                 //LIMPIAMOS LOS CONTROLES 
                 CleanControl(this.Controls);
+                ddl_paciente.Items.Clear();
+                tb_observaciones.Enabled = false;
                 btn_atender.Enabled = false;
             }
             catch (Exception err)
@@ -186,6 +189,9 @@ namespace Clinica
                 CleanControl(this.Controls);
                 //ELIMINAMOS LA SESSION
                 Session.Remove("s_PacienteCitas");
+                tb_observaciones.Enabled = false;
+                btn_atender.Enabled = false;
+
             }
             catch (Exception err)
             {

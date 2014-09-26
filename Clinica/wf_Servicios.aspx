@@ -71,12 +71,12 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+            <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
             <div class="table-responsive">
                 <asp:GridView ID="gv_servicios" AutoGenerateSelectButton="True" CssClass="table"
                         AllowPaging="True" DataKeyNames="IdServicio" runat="server" BackColor="White" 
                         BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
-                        GridLines="Vertical" 
+                        GridLines="Vertical"  PageSize = "10"
                         onselectedindexchanged="gv_servicios_SelectedIndexChanged" 
                         onpageindexchanging="gv_servicios_PageIndexChanging">
                         <AlternatingRowStyle BackColor="#DCDCDC" />

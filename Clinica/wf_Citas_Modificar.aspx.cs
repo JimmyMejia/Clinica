@@ -238,11 +238,7 @@ namespace Clinica
                 /*LIMPIAMOS LOS CONTROLES*/
                 CleanControl(this.Controls);
                 /*INHABILITAMOS LOS CONTROLES*/
-                tb_fecha.Enabled = false;
-                tb_hora.Enabled = false;
-                ddl_motivo.Enabled = false;
-                rb_activa.Enabled = false;
-                rb_cancelada.Enabled = false;
+                InhabilitarControles();
                 btn_modificar.Enabled = false;
 
 
@@ -258,15 +254,29 @@ namespace Clinica
             }
         }
 
-        protected void btn_cancelar_Click(object sender, EventArgs e)
+        protected void InhabilitarControles()
         {
-            /*LIMPIAMOS LOS CONTROLES*/
-            CleanControl(this.Controls);
             tb_fecha.Enabled = false;
             tb_hora.Enabled = false;
             ddl_motivo.Enabled = false;
             rb_activa.Enabled = false;
             rb_cancelada.Enabled = false;
+        }
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            /*LIMPIAMOS LOS CONTROLES*/
+            CleanControl(this.Controls);
+            InhabilitarControles();
+            btn_modificar.Enabled = false;
+        }
+
+        protected void tb_fechafiltro_TextChanged(object sender, EventArgs e)
+        {
+            ddl_paciente.ClearSelection();
+            tb_fecha.Text = "";
+            tb_hora.Text = "";
+            ddl_motivo.ClearSelection();
+            InhabilitarControles();
             btn_modificar.Enabled = false;
         }
 
