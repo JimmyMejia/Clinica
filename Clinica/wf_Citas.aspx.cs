@@ -63,8 +63,10 @@ namespace Clinica
 
                 Negocio.citaNegocio dc = new Negocio.citaNegocio();                
                 dc.InsertarCita(c);
-                lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                lb_mensajes.Text = "Datos almacenados correctamente!!!";
+                //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                //lb_mensajes.Text = "Datos almacenados correctamente!!!";
+                string mensaje = "MostrarMensaje('SUCCESS','Datos almacenados satisfactoriamente!!!')";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                 CleanControls(this.Controls);
             }
             catch (Exception err)

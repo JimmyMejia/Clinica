@@ -30,14 +30,18 @@ namespace Clinica
                 if (existe == 0)
                 {
                     pn.InsertarPaciente(p);
-                    lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                    lb_mensajes.Text = "Paciente insertado correctamente!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                    //lb_mensajes.Text = "Paciente insertado correctamente!!!";
+                    string mensaje = "MostrarMensaje('SUCCESS','Paciente insertado satisfactoriamente!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     CleanControl(this.Controls);
                 }
                 else
                 {
-                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "Paciente ya existe!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    //lb_mensajes.Text = "Paciente ya existe!!!";
+                    string mensaje = "MostrarMensaje('ERROR','El paciente ya existe, por favor verifique!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                 }
             }
             catch (Exception err)

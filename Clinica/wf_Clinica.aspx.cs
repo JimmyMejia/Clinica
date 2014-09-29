@@ -20,6 +20,11 @@ namespace Clinica
             {
                 Entidad.Validar_Login_Result login = null;
                 login = (Entidad.Validar_Login_Result)Session["S_Login"];
+                if (login != null)
+                {
+                    lb_previa.Visible = true;
+                    Logo.Visible = true;
+                }
                 
             }
         }
@@ -42,51 +47,91 @@ namespace Clinica
                     int estado = cn.VerificarActiva(ec);
                     if (estado == 1)
                     {
-                        lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                        lb_mensajes.Text = "Ya existe una clinica con estado activo, por favor verifique!!!";
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                        //lb_mensajes.Text = "Ya existe una clinica con estado activo, por favor verifique!!!";
+                        string mensaje = "MostrarMensaje('ERROR','Ya existe una clinica con estado activo, por favor verifique!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     }
                 }
                 else
                 {
                     ec.Activo = "0";
-                    CopiarImagen();
-                    ec.Logo = (String)Session["s_Ruta_Imagen"];
-                    cn.InsertarClinica(ec);
-                    lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                    lb_mensajes.Text = "Datos almacenados satisfacatoriamente!!!";
-                    //Cuando se llama el método limpiar se pasa como parámetro
-                    //la colección de controles de la página Web.
-                    CleanControl(this.Controls);
+                    //CARGAMOS LA IMAGEN SELECCIONADA EN EL CONTROL PARA QUE EL USUARIO VEA LA IMAGEN QUE SELECCIONO
+                    //if ((fu_logo.PostedFile != null) && (fu_logo.PostedFile.ContentLength > 0))
+                    //{
+                    //    string nombre = System.IO.Path.GetFileName(fu_logo.PostedFile.FileName);
+                    //    string rutaorigen = System.IO.Path.GetFullPath("nombre");
+                    //    string fileExtension = System.IO.Path.GetExtension(this.fu_logo.FileName);
+                    //    HttpPostedFile file = fu_logo.PostedFile;
+                    //    //almacenar fichero en byte[]
+                    //    int lengthFile = file.ContentLength;
+                    //    byte[] fileArray = new byte[lengthFile];
+                    //    file.InputStream.Read(fileArray, 0, lengthFile);
+                    //    //grabar en Session
+                    //    Session["IMAGEN"] = fileArray;
+                    //    //mostrar imagen en control Image
+                    //    ByteArrayToImageControl(fileArray, fileExtension);
+                    //}
+
+                    //CopiarImagen();
+                    ec.Logo = (String)Session["S_RutaImagen"];
+                    //cn.InsertarClinica(ec);
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                    //lb_mensajes.Text = "Datos almacenados satisfacatoriamente!!!";
+                    string mensaje = "MostrarMensaje('SUCCESS','Datos almacenados satisfactoriamente!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                    //CleanControl(this.Controls);
                     LlenarGrid();
-                    Session.Remove("s_Ruta_Imagen");
+                    Session.Remove("S_RutaImagen");
                 }
-                //Negocio.clinicaNegocio cn = new Negocio.clinicaNegocio();
-                ////if (ec.Activo ="1")//
-                ////{//
-                //int estado = cn.VerificarActiva(ec);
-                //if (estado == 1)
-                //{
-                //    cv_Datos.IsValid = false;
-                //    cv_Datos.ErrorMessage = "Ya existe una clinica con estado activo, por favor verifique!!!";
-                //}
-                //else
-                //{
-                //    cn.InsertarClinica(ec);
-                //    cv_Satisfactorio.IsValid = false;
-                //    cv_Satisfactorio.ErrorMessage = "Datos almacenados satisfacatoriamente!!!";
-                //    //Cuando se llama el método limpiar se pasa como parámetro
-                //    //la colección de controles de la página Web.
-                //    CleanControl(this.Controls);
-                //}
 
             }
             catch (Exception err)
             {                
                 throw new Exception(err.Message);
+            }            
+        }
+
+        protected void chk_previa_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((fu_logo.PostedFile != null) && (fu_logo.PostedFile.ContentLength > 0))
+            {
+                string nombre = System.IO.Path.GetFileName(fu_logo.PostedFile.FileName);
+                string rutaorigen = System.IO.Path.GetFullPath("nombre");
+                string fileExtension = System.IO.Path.GetExtension(this.fu_logo.FileName);
+                HttpPostedFile file = fu_logo.PostedFile;
+                //almacenar fichero en byte[]
+                int lengthFile = file.ContentLength;
+                byte[] fileArray = new byte[lengthFile];
+                file.InputStream.Read(fileArray, 0, lengthFile);
+                //grabar en Session
+                Session["IMAGEN"] = fileArray;
+                //mostrar imagen en control Image
+                ByteArrayToImageControl(fileArray, fileExtension);
+            }
+        }
+
+        protected void ByteArrayToImageControl(byte[] fileArray, string fileExtension)
+        {
+            try
+            {
+                string base64String = Convert.ToBase64String(fileArray, 0, fileArray.Length);
+                this.Logo.ImageUrl = "data:image/" + fileExtension + "png;base64," + base64String;
+                this.Logo.Visible = true;
+                //ASIGNAMOS A UNA VARIABLE EL VALOR DEL FILEUPLOAD
+                string archivo = fu_logo.PostedFile.FileName;
+                lb_archivo.Visible = true;
+                lb_archivo.Text = archivo;
+                Session.Remove("IMAGEN");
+            }
+            catch (Exception err)
+            {
+                cv_Datos.IsValid = false;
+                cv_Datos.ErrorMessage = "Error al método auxiliar para mostrar el preview de la imagen: " + err.Message;
             }
             
         }
-
+       
         //Función que permite limpiar todos los controles de una página Web
         //recursivamente. Útil cuando en la página existen varios controles
         //evita tener que limpiar uno por uno.
@@ -115,18 +160,26 @@ namespace Clinica
        
         protected void LlenarGrid()
         {
-            Negocio.clinicaNegocio dc = new Negocio.clinicaNegocio();
-            List<Entidad.Clinica> clinica = null;
-            clinica = dc.Clinicas();
-            gv_clinicas.DataSource = clinica;
-            gv_clinicas.DataBind();
+            try
+            {
+                Negocio.clinicaNegocio dc = new Negocio.clinicaNegocio();
+                List<Entidad.Clinica> clinica = null;
+                clinica = dc.Clinicas();
+                gv_clinicas.DataSource = clinica;
+                gv_clinicas.DataBind();
+            }
+            catch (Exception err)
+            {
+                cv_Datos.IsValid = false;
+                cv_Datos.ErrorMessage = "Error al llenargrid: " + err.Message;
+            }
+            
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            CleanControl(this.Controls);
+            CleanControl(this.Controls);            
         }
-
 
         protected void CopiarImagen()
         {
@@ -136,21 +189,14 @@ namespace Clinica
                 {
                     string nombre = System.IO.Path.GetFileName(fu_logo.PostedFile.FileName);
                     string rutaorigen = System.IO.Path.GetFullPath("nombre");
-
-                    //string SaveLocation = Server.MapPath(@"~\Temporal") + "\\" + fn;
-                    //string SaveLocation1 = Server.MapPath(@"~\imagenes") + "\\" + fn;
                     string SaveLocation = Server.MapPath(@"~\Images") + "\\" + nombre;
-                    Session["s_Ruta_Imagen"] = SaveLocation;
+                    Session["S_RutaImagen"] = SaveLocation;
                     try
                     {
-
                         fu_logo.PostedFile.SaveAs(SaveLocation);
-
-                        this.lblmessage.Text = "El archivo se ha cargado.";
-
+                        //this.lblmessage.Text = "El archivo se ha cargado.";
                         string WorkingDirectory = Server.MapPath(@"~\Images");
                         System.Drawing.Image img = System.Drawing.Image.FromStream(fu_logo.PostedFile.InputStream);
-
                     }
                     catch (Exception ex)
                     {
@@ -159,14 +205,17 @@ namespace Clinica
 
                 }
                 else
-                    this.lblmessage.Text = "No se pudo cargar el archivo seleccionado, por favor seleccione una imagen .jpg, .gif o .png";
+                    cv_Datos.IsValid = false;
+                    cv_Datos.ErrorMessage = "No se pudo cargar el archivo seleccionado, por favor seleccione una imagen .jpg, .gif o .png";
             }
             else
             {
-                this.lblmessage.Text = "Seleccione un archivo que cargar.";
+                cv_Datos.IsValid = false;
+                cv_Datos.ErrorMessage = "Seleccione un archivo que cargar.";
             }
         }
-        
+
+               
         
     }
 }

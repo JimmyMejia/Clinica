@@ -7,6 +7,18 @@ namespace Negocio
 {
     public class clinicaNegocio
     {
+        public bool ExisteClinica(string clinica)
+        {
+            try
+            {
+                Datos.clinicaData dc = new Datos.clinicaData();
+                return dc.ExistClinica(clinica);
+            }
+            catch (Exception err)
+            {                
+                throw new Exception("Error en Existe Clinica, " + err.Message);
+            }
+        }
 
         public void InsertarClinica(Entidad.Clinica clinicaNegocio )
         {

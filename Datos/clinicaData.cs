@@ -8,6 +8,23 @@ namespace Datos
 {
     public class clinicaData
     {
+        public bool ExistClinica(string clinica)
+        {
+            try
+            {
+                Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+                Entidad.Clinica cl = null;
+                cl = dc.Clinicas.Where(c => c.Nombre == clinica).FirstOrDefault();
+                if (cl != null)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception err)
+            {                
+                throw new Exception("Error en ExistClinica, " + err.Message);
+            }
+        }
 
         public void Insert(Entidad.Clinica clinicaData)
         {

@@ -51,8 +51,10 @@ namespace Clinica
                 //VALIDAMOS QUE LA FECHA A BUSCAR CONTENGA INFORMACION
                 if (tb_fechafiltro.Text == "")
                 {
-                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "Debe seleccionar la fecha a buscar!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    //lb_mensajes.Text = "Debe seleccionar la fecha a buscar!!!";
+                    string mensaje = "MostrarMensaje('INFO','Debe digitar la fecha a buscar!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                 }
                 else
                 {
@@ -70,8 +72,10 @@ namespace Clinica
                     else
                     {
                         /*SI EL METODO NO RETORNA DATOS SE MUESTRA UN MENSAJE AL USUARIO*/
-                        lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                        lb_mensajes.Text = "No hay citas para la fecha seleccionada!!!";
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                        //lb_mensajes.Text = "No hay citas para la fecha seleccionada!!!";
+                        string mensaje = "MostrarMensaje('ERROR','No se encontraron citas para la fecha seleccionada!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                         ddl_paciente.Items.Clear();
                     }
                 }

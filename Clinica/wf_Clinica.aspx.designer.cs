@@ -31,15 +31,6 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_clinica;
         
         /// <summary>
-        /// Control lblmessage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmessage;
-        
-        /// <summary>
         /// Control tb_direccion.
         /// </summary>
         /// <remarks>
@@ -119,6 +110,42 @@ namespace Clinica {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fu_logo;
+        
+        /// <summary>
+        /// Control lb_archivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_archivo;
+        
+        /// <summary>
+        /// Control chk_previa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chk_previa;
+        
+        /// <summary>
+        /// Control lb_previa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_previa;
+        
+        /// <summary>
+        /// Control Logo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Logo;
         
         /// <summary>
         /// Control chk_activa.

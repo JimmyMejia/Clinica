@@ -84,20 +84,26 @@ namespace Clinica
                     resp = dc.InsertarUsuario(nombre, idrol, user, pass, activo);
                     if (resp != null)
                     {
-                        lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                        lb_mensajes.Text = "Datos almacenados satisfactoriamente!!!";
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                        //lb_mensajes.Text = "Datos almacenados satisfactoriamente!!!";
+                        string mensaje = "MostrarMensaje('SUCCESS','Datos almacenados satisfactoriamente!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                         CleanControls(this.Controls);
                     }
                     else
                     {
-                        lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                        lb_mensajes.Text = "Error al almacenar el usuario!!!";
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                        //lb_mensajes.Text = "Error al almacenar el usuario!!!";
+                        string mensaje = "MostrarMensaje('ERROR','Error al almacenar los datos del usuario!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     }
                 }
                 else
                 {
-                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "El usuario ya existe, por favor seleccionar otro!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    //lb_mensajes.Text = "El usuario ya existe, por favor seleccionar otro!!!";
+                    string mensaje = "MostrarMensaje('WARNING','El usuario seleccionado ya existe, por favor seleccione otro!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                 }
 
             }
@@ -136,5 +142,7 @@ namespace Clinica
             CleanControls(this.Controls);
             lb_mensajes.Text = "";
         }
+
+
     }
 }

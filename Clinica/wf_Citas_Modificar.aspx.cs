@@ -74,7 +74,7 @@ namespace Clinica
                 /*OBTENEMOS DEL GRID LA FILA SELECCIONADA*/
                 GridViewRow row = gv_citas.SelectedRow;
                 string cita = gv_citas.DataKeys[row.RowIndex].Values["IdCita"].ToString();
-                Session["s_idcita"] = cita;
+                Session["S_IdCita"] = cita;
                 /*LLAMAMOS AL METODO ENCARGADO PARA OBTENER LA CITA SELECCIONADA*/
                 SeleccionCita(cita);                
             }
@@ -94,7 +94,7 @@ namespace Clinica
                 Entidad.Cat_Cita cs = dc.ConsultarCita(id_cita);
                 if (cs != null)
                 {
-                    Session["s_idcita"] = cs.IdCita;
+                    Session["S_IdCita"] = cs.IdCita;
                     ddl_paciente.SelectedValue = cs.IdPaciente.ToString();
                     tb_fecha.Text = cs.Fecha.ToString();
                     tb_hora.Text = cs.Hora;
@@ -127,7 +127,7 @@ namespace Clinica
                 /*VOLVEMOS A CARGAR EL GRID PARA PODER NAVEGAR POR SUS PAGINAS*/
                 gv_citas.PageIndex = e.NewPageIndex;
                 CleanControl(this.Controls);
-                CargarGrid((string)Session["s_fecha"]);
+                CargarGrid((string)Session["S_Fecha"]);
             }
             catch (Exception err)
             {
@@ -152,8 +152,10 @@ namespace Clinica
                 else
                 {
                     /*SI EL METODO NO RETORNA DATOS SE MUESTRA UN MENSAJE AL USUARIO*/
-                    lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "No hay citas para la fecha seleccionada!!!";
+                    //lb_mensajes.ForeColor = System.Drawing.Color.Red;
+                    //lb_mensajes.Text = "No hay citas para la fecha seleccionada!!!";
+                    string mensaje = "MostrarMensaje('ERROR','No se encontraron citas para la fecha digitada!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                     //tb_fechafiltro.Focus();
                     List<Entidad.CitasdelDia_SP_Result> ct = new List<Entidad.CitasdelDia_SP_Result>();
                     gv_citas.DataSource = ct;
@@ -171,12 +173,23 @@ namespace Clinica
         {
             try
             {
-                /*LLAMAMOS AL METODO CARGAR GRID PARA PODER LLENAR EL GRID CON LA INFORMACION OBTENIDA EN ESTE METODO*/
-                lb_mensajes.Text = "";                
-                string fechafiltro = tb_fechafiltro.Text;
-                Session["s_fecha"] = fechafiltro;
-                CargarGrid((string)Session["s_fecha"]);
-                //CleanControl(this.Controls);
+                if (tb_fechafiltro.Text == "")
+                {
+                    string mensaje = "MostrarMensaje('INFO','Debe digitar la fecha a filtrar!!!')";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                    List<Entidad.CitasdelDia_SP_Result> ct = new List<Entidad.CitasdelDia_SP_Result>();
+                    gv_citas.DataSource = ct;
+                    gv_citas.DataBind();
+                }
+                else
+                {
+                    /*LLAMAMOS AL METODO CARGAR GRID PARA PODER LLENAR EL GRID CON LA INFORMACION OBTENIDA EN ESTE METODO*/
+                    lb_mensajes.Text = "";
+                    string fechafiltro = tb_fechafiltro.Text;
+                    Session["S_Fecha"] = fechafiltro;
+                    CargarGrid((string)Session["S_Fecha"]);
+                    //CleanControl(this.Controls);
+                }
             }
             catch (Exception err)
             {
@@ -217,7 +230,7 @@ namespace Clinica
             {
                 /*ASIGNAMOS A UNA ENTIDAD DE TIPO CAT_CITA*/
                 Entidad.Cat_Cita cs = new Entidad.Cat_Cita();
-                cs.IdCita = (string)Session["s_idcita"];
+                cs.IdCita = (string)Session["S_IdCita"];
                 cs.IdPaciente = int.Parse(ddl_paciente.SelectedValue);
                 cs.Fecha = DateTime.Parse(tb_fecha.Text);
                 cs.Hora = tb_hora.Text;
@@ -231,10 +244,12 @@ namespace Clinica
                 Negocio.citaNegocio dc = new Negocio.citaNegocio();
                 /*LLAMAMOS AL METODO UPDATECITA Y PASAMOS COMO PARAMETRO LA */
                 dc.UpdateCita(cs);
-                lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                lb_mensajes.Text = "Datos actualizados correctamente!!!";
+                //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                //lb_mensajes.Text = "Datos actualizados correctamente!!!";
+                string mensaje = "MostrarMensaje('SUCCESS','Datos actualizados correctamente!!!')";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                 /*CARGAMOS EL GRID PARA REFLEJAR EL CAMBIO DE LA INFORMACION*/
-                CargarGrid((string)Session["s_fecha"]);
+                CargarGrid((string)Session["S_Fecha"]);
                 /*LIMPIAMOS LOS CONTROLES*/
                 CleanControl(this.Controls);
                 /*INHABILITAMOS LOS CONTROLES*/
@@ -243,8 +258,8 @@ namespace Clinica
 
 
                 /*ELIMINAMOS LAS SESIONES*/
-                Session.Remove("s_fecha");
-                Session.Remove("s_idcita");
+                Session.Remove("S_Fecha");
+                Session.Remove("S_IdCita");
 
             }
             catch (Exception err)
@@ -262,6 +277,7 @@ namespace Clinica
             rb_activa.Enabled = false;
             rb_cancelada.Enabled = false;
         }
+
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
             /*LIMPIAMOS LOS CONTROLES*/

@@ -21,7 +21,6 @@
                 <asp:TextBox ID="tb_clinica" runat="server"  MaxLength="50" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_clinica" runat="server" ForeColor="red" ControlToValidate="tb_clinica" Text="*"
                             ErrorMessage="Nombre de la clinica es requerido!!!"></asp:RequiredFieldValidator>
-                <asp:Label ID="lblmessage" runat="server" Text="Label"></asp:Label>
             </div>
         </div>        
 
@@ -74,9 +73,34 @@
                <p class="text-left">Logo:</p>
             </div> 
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7">                
-                 <asp:FileUpload ID="fu_logo" runat="server" CssClass="form-control"/>
+                 <asp:FileUpload ID="fu_logo" runat="server" CssClass="form-control" />
             </div>                       
         </div>
+
+        <div class="row">
+           <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">               
+               <p class="text-left"><asp:Label ID="lb_archivo" runat="server" Text="Archivo:" Visible="false"></asp:Label></p>
+            </div>                               
+        </div>        
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">   
+                <div class="checkbox">
+                    <asp:CheckBox ID="chk_previa" runat="server" Text="Previa" 
+                        OnCheckedChanged="chk_previa_CheckedChanged" AutoPostBack="true"/>
+                </div>                    
+            </div> 
+        </div>
+
+        <br />
+        <div class="row">
+           <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">               
+               <p class="text-left"><asp:Label ID="lb_previa" runat="server" Text="Previa:" Visible="false"></asp:Label></p>
+            </div> 
+            <%--<div class="col-xs-12 col-sm-10 col-md-8 col-lg-7">--%>
+            <asp:Image ID="Logo" runat="server" CssClass="img-responsive" AlternateText="Imagen a guardar" Visible="false" Height="25%" Width="25%" />
+           <%-- </div> --%>                      
+        </div>        
 
         <div class="row">
             <div class="col-md-2 col-md-offset-1">   
