@@ -17,6 +17,8 @@ namespace Clinica
                 CargarPacientes();
                 /* CARGAMOS EL CONTROL DDL_MOTIVO PARA USARLO CUANDO SE VAYA A CAMBIAR EL TIPO DE SERVICIO A BRINDAR*/
                 CargarServicios();
+                /*CARGO EL CONTROL DDL_MEDICO PARA TENER DISPONIBLE AL MEDICO QUE SELE ASIGNO DICHA CITA*/
+                CargarMedicos();
                 
             }
         }
@@ -67,6 +69,21 @@ namespace Clinica
             }
         }
 
+        protected void CargarMedicos()
+        {
+            Negocio.medicoNegocio dc = new Negocio.medicoNegocio();
+            List<Entidad.Medico> medicos = null;
+            medicos = dc.ListaMedico();
+            ListItem ini2 = new ListItem();
+            ini2.Text = "Seleccione...";
+            ini2.Value = "0";
+            ddl_medico.Items.Add(ini2);
+            ddl_medico.DataSource = medicos;
+            ddl_medico.DataTextField = "NombreCompleto";
+            ddl_medico.DataValueField = "NroCedula";
+            ddl_medico.DataBind();
+        }
+
         protected void gv_citas_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -99,6 +116,7 @@ namespace Clinica
                     tb_fecha.Text = cs.Fecha.ToString();
                     tb_hora.Text = cs.Hora;
                     ddl_motivo.SelectedValue = cs.IdServicio.ToString();
+                    ddl_medico.SelectedValue = cs.NroCedula;
                     if (cs.Estado == "Activa")
                         rb_activa.Checked = true;
                     else
@@ -106,6 +124,7 @@ namespace Clinica
                     tb_fecha.Enabled = true;
                     tb_hora.Enabled = true;
                     ddl_motivo.Enabled = true;
+                    ddl_medico.Enabled = true;
                     rb_activa.Enabled = true;
                     rb_cancelada.Enabled = true;
                     btn_modificar.Enabled = true;
@@ -147,7 +166,11 @@ namespace Clinica
                 if (citas.Count != 0)
                 {
                     gv_citas.DataSource = citas;
-                    gv_citas.DataBind();                    
+                    gv_citas.DataBind();
+                    //gv_citas.Columns[12].Visible= false;
+                    //gv_citas.HeaderRow.Cells[1].Visible = false;
+                    //gv_citas.Columns[0].Visible = false;                    
+                    gv_citas.HeaderRow.Cells[11].Text = "Médico";
                 }
                 else
                 {
@@ -235,6 +258,7 @@ namespace Clinica
                 cs.Fecha = DateTime.Parse(tb_fecha.Text);
                 cs.Hora = tb_hora.Text;
                 cs.IdServicio = int.Parse(ddl_motivo.SelectedValue);
+                cs.NroCedula = ddl_medico.SelectedValue;
                 cs.FechaModificacion = DateTime.Now;
                 if (rb_activa.Checked == true)
                     cs.Estado = "Activa";
@@ -274,6 +298,7 @@ namespace Clinica
             tb_fecha.Enabled = false;
             tb_hora.Enabled = false;
             ddl_motivo.Enabled = false;
+            ddl_medico.Enabled = false;
             rb_activa.Enabled = false;
             rb_cancelada.Enabled = false;
         }

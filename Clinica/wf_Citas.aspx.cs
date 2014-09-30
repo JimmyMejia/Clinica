@@ -40,6 +40,19 @@ namespace Clinica
                     ddl_motivo.DataTextField = "Descripcion";
                     ddl_motivo.DataValueField = "IdServicio";
                     ddl_motivo.DataBind();
+
+                    //CARGAMOS EL DDL_MEDICO 
+                    Negocio.medicoNegocio dc = new Negocio.medicoNegocio();
+                    List<Entidad.Medico> medicos = null;
+                    medicos = dc.ListaMedico();
+                    ListItem ini2 = new ListItem();
+                    ini2.Text = "Seleccione...";
+                    ini2.Value = "0";
+                    ddl_medico.Items.Add(ini2);
+                    ddl_medico.DataSource = medicos;
+                    ddl_medico.DataTextField = "NombreCompleto";
+                    ddl_medico.DataValueField = "NroCedula";
+                    ddl_medico.DataBind();
                 }
 	        }
 	        catch (Exception err)
@@ -56,9 +69,10 @@ namespace Clinica
                 lb_mensajes.Text = "";
                 Entidad.Cat_Cita c = new Entidad.Cat_Cita();
                 c.IdPaciente = int.Parse(ddl_paciente.SelectedValue);
-                c.Fecha = DateTime.Parse(tb_fecha.Text);
-                c.Hora = tb_hora.Text;
                 c.IdServicio = int.Parse(ddl_motivo.SelectedValue);
+                c.NroCedula = ddl_medico.SelectedValue;
+                c.Fecha = DateTime.Parse(tb_fecha.Text);
+                c.Hora = tb_hora.Text;                
                 c.Estado = "Activa";
 
                 Negocio.citaNegocio dc = new Negocio.citaNegocio();                

@@ -9,11 +9,7 @@
     <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Maes_Derecho_Usuario" />
     <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Maes_Opciones_Catalogo" />
     <EntitySet Name="Pacientes" EntityType="ClinicaModel.Paciente" />
-    <EntitySet Name="pbcatcols" EntityType="ClinicaModel.pbcatcol" />
-    <EntitySet Name="pbcatedts" EntityType="ClinicaModel.pbcatedt" />
-    <EntitySet Name="pbcatfmts" EntityType="ClinicaModel.pbcatfmt" />
     <EntitySet Name="pbcattbls" EntityType="ClinicaModel.pbcattbl" />
-    <EntitySet Name="pbcatvlds" EntityType="ClinicaModel.pbcatvld" />
     <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.sysdiagram" />
     <AssociationSet Name="FK_Cat_Servicio_Brindado_Paciente" Association="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente">
       <End Role="Paciente" EntitySet="Pacientes" />
@@ -30,15 +26,6 @@
     <AssociationSet Name="Detalle_Servicio_Brindado" Association="ClinicaModel.Detalle_Servicio_Brindado">
       <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
       <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
-    </AssociationSet>
-    <EntitySet Name="Cat_Cita" EntityType="ClinicaModel.Cat_Cita" />
-    <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.FK_Cat_Cita_Cat_Servicio">
-      <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
-      <End Role="Cat_Cita" EntitySet="Cat_Cita" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cat_Cita_Paciente" Association="ClinicaModel.FK_Cat_Cita_Paciente">
-      <End Role="Paciente" EntitySet="Pacientes" />
-      <End Role="Cat_Cita" EntitySet="Cat_Cita" />
     </AssociationSet>
     <FunctionImport Name="CitasdelDia_SP" ReturnType="Collection(ClinicaModel.CitasdelDia_SP_Result)">
       <Parameter Name="FechaCitas" Mode="In" Type="String" />
@@ -74,7 +61,20 @@
       <Parameter Name="Nombres" Mode="In" Type="String" />
       <Parameter Name="Apellidos" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Cat_Cita" EntityType="ClinicaModel.Cat_Cita" />
+    <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.FK_Cat_Cita_Cat_Servicio">
+      <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+      <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cat_Cita_Paciente" Association="ClinicaModel.FK_Cat_Cita_Paciente">
+      <End Role="Paciente" EntitySet="Pacientes" />
+      <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+    </AssociationSet>
     <EntitySet Name="Medicos" EntityType="ClinicaModel.Medico" />
+    <AssociationSet Name="FK_Cat_Cita_Medico" Association="ClinicaModel.FK_Cat_Cita_Medico">
+      <End Role="Medico" EntitySet="Medicos" />
+      <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -163,55 +163,6 @@
     <NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente" FromRole="Paciente" ToRole="Cat_Servicio_Brindado" />
     <NavigationProperty Name="Cat_Cita" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Paciente" ToRole="Cat_Cita" />
   </EntityType>
-  <EntityType Name="pbcatcol">
-    <Key>
-      <PropertyRef Name="pbc_tnam" />
-      <PropertyRef Name="pbc_ownr" />
-      <PropertyRef Name="pbc_cnam" />
-    </Key>
-    <Property Name="pbc_tnam" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_tid" Type="Int32" />
-    <Property Name="pbc_ownr" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_cnam" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_cid" Type="Int16" />
-    <Property Name="pbc_labl" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_lpos" Type="Int16" />
-    <Property Name="pbc_hdr" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_hpos" Type="Int16" />
-    <Property Name="pbc_jtfy" Type="Int16" />
-    <Property Name="pbc_mask" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_case" Type="Int16" />
-    <Property Name="pbc_hght" Type="Int16" />
-    <Property Name="pbc_wdth" Type="Int16" />
-    <Property Name="pbc_ptrn" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_bmap" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_init" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_cmnt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_edit" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
-    <Property Name="pbc_tag" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="pbcatedt">
-    <Key>
-      <PropertyRef Name="pbe_name" />
-      <PropertyRef Name="pbe_seqn" />
-    </Key>
-    <Property Name="pbe_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="pbe_edit" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-    <Property Name="pbe_type" Type="Int16" />
-    <Property Name="pbe_cntr" Type="Int32" />
-    <Property Name="pbe_seqn" Type="Int16" Nullable="false" />
-    <Property Name="pbe_flag" Type="Int32" />
-    <Property Name="pbe_work" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="pbcatfmt">
-    <Key>
-      <PropertyRef Name="pbf_name" />
-    </Key>
-    <Property Name="pbf_name" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="pbf_frmt" MaxLength="254" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="pbf_type" Type="Int16" />
-    <Property Name="pbf_cntr" Type="Int32" />
-  </EntityType>
   <EntityType Name="pbcattbl">
     <Key>
       <PropertyRef Name="pbt_tnam" />
@@ -242,16 +193,6 @@
     <Property Name="pbl_fptc" Type="Int16" />
     <Property Name="pbl_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
     <Property Name="pbt_cmnt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="pbcatvld">
-    <Key>
-      <PropertyRef Name="pbv_name" />
-    </Key>
-    <Property Name="pbv_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="pbv_vald" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-    <Property Name="pbv_type" Type="Int16" />
-    <Property Name="pbv_cntr" Type="Int32" />
-    <Property Name="pbv_msg" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -303,45 +244,6 @@
     <End Role="Cat_Servicio" Type="ClinicaModel.Cat_Servicio" Multiplicity="*" />
     <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
   </Association>
-  <EntityType Name="Cat_Cita">
-    <Key>
-      <PropertyRef Name="IdCita" />
-    </Key>
-    <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="IdPaciente" />
-    <Property Type="DateTime" Name="Fecha" />
-    <Property Type="String" Name="Hora" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="IdServicio" />
-    <Property Type="DateTime" Name="FechaRegistroCita" />
-    <Property Type="DateTime" Name="FechaModificacion" />
-    <Property Type="String" Name="Estado" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Cita" ToRole="Cat_Servicio" />
-    <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Cat_Cita" ToRole="Paciente" />
-  </EntityType>
-  <Association Name="FK_Cat_Cita_Cat_Servicio">
-    <End Type="ClinicaModel.Cat_Servicio" Role="Cat_Servicio" Multiplicity="0..1" />
-    <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cat_Servicio">
-        <PropertyRef Name="IdServicio" />
-      </Principal>
-      <Dependent Role="Cat_Cita">
-        <PropertyRef Name="IdServicio" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Cat_Cita_Paciente">
-    <End Type="ClinicaModel.Paciente" Role="Paciente" Multiplicity="0..1" />
-    <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Paciente">
-        <PropertyRef Name="IdPaciente" />
-      </Principal>
-      <Dependent Role="Cat_Cita">
-        <PropertyRef Name="IdPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <ComplexType Name="CitasdelDia_SP_Result">
     <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" />
     <Property Type="Int32" Name="IdPaciente" Nullable="true" />
@@ -352,6 +254,8 @@
     <Property Type="String" Name="Hora" Nullable="true" MaxLength="10" />
     <Property Type="DateTime" Name="FechaRegistroCita" Nullable="true" />
     <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="NroCedula" Nullable="true" MaxLength="16" />
+    <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="80" />
   </ComplexType>
   <ComplexType Name="Insertar_Usuario_Result">
     <Property Type="Int32" Name="Retorno" Nullable="true" />
@@ -424,6 +328,47 @@
     <Property Type="String" Name="Nombres" Nullable="true" MaxLength="40" />
     <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="40" />
   </ComplexType>
+  <EntityType Name="Cat_Cita">
+    <Key>
+      <PropertyRef Name="IdCita" />
+    </Key>
+    <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IdPaciente" />
+    <Property Type="Int32" Name="IdServicio" />
+    <Property Type="String" Name="NroCedula" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Fecha" />
+    <Property Type="String" Name="Hora" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="FechaRegistroCita" />
+    <Property Type="DateTime" Name="FechaModificacion" />
+    <Property Type="String" Name="Estado" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Cita" ToRole="Cat_Servicio" />
+    <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Cat_Cita" ToRole="Paciente" />
+    <NavigationProperty Name="Medico" Relationship="ClinicaModel.FK_Cat_Cita_Medico" FromRole="Cat_Cita" ToRole="Medico" />
+  </EntityType>
+  <Association Name="FK_Cat_Cita_Cat_Servicio">
+    <End Type="ClinicaModel.Cat_Servicio" Role="Cat_Servicio" Multiplicity="0..1" />
+    <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Servicio">
+        <PropertyRef Name="IdServicio" />
+      </Principal>
+      <Dependent Role="Cat_Cita">
+        <PropertyRef Name="IdServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cat_Cita_Paciente">
+    <End Type="ClinicaModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="Cat_Cita">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="Medico">
     <Key>
       <PropertyRef Name="NroCedula" />
@@ -431,9 +376,23 @@
     <Property Type="String" Name="NroCedula" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Nombres" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Apellidos" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NombreCompleto" MaxLength="80" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="Fecha_nacimiento" />
     <Property Type="String" Name="Direccion" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Telefono" MaxLength="8" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Celular" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cat_Cita" Relationship="ClinicaModel.FK_Cat_Cita_Medico" FromRole="Medico" ToRole="Cat_Cita" />
   </EntityType>
+  <Association Name="FK_Cat_Cita_Medico">
+    <End Type="ClinicaModel.Medico" Role="Medico" Multiplicity="0..1" />
+    <End Type="ClinicaModel.Cat_Cita" Role="Cat_Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="NroCedula" />
+      </Principal>
+      <Dependent Role="Cat_Cita">
+        <PropertyRef Name="NroCedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

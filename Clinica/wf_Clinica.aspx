@@ -78,15 +78,9 @@
         </div>
 
         <div class="row">
-           <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">               
-               <p class="text-left"><asp:Label ID="lb_archivo" runat="server" Text="Archivo:" Visible="false"></asp:Label></p>
-            </div>                               
-        </div>        
-
-        <div class="row">
             <div class="col-md-2 col-md-offset-1">   
                 <div class="checkbox">
-                    <asp:CheckBox ID="chk_previa" runat="server" Text="Previa" 
+                    <asp:CheckBox ID="chk_previa" runat="server" Text="Previa" Visible= "false" 
                         OnCheckedChanged="chk_previa_CheckedChanged" AutoPostBack="true"/>
                 </div>                    
             </div> 
@@ -98,7 +92,7 @@
                <p class="text-left"><asp:Label ID="lb_previa" runat="server" Text="Previa:" Visible="false"></asp:Label></p>
             </div> 
             <%--<div class="col-xs-12 col-sm-10 col-md-8 col-lg-7">--%>
-            <asp:Image ID="Logo" runat="server" CssClass="img-responsive" AlternateText="Imagen a guardar" Visible="false" Height="25%" Width="25%" />
+            <asp:Image ID="Logo" runat="server" CssClass="img-responsive" Visible="false" Height="25%" Width="25%" />
            <%-- </div> --%>                      
         </div>        
 
@@ -160,7 +154,8 @@
         </div>
         </div>
 
-            <%--<% Negocio.clinicaNegocio dc = new Negocio.clinicaNegocio();
+   
+               <%--<% Negocio.clinicaNegocio dc = new Negocio.clinicaNegocio();
               List<Entidad.Clinica> clinica = null;
               clinica = dc.Clinicas(); %>
         <div class="row">

@@ -112,15 +112,6 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.FileUpload fu_logo;
         
         /// <summary>
-        /// Control lb_archivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_archivo;
-        
-        /// <summary>
         /// Control chk_previa.
         /// </summary>
         /// <remarks>

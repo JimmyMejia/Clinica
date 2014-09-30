@@ -13,49 +13,6 @@
     <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Store.Maes_Opciones_Catalogo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Medico" EntityType="ClinicaModel.Store.Medico" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paciente" EntityType="ClinicaModel.Store.Paciente" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="pbcatcol" EntityType="ClinicaModel.Store.pbcatcol" store:Type="Tables" store:Schema="dbo" store:Name="pbcatcol">
-      <DefiningQuery>SELECT 
-      [pbcatcol].[pbc_tnam] AS [pbc_tnam], 
-      [pbcatcol].[pbc_tid] AS [pbc_tid], 
-      [pbcatcol].[pbc_ownr] AS [pbc_ownr], 
-      [pbcatcol].[pbc_cnam] AS [pbc_cnam], 
-      [pbcatcol].[pbc_cid] AS [pbc_cid], 
-      [pbcatcol].[pbc_labl] AS [pbc_labl], 
-      [pbcatcol].[pbc_lpos] AS [pbc_lpos], 
-      [pbcatcol].[pbc_hdr] AS [pbc_hdr], 
-      [pbcatcol].[pbc_hpos] AS [pbc_hpos], 
-      [pbcatcol].[pbc_jtfy] AS [pbc_jtfy], 
-      [pbcatcol].[pbc_mask] AS [pbc_mask], 
-      [pbcatcol].[pbc_case] AS [pbc_case], 
-      [pbcatcol].[pbc_hght] AS [pbc_hght], 
-      [pbcatcol].[pbc_wdth] AS [pbc_wdth], 
-      [pbcatcol].[pbc_ptrn] AS [pbc_ptrn], 
-      [pbcatcol].[pbc_bmap] AS [pbc_bmap], 
-      [pbcatcol].[pbc_init] AS [pbc_init], 
-      [pbcatcol].[pbc_cmnt] AS [pbc_cmnt], 
-      [pbcatcol].[pbc_edit] AS [pbc_edit], 
-      [pbcatcol].[pbc_tag] AS [pbc_tag]
-      FROM [dbo].[pbcatcol] AS [pbcatcol]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="pbcatedt" EntityType="ClinicaModel.Store.pbcatedt" store:Type="Tables" store:Schema="dbo" store:Name="pbcatedt">
-      <DefiningQuery>SELECT 
-      [pbcatedt].[pbe_name] AS [pbe_name], 
-      [pbcatedt].[pbe_edit] AS [pbe_edit], 
-      [pbcatedt].[pbe_type] AS [pbe_type], 
-      [pbcatedt].[pbe_cntr] AS [pbe_cntr], 
-      [pbcatedt].[pbe_seqn] AS [pbe_seqn], 
-      [pbcatedt].[pbe_flag] AS [pbe_flag], 
-      [pbcatedt].[pbe_work] AS [pbe_work]
-      FROM [dbo].[pbcatedt] AS [pbcatedt]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="pbcatfmt" EntityType="ClinicaModel.Store.pbcatfmt" store:Type="Tables" store:Schema="dbo" store:Name="pbcatfmt">
-      <DefiningQuery>SELECT 
-      [pbcatfmt].[pbf_name] AS [pbf_name], 
-      [pbcatfmt].[pbf_frmt] AS [pbf_frmt], 
-      [pbcatfmt].[pbf_type] AS [pbf_type], 
-      [pbcatfmt].[pbf_cntr] AS [pbf_cntr]
-      FROM [dbo].[pbcatfmt] AS [pbcatfmt]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="pbcattbl" EntityType="ClinicaModel.Store.pbcattbl" store:Type="Tables" store:Schema="dbo" store:Name="pbcattbl">
       <DefiningQuery>SELECT 
       [pbcattbl].[pbt_tnam] AS [pbt_tnam], 
@@ -85,19 +42,14 @@
       [pbcattbl].[pbt_cmnt] AS [pbt_cmnt]
       FROM [dbo].[pbcattbl] AS [pbcattbl]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="pbcatvld" EntityType="ClinicaModel.Store.pbcatvld" store:Type="Tables" store:Schema="dbo" store:Name="pbcatvld">
-      <DefiningQuery>SELECT 
-      [pbcatvld].[pbv_name] AS [pbv_name], 
-      [pbcatvld].[pbv_vald] AS [pbv_vald], 
-      [pbcatvld].[pbv_type] AS [pbv_type], 
-      [pbcatvld].[pbv_cntr] AS [pbv_cntr], 
-      [pbcatvld].[pbv_msg] AS [pbv_msg]
-      FROM [dbo].[pbcatvld] AS [pbcatvld]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Usuario" EntityType="ClinicaModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.Store.FK_Cat_Cita_Cat_Servicio">
       <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+      <End Role="Cat_Cita" EntitySet="Cat_Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cat_Cita_Medico" Association="ClinicaModel.Store.FK_Cat_Cita_Medico">
+      <End Role="Medico" EntitySet="Medico" />
       <End Role="Cat_Cita" EntitySet="Cat_Cita" />
     </AssociationSet>
     <AssociationSet Name="FK_Cat_Cita_Paciente" Association="ClinicaModel.Store.FK_Cat_Cita_Paciente">
@@ -139,9 +91,10 @@
     </Key>
     <Property Name="IdCita" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="IdPaciente" Type="int" />
+    <Property Name="IdServicio" Type="int" />
+    <Property Name="NroCedula" Type="varchar" MaxLength="16" />
     <Property Name="Fecha" Type="date" />
     <Property Name="Hora" Type="varchar" MaxLength="10" />
-    <Property Name="IdServicio" Type="int" />
     <Property Name="FechaRegistroCita" Type="date" />
     <Property Name="FechaModificacion" Type="date" />
     <Property Name="Estado" Type="varchar" MaxLength="10" />
@@ -232,6 +185,7 @@
     <Property Name="NroCedula" Type="varchar" Nullable="false" MaxLength="16" />
     <Property Name="Nombres" Type="varchar" MaxLength="40" />
     <Property Name="Apellidos" Type="varchar" MaxLength="40" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="80" />
     <Property Name="Fecha_nacimiento" Type="date" />
     <Property Name="Direccion" Type="varchar" MaxLength="150" />
     <Property Name="Telefono" Type="varchar" MaxLength="8" />
@@ -248,64 +202,6 @@
     <Property Name="Direccion" Type="varchar" MaxLength="150" />
     <Property Name="Telefono" Type="varchar" MaxLength="8" />
     <Property Name="Celular" Type="varchar" MaxLength="8" />
-  </EntityType>
-  <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatcol' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
-  <EntityType Name="pbcatcol">
-    <Key>
-      <PropertyRef Name="pbc_tnam" />
-      <PropertyRef Name="pbc_ownr" />
-      <PropertyRef Name="pbc_cnam" />
-    </Key>
-    <Property Name="pbc_tnam" Type="varchar" Nullable="false" MaxLength="129" />
-    <Property Name="pbc_tid" Type="int" />
-    <Property Name="pbc_ownr" Type="varchar" Nullable="false" MaxLength="129" />
-    <Property Name="pbc_cnam" Type="varchar" Nullable="false" MaxLength="129" />
-    <Property Name="pbc_cid" Type="smallint" />
-    <Property Name="pbc_labl" Type="varchar" MaxLength="254" />
-    <Property Name="pbc_lpos" Type="smallint" />
-    <Property Name="pbc_hdr" Type="varchar" MaxLength="254" />
-    <Property Name="pbc_hpos" Type="smallint" />
-    <Property Name="pbc_jtfy" Type="smallint" />
-    <Property Name="pbc_mask" Type="varchar" MaxLength="31" />
-    <Property Name="pbc_case" Type="smallint" />
-    <Property Name="pbc_hght" Type="smallint" />
-    <Property Name="pbc_wdth" Type="smallint" />
-    <Property Name="pbc_ptrn" Type="varchar" MaxLength="31" />
-    <Property Name="pbc_bmap" Type="varchar" MaxLength="1" />
-    <Property Name="pbc_init" Type="varchar" MaxLength="254" />
-    <Property Name="pbc_cmnt" Type="varchar" MaxLength="254" />
-    <Property Name="pbc_edit" Type="varchar" MaxLength="31" />
-    <Property Name="pbc_tag" Type="varchar" MaxLength="254" />
-  </EntityType>
-  <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatedt' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
-  <EntityType Name="pbcatedt">
-    <Key>
-      <PropertyRef Name="pbe_name" />
-      <PropertyRef Name="pbe_seqn" />
-    </Key>
-    <Property Name="pbe_name" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="pbe_edit" Type="varchar" MaxLength="254" />
-    <Property Name="pbe_type" Type="smallint" />
-    <Property Name="pbe_cntr" Type="int" />
-    <Property Name="pbe_seqn" Type="smallint" Nullable="false" />
-    <Property Name="pbe_flag" Type="int" />
-    <Property Name="pbe_work" Type="varchar" MaxLength="32" />
-  </EntityType>
-  <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatfmt' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
-  <EntityType Name="pbcatfmt">
-    <Key>
-      <PropertyRef Name="pbf_name" />
-    </Key>
-    <Property Name="pbf_name" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="pbf_frmt" Type="varchar" MaxLength="254" />
-    <Property Name="pbf_type" Type="smallint" />
-    <Property Name="pbf_cntr" Type="int" />
   </EntityType>
   <!--Se encontraron errores durante la generación:
       advertencia 6002: La tabla o vista 'Clinica.dbo.pbcattbl' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
@@ -341,19 +237,6 @@
     <Property Name="pbl_ffce" Type="varchar" MaxLength="18" />
     <Property Name="pbt_cmnt" Type="varchar" MaxLength="254" />
   </EntityType>
-  <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcatvld' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
-  <EntityType Name="pbcatvld">
-    <Key>
-      <PropertyRef Name="pbv_name" />
-    </Key>
-    <Property Name="pbv_name" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="pbv_vald" Type="varchar" MaxLength="254" />
-    <Property Name="pbv_type" Type="smallint" />
-    <Property Name="pbv_cntr" Type="int" />
-    <Property Name="pbv_msg" Type="varchar" MaxLength="254" />
-  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -385,6 +268,18 @@
       </Principal>
       <Dependent Role="Cat_Cita">
         <PropertyRef Name="IdServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cat_Cita_Medico">
+    <End Role="Medico" Type="ClinicaModel.Store.Medico" Multiplicity="0..1" />
+    <End Role="Cat_Cita" Type="ClinicaModel.Store.Cat_Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="NroCedula" />
+      </Principal>
+      <Dependent Role="Cat_Cita">
+        <PropertyRef Name="NroCedula" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -84,6 +84,17 @@
             </div>
         </div>
 
+        <div class="row">        
+            <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">
+                <p>Médico:</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                 <asp:DropDownList ID="ddl_medico" runat="server" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfv_medico" runat="server" ForeColor="red" Text="*" ControlToValidate="ddl_medico" InitialValue="0"
+                    ErrorMessage="Debe seleccionar el médico!!!"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+
          <div class="row">        
             <div class="col-md-3 col-md-offset-2">
                 <asp:Button ID="btn_guardar" runat="server" Text="Guardar" onclick="btn_guardar_Click"  CssClass="btn btn-primary"/>

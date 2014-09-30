@@ -59,6 +59,7 @@ namespace Datos
                     db_cita.Fecha = cita.Fecha;
                     db_cita.Hora = cita.Hora;
                     db_cita.IdServicio = cita.IdServicio;
+                    db_cita.NroCedula = cita.NroCedula;
                     db_cita.FechaModificacion = cita.FechaModificacion;
                     db_cita.Estado = cita.Estado;
                     dc.SaveChanges();
