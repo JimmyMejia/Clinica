@@ -167,10 +167,6 @@ namespace Clinica
                 {
                     gv_citas.DataSource = citas;
                     gv_citas.DataBind();
-                    //gv_citas.Columns[12].Visible= false;
-                    //gv_citas.HeaderRow.Cells[1].Visible = false;
-                    //gv_citas.Columns[0].Visible = false;                    
-                    gv_citas.HeaderRow.Cells[11].Text = "Médico";
                 }
                 else
                 {

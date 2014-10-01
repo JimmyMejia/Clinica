@@ -221,9 +221,9 @@ namespace Clinica
                     {
                         gv_Pacientes.DataSource = pacientes;
                         gv_Pacientes.DataBind();
-                        gv_Pacientes.HeaderRow.Cells[0].Text = "Seleccione";
-                        gv_Pacientes.HeaderRow.Cells[1].Text = "Cod. paciente";
-                        gv_Pacientes.HeaderRow.Cells[2].Text = "Nombre del paciente";
+                        //gv_Pacientes.HeaderRow.Cells[0].Text = "Seleccione";
+                        //gv_Pacientes.HeaderRow.Cells[1].Text = "Cod. paciente";
+                        //gv_Pacientes.HeaderRow.Cells[2].Text = "Nombre del paciente";
                     }
                     else
                     {

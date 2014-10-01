@@ -205,9 +205,9 @@ namespace Clinica
                 servicios = sn.ListaServicios();
                 gv_servicios.DataSource = servicios;
                 gv_servicios.DataBind();
-                gv_servicios.HeaderRow.Cells[0].Text = "Seleccione";
-                gv_servicios.HeaderRow.Cells[1].Text = "Cod. Servicio";
-                gv_servicios.HeaderRow.Cells[2].Text = "Descripción";
+                //gv_servicios.HeaderRow.Cells[0].Text = "Seleccione";
+                //gv_servicios.HeaderRow.Cells[1].Text = "Cod. Servicio";
+                //gv_servicios.HeaderRow.Cells[2].Text = "Descripción";
             }
             catch (Exception err)
             {

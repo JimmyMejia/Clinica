@@ -78,7 +78,8 @@
                         BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
                         GridLines="Vertical"  PageSize = "10"
                         onselectedindexchanged="gv_servicios_SelectedIndexChanged" 
-                        onpageindexchanging="gv_servicios_PageIndexChanging">
+                        onpageindexchanging="gv_servicios_PageIndexChanging" 
+                        AutoGenerateColumns="False">
                         <AlternatingRowStyle BackColor="#DCDCDC" />
                         <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                         <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -89,6 +90,12 @@
                         <SortedAscendingHeaderStyle BackColor="#0000A9" />
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#000065" />
+
+                        <Columns>
+                            <asp:BoundField DataField="Descripcion" HeaderText = "Descripción" />
+                            <asp:BoundField DataField="Precio" HeaderText = "Precio" />
+                        </Columns>
+                        
                     </asp:GridView>
             </div>
             </div>

@@ -10,6 +10,24 @@ namespace Clinica
 {
     public partial class Clinica : System.Web.UI.Page
     {
+
+        public string GetLabelText(object dataItem)
+        {
+            string text = "";
+            int? val = dataItem as int?;
+            switch (val)
+            {
+                case 0:
+                    text = "Inactiva";
+                    break;
+                case 1:
+                    text = "Activa";
+                    break;
+
+            }
+            return text;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -133,11 +133,11 @@
 
         <div class="container">        
         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+            <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
                     <div class="table-responsive">                          
                             <asp:GridView ID="gv_clinicas" runat="server" BackColor="White" CssClass="table"
-                            BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
-                            GridLines="Vertical">
+                                BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
+                                GridLines="Vertical" AutoGenerateColumns="False">
                                 <AlternatingRowStyle BackColor="#DCDCDC" />
                                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                                 <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -148,6 +148,21 @@
                                 <SortedAscendingHeaderStyle BackColor="#0000A9" />
                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                 <SortedDescendingHeaderStyle BackColor="#000065" />
+
+                                <Columns>
+                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" HeaderStyle-Width="30%" />
+                                    <asp:BoundField DataField="Direccion" HeaderText="Dirección" HeaderStyle-Width="30%" />
+                                    <asp:BoundField DataField="Email" HeaderText="Correo" HeaderStyle-Width="30%" />
+                                    <asp:BoundField DataField="Telefono" HeaderText="Teléfono" HeaderStyle-Width="30%" />
+                                    <asp:BoundField DataField="Celular" HeaderText="Celular" HeaderStyle-Width="30%" />
+                                    <asp:BoundField DataField="Activo" HeaderText="Estado" HeaderStyle-Width="30%" />
+                                    <asp:TemplateField ItemStyle-CssClass="TemplateFieldOneColumn" HeaderText="Activa">
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label1" runat="server" Text='<% #GetLabelText(Eval("Activo")) %>' />
+                                    </ItemTemplate>
+                                 </asp:TemplateField>
+                                </Columns>
+
                             </asp:GridView>
                     </div>
             </div>    

@@ -138,13 +138,13 @@
 
     <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+                <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
                     <div class="table-responsive">
-                        <asp:GridView ID="gv_citas" AutoGenerateSelectButton="True" PageSize="2" CssClass="table"
+                        <asp:GridView ID="gv_citas" AutoGenerateSelectButton="True" PageSize="10" CssClass="table"
                             DataKeyNames="IdCita" AllowPaging="True" runat="server" OnPageIndexChanging="gv_citas_PageIndexChanging"
                             onselectedindexchanged="gv_citas_SelectedIndexChanged" BackColor="White" 
                             BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
-                            GridLines="Vertical">
+                            GridLines="Vertical" AutoGenerateColumns="False">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -154,7 +154,17 @@
                             <SortedAscendingCellStyle BackColor="#F1F1F1" />
                             <SortedAscendingHeaderStyle BackColor="#0000A9" />
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#000065" />
+                            <SortedDescendingHeaderStyle BackColor="#000065" />   
+
+                            <Columns>
+                                <asp:BoundField DataField="Paciente" HeaderText="Paciente" HeaderStyle-Width="20%" />
+                                <asp:BoundField DataField="Descripcion" HeaderText="Servicio" />
+                                <asp:BoundField DataField="NombreCompleto" HeaderText="Médico" HeaderStyle-Width="20%" />
+                                <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}"/>
+                                <asp:BoundField DataField="Hora" HeaderText="Hora" />
+                                <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                            </Columns>    
+                                                     
                        </asp:GridView>
                     </div>
                 </div>
