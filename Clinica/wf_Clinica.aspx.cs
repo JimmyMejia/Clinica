@@ -14,18 +14,25 @@ namespace Clinica
         public string GetLabelText(object dataItem)
         {
             string text = "";
-            int? val = dataItem as int?;
-            switch (val)
-            {
-                case 0:
-                    text = "Inactiva";
-                    break;
-                case 1:
-                    text = "Activa";
-                    break;
-
+            try
+            {                
+                string val = dataItem as string;
+                switch (val)
+                {
+                    case "0":
+                        text = "Inactiva";
+                        break;
+                    case "1":
+                        text = "Activa";
+                        break;
+                }                
             }
-            return text;
+            catch (Exception err)
+            {
+                cv_Datos.IsValid = false;
+                cv_Datos.ErrorMessage = "Error al mostrar el estado de la clinica: " + err.Message;
+            }
+            return text;               
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -262,6 +269,37 @@ namespace Clinica
                 cv_Datos.IsValid = false;
                 cv_Datos.ErrorMessage = "Error al cargar el preview, " + err.Message;
             }
+        }        
+
+        protected void gv_clinicas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Seleccionar")
+            {
+                // Convert the row index stored in the CommandArgument
+              // property to an Integer.
+              int index = Convert.ToInt32(e.CommandArgument);    
+
+              // Get the last name of the selected author from the appropriate
+              // cell in the GridView control.
+              GridViewRow selectedRow = gv_clinicas.Rows[index];
+              TableCell IdClinica = selectedRow.Cells[1];
+              string contact = IdClinica.Text;
+              lb_mensajes.Text = "Seleccionastes el registro: " + contact + ".";
+            }
+        }
+
+        protected void gv_clinicas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //Label lbl = (Label)e.Row.FindControl("Activo");
+
+            //if (lbl.Text == "1")
+            //{
+            //    lbl.Text = "Activo";
+            //}
+            //else
+            //{
+            //    lbl.Text = "Inactivo";
+            //}
         }
                
         

@@ -108,7 +108,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3 col-md-offseeet-2">
+            <div class="col-md-3 col-md-offset-2">
                 <asp:Button ID="btn_modificar" runat="server" Text="Modificar" CssClass="btn btn-primary" 
                     CausesValidation="false" Enabled ="false" onclick="btn_modificar_Click"/>
                 <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" CssClass="btn btn-primary" 

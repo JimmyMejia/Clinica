@@ -137,7 +137,8 @@
                     <div class="table-responsive">                          
                             <asp:GridView ID="gv_clinicas" runat="server" BackColor="White" CssClass="table"
                                 BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
-                                GridLines="Vertical" AutoGenerateColumns="False">
+                                GridLines="Vertical" AutoGenerateColumns="False" onrowcommand="gv_clinicas_RowCommand" 
+                                onrowdatabound="gv_clinicas_RowDataBound">
                                 <AlternatingRowStyle BackColor="#DCDCDC" />
                                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                                 <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -150,15 +151,17 @@
                                 <SortedDescendingHeaderStyle BackColor="#000065" />
 
                                 <Columns>
+                                    <asp:ButtonField ButtonType="Link" Text="Seleccione" CommandName="Seleccionar" HeaderText="Seleccione" Visible="false" />
+                                    <asp:BoundField DataField="IdClinica" HeaderText="IdClinica" HeaderStyle-Width="30%" Visible="false"/>
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" HeaderStyle-Width="30%" />
                                     <asp:BoundField DataField="Direccion" HeaderText="Dirección" HeaderStyle-Width="30%" />
                                     <asp:BoundField DataField="Email" HeaderText="Correo" HeaderStyle-Width="30%" />
                                     <asp:BoundField DataField="Telefono" HeaderText="Teléfono" HeaderStyle-Width="30%" />
                                     <asp:BoundField DataField="Celular" HeaderText="Celular" HeaderStyle-Width="30%" />
-                                    <asp:BoundField DataField="Activo" HeaderText="Estado" HeaderStyle-Width="30%" />
-                                    <asp:TemplateField ItemStyle-CssClass="TemplateFieldOneColumn" HeaderText="Activa">
+                                    <asp:BoundField DataField="Activo" HeaderText="Estado" HeaderStyle-Width="30%" Visible="false" />
+                                    <asp:TemplateField HeaderText="Estado">
                                     <ItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text='<% #GetLabelText(Eval("Activo")) %>' />
+                                        <asp:Label ID="lb_estado" runat="server" Text='<% #GetLabelText(Eval("Activo")) %>' />
                                     </ItemTemplate>
                                  </asp:TemplateField>
                                 </Columns>

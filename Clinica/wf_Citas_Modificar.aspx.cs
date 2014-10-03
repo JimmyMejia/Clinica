@@ -155,6 +155,7 @@ namespace Clinica
             }
             
         }
+
         protected void CargarGrid(string fecha)
         {
             try

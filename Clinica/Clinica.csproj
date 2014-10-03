@@ -74,6 +74,7 @@
     <Content Include="Images\faviconlogin.ico" />
     <Content Include="Images\faviconsgc.ico" />
     <Content Include="Images\favicon_login.jpg" />
+    <Content Include="wf_Factura.aspx" />
     <Content Include="wf_Medicos.aspx" />
     <Content Include="wf_Paciente.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="wf_Clinica.aspx.designer.cs">
       <DependentUpon>wf_Clinica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wf_Factura.aspx.cs">
+      <DependentUpon>wf_Factura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Factura.aspx.designer.cs">
+      <DependentUpon>wf_Factura.aspx</DependentUpon>
     </Compile>
     <Compile Include="wf_Medicos.aspx.cs">
       <DependentUpon>wf_Medicos.aspx</DependentUpon>

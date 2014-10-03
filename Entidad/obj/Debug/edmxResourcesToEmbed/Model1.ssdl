@@ -2,6 +2,7 @@
 <Schema Namespace="ClinicaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ClinicaModelStoreContainer">
     <EntitySet Name="Cat_Cita" EntityType="ClinicaModel.Store.Cat_Cita" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cat_Opcion" EntityType="ClinicaModel.Store.Cat_Opcion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Cat_Rol" EntityType="ClinicaModel.Store.Cat_Rol" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Cat_Servicio" EntityType="ClinicaModel.Store.Cat_Servicio" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Cat_Servicio_Brindado" EntityType="ClinicaModel.Store.Cat_Servicio_Brindado" store:Type="Tables" Schema="dbo" />
@@ -12,37 +13,8 @@
     <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Store.Maes_Derecho_Usuario" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Store.Maes_Opciones_Catalogo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Medico" EntityType="ClinicaModel.Store.Medico" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OpcionRol" EntityType="ClinicaModel.Store.OpcionRol" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paciente" EntityType="ClinicaModel.Store.Paciente" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="pbcattbl" EntityType="ClinicaModel.Store.pbcattbl" store:Type="Tables" store:Schema="dbo" store:Name="pbcattbl">
-      <DefiningQuery>SELECT 
-      [pbcattbl].[pbt_tnam] AS [pbt_tnam], 
-      [pbcattbl].[pbt_tid] AS [pbt_tid], 
-      [pbcattbl].[pbt_ownr] AS [pbt_ownr], 
-      [pbcattbl].[pbd_fhgt] AS [pbd_fhgt], 
-      [pbcattbl].[pbd_fwgt] AS [pbd_fwgt], 
-      [pbcattbl].[pbd_fitl] AS [pbd_fitl], 
-      [pbcattbl].[pbd_funl] AS [pbd_funl], 
-      [pbcattbl].[pbd_fchr] AS [pbd_fchr], 
-      [pbcattbl].[pbd_fptc] AS [pbd_fptc], 
-      [pbcattbl].[pbd_ffce] AS [pbd_ffce], 
-      [pbcattbl].[pbh_fhgt] AS [pbh_fhgt], 
-      [pbcattbl].[pbh_fwgt] AS [pbh_fwgt], 
-      [pbcattbl].[pbh_fitl] AS [pbh_fitl], 
-      [pbcattbl].[pbh_funl] AS [pbh_funl], 
-      [pbcattbl].[pbh_fchr] AS [pbh_fchr], 
-      [pbcattbl].[pbh_fptc] AS [pbh_fptc], 
-      [pbcattbl].[pbh_ffce] AS [pbh_ffce], 
-      [pbcattbl].[pbl_fhgt] AS [pbl_fhgt], 
-      [pbcattbl].[pbl_fwgt] AS [pbl_fwgt], 
-      [pbcattbl].[pbl_fitl] AS [pbl_fitl], 
-      [pbcattbl].[pbl_funl] AS [pbl_funl], 
-      [pbcattbl].[pbl_fchr] AS [pbl_fchr], 
-      [pbcattbl].[pbl_fptc] AS [pbl_fptc], 
-      [pbcattbl].[pbl_ffce] AS [pbl_ffce], 
-      [pbcattbl].[pbt_cmnt] AS [pbt_cmnt]
-      FROM [dbo].[pbcattbl] AS [pbcattbl]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Usuario" EntityType="ClinicaModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.Store.FK_Cat_Cita_Cat_Servicio">
       <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
@@ -80,6 +52,14 @@
       <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
       <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
     </AssociationSet>
+    <AssociationSet Name="FK_OpcionRol_Cat_Opcion" Association="ClinicaModel.Store.FK_OpcionRol_Cat_Opcion">
+      <End Role="Cat_Opcion" EntitySet="Cat_Opcion" />
+      <End Role="OpcionRol" EntitySet="OpcionRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OpcionRol_Cat_Rol" Association="ClinicaModel.Store.FK_OpcionRol_Cat_Rol">
+      <End Role="Cat_Rol" EntitySet="Cat_Rol" />
+      <End Role="OpcionRol" EntitySet="OpcionRol" />
+    </AssociationSet>
     <AssociationSet Name="FK_Usuario_Cat_Rol" Association="ClinicaModel.Store.FK_Usuario_Cat_Rol">
       <End Role="Cat_Rol" EntitySet="Cat_Rol" />
       <End Role="Usuario" EntitySet="Usuario" />
@@ -98,6 +78,14 @@
     <Property Name="FechaRegistroCita" Type="date" />
     <Property Name="FechaModificacion" Type="date" />
     <Property Name="Estado" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Cat_Opcion">
+    <Key>
+      <PropertyRef Name="IdOpcion" />
+    </Key>
+    <Property Name="IdOpcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Opcion" Type="varchar" MaxLength="20" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="Cat_Rol">
     <Key>
@@ -119,8 +107,10 @@
       <PropertyRef Name="IdRecibo" />
     </Key>
     <Property Name="IdRecibo" Type="varchar" Nullable="false" MaxLength="10" />
-    <Property Name="Fecha" Type="date" />
     <Property Name="IdPaciente" Type="int" />
+    <Property Name="Monto" Type="decimal" Precision="14" Scale="2" />
+    <Property Name="Usuario" Type="varchar" MaxLength="10" />
+    <Property Name="Fecha" Type="date" />
   </EntityType>
   <EntityType Name="Cat_Sub_Opcion">
     <Key>
@@ -151,6 +141,7 @@
     </Key>
     <Property Name="IdRecibo" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="IdServicio" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="int" />
   </EntityType>
   <EntityType Name="Foto">
     <Key>
@@ -191,6 +182,14 @@
     <Property Name="Telefono" Type="varchar" MaxLength="8" />
     <Property Name="Celular" Type="varchar" MaxLength="8" />
   </EntityType>
+  <EntityType Name="OpcionRol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdOpcion" Type="int" />
+    <Property Name="IdRol" Type="int" />
+  </EntityType>
   <EntityType Name="Paciente">
     <Key>
       <PropertyRef Name="IdPaciente" />
@@ -202,50 +201,6 @@
     <Property Name="Direccion" Type="varchar" MaxLength="150" />
     <Property Name="Telefono" Type="varchar" MaxLength="8" />
     <Property Name="Celular" Type="varchar" MaxLength="8" />
-  </EntityType>
-  <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'Clinica.dbo.pbcattbl' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
-  <EntityType Name="pbcattbl">
-    <Key>
-      <PropertyRef Name="pbt_tnam" />
-      <PropertyRef Name="pbt_ownr" />
-    </Key>
-    <Property Name="pbt_tnam" Type="varchar" Nullable="false" MaxLength="129" />
-    <Property Name="pbt_tid" Type="int" />
-    <Property Name="pbt_ownr" Type="varchar" Nullable="false" MaxLength="129" />
-    <Property Name="pbd_fhgt" Type="smallint" />
-    <Property Name="pbd_fwgt" Type="smallint" />
-    <Property Name="pbd_fitl" Type="varchar" MaxLength="1" />
-    <Property Name="pbd_funl" Type="varchar" MaxLength="1" />
-    <Property Name="pbd_fchr" Type="smallint" />
-    <Property Name="pbd_fptc" Type="smallint" />
-    <Property Name="pbd_ffce" Type="varchar" MaxLength="18" />
-    <Property Name="pbh_fhgt" Type="smallint" />
-    <Property Name="pbh_fwgt" Type="smallint" />
-    <Property Name="pbh_fitl" Type="varchar" MaxLength="1" />
-    <Property Name="pbh_funl" Type="varchar" MaxLength="1" />
-    <Property Name="pbh_fchr" Type="smallint" />
-    <Property Name="pbh_fptc" Type="smallint" />
-    <Property Name="pbh_ffce" Type="varchar" MaxLength="18" />
-    <Property Name="pbl_fhgt" Type="smallint" />
-    <Property Name="pbl_fwgt" Type="smallint" />
-    <Property Name="pbl_fitl" Type="varchar" MaxLength="1" />
-    <Property Name="pbl_funl" Type="varchar" MaxLength="1" />
-    <Property Name="pbl_fchr" Type="smallint" />
-    <Property Name="pbl_fptc" Type="smallint" />
-    <Property Name="pbl_ffce" Type="varchar" MaxLength="18" />
-    <Property Name="pbt_cmnt" Type="varchar" MaxLength="254" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -364,6 +319,30 @@
       </Principal>
       <Dependent Role="Maes_Derecho_Usuario">
         <PropertyRef Name="IdOpcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OpcionRol_Cat_Opcion">
+    <End Role="Cat_Opcion" Type="ClinicaModel.Store.Cat_Opcion" Multiplicity="0..1" />
+    <End Role="OpcionRol" Type="ClinicaModel.Store.OpcionRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Opcion">
+        <PropertyRef Name="IdOpcion" />
+      </Principal>
+      <Dependent Role="OpcionRol">
+        <PropertyRef Name="IdOpcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OpcionRol_Cat_Rol">
+    <End Role="Cat_Rol" Type="ClinicaModel.Store.Cat_Rol" Multiplicity="0..1" />
+    <End Role="OpcionRol" Type="ClinicaModel.Store.OpcionRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="OpcionRol">
+        <PropertyRef Name="IdRol" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

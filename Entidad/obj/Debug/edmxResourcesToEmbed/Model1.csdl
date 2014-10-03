@@ -9,8 +9,6 @@
     <EntitySet Name="Maes_Derecho_Usuario" EntityType="ClinicaModel.Maes_Derecho_Usuario" />
     <EntitySet Name="Maes_Opciones_Catalogo" EntityType="ClinicaModel.Maes_Opciones_Catalogo" />
     <EntitySet Name="Pacientes" EntityType="ClinicaModel.Paciente" />
-    <EntitySet Name="pbcattbls" EntityType="ClinicaModel.pbcattbl" />
-    <EntitySet Name="sysdiagrams" EntityType="ClinicaModel.sysdiagram" />
     <AssociationSet Name="FK_Cat_Servicio_Brindado_Paciente" Association="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente">
       <End Role="Paciente" EntitySet="Pacientes" />
       <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
@@ -23,10 +21,10 @@
       <End Role="Maes_Opciones_Catalogo" EntitySet="Maes_Opciones_Catalogo" />
       <End Role="Maes_Derecho_Usuario" EntitySet="Maes_Derecho_Usuario" />
     </AssociationSet>
-    <AssociationSet Name="Detalle_Servicio_Brindado" Association="ClinicaModel.Detalle_Servicio_Brindado">
-      <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
-      <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
-    </AssociationSet>
+    <!--<AssociationSet Name="Detalle_Servicio_Brindado" Association="ClinicaModel.Detalle_Servicio_Brindado">
+            <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+            <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
+          </AssociationSet>-->
     <FunctionImport Name="CitasdelDia_SP" ReturnType="Collection(ClinicaModel.CitasdelDia_SP_Result)">
       <Parameter Name="FechaCitas" Mode="In" Type="String" />
     </FunctionImport>
@@ -75,6 +73,25 @@
       <End Role="Medico" EntitySet="Medicos" />
       <End Role="Cat_Cita" EntitySet="Cat_Cita" />
     </AssociationSet>
+    <EntitySet Name="Cat_Opcion" EntityType="ClinicaModel.Cat_Opcion" />
+    <EntitySet Name="OpcionRols" EntityType="ClinicaModel.OpcionRol" />
+    <AssociationSet Name="FK_OpcionRol_Cat_Opcion" Association="ClinicaModel.FK_OpcionRol_Cat_Opcion">
+      <End Role="Cat_Opcion" EntitySet="Cat_Opcion" />
+      <End Role="OpcionRol" EntitySet="OpcionRols" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OpcionRol_Cat_Rol" Association="ClinicaModel.FK_OpcionRol_Cat_Rol">
+      <End Role="Cat_Rol" EntitySet="Cat_Rol" />
+      <End Role="OpcionRol" EntitySet="OpcionRols" />
+    </AssociationSet>
+    <EntitySet Name="Detalle_Servicio_Brindado" EntityType="ClinicaModel.Detalle_Servicio_Brindado" />
+    <AssociationSet Name="FK_Detalle_Servicio_Brindado_Cat_Servicio" Association="ClinicaModel.FK_Detalle_Servicio_Brindado_Cat_Servicio">
+      <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
+      <End Role="Detalle_Servicio_Brindado" EntitySet="Detalle_Servicio_Brindado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado" Association="ClinicaModel.FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado">
+      <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
+      <End Role="Detalle_Servicio_Brindado" EntitySet="Detalle_Servicio_Brindado" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -83,8 +100,9 @@
     <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Precio" Type="Int32" />
-    <NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.Detalle_Servicio_Brindado" FromRole="Cat_Servicio" ToRole="Cat_Servicio_Brindado" />
+    <!--<NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.Detalle_Servicio_Brindado" FromRole="Cat_Servicio" ToRole="Cat_Servicio_Brindado" />-->
     <NavigationProperty Name="Cat_Cita" Relationship="ClinicaModel.FK_Cat_Cita_Cat_Servicio" FromRole="Cat_Servicio" ToRole="Cat_Cita" />
+    <NavigationProperty Name="Detalle_Servicio_Brindado" Relationship="ClinicaModel.FK_Detalle_Servicio_Brindado_Cat_Servicio" FromRole="Cat_Servicio" ToRole="Detalle_Servicio_Brindado" />
   </EntityType>
   <EntityType Name="Cat_Servicio_Brindado">
     <Key>
@@ -94,7 +112,10 @@
     <Property Name="Fecha" Type="DateTime" />
     <Property Name="IdPaciente" Type="Int32" />
     <NavigationProperty Name="Paciente" Relationship="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente" FromRole="Cat_Servicio_Brindado" ToRole="Paciente" />
-    <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.Detalle_Servicio_Brindado" FromRole="Cat_Servicio_Brindado" ToRole="Cat_Servicio" />
+    <!--<NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.Detalle_Servicio_Brindado" FromRole="Cat_Servicio_Brindado" ToRole="Cat_Servicio" />-->
+    <Property Type="Decimal" Name="Monto" Precision="14" Scale="2" />
+    <Property Type="String" Name="Usuario" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Detalle_Servicio_Brindado" Relationship="ClinicaModel.FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado" FromRole="Cat_Servicio_Brindado" ToRole="Detalle_Servicio_Brindado" />
   </EntityType>
   <EntityType Name="Cat_Sub_Opcion">
     <Key>
@@ -163,47 +184,6 @@
     <NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.FK_Cat_Servicio_Brindado_Paciente" FromRole="Paciente" ToRole="Cat_Servicio_Brindado" />
     <NavigationProperty Name="Cat_Cita" Relationship="ClinicaModel.FK_Cat_Cita_Paciente" FromRole="Paciente" ToRole="Cat_Cita" />
   </EntityType>
-  <EntityType Name="pbcattbl">
-    <Key>
-      <PropertyRef Name="pbt_tnam" />
-      <PropertyRef Name="pbt_ownr" />
-    </Key>
-    <Property Name="pbt_tnam" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
-    <Property Name="pbt_tid" Type="Int32" />
-    <Property Name="pbt_ownr" Type="String" Nullable="false" MaxLength="129" Unicode="false" FixedLength="false" />
-    <Property Name="pbd_fhgt" Type="Int16" />
-    <Property Name="pbd_fwgt" Type="Int16" />
-    <Property Name="pbd_fitl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbd_funl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbd_fchr" Type="Int16" />
-    <Property Name="pbd_fptc" Type="Int16" />
-    <Property Name="pbd_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
-    <Property Name="pbh_fhgt" Type="Int16" />
-    <Property Name="pbh_fwgt" Type="Int16" />
-    <Property Name="pbh_fitl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbh_funl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbh_fchr" Type="Int16" />
-    <Property Name="pbh_fptc" Type="Int16" />
-    <Property Name="pbh_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
-    <Property Name="pbl_fhgt" Type="Int16" />
-    <Property Name="pbl_fwgt" Type="Int16" />
-    <Property Name="pbl_fitl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbl_funl" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
-    <Property Name="pbl_fchr" Type="Int16" />
-    <Property Name="pbl_fptc" Type="Int16" />
-    <Property Name="pbl_ffce" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
-    <Property Name="pbt_cmnt" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK_Cat_Servicio_Brindado_Paciente">
     <End Role="Paciente" Type="ClinicaModel.Paciente" Multiplicity="0..1" />
     <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
@@ -240,10 +220,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Detalle_Servicio_Brindado">
-    <End Role="Cat_Servicio" Type="ClinicaModel.Cat_Servicio" Multiplicity="*" />
-    <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
-  </Association>
+  <!--<Association Name="Detalle_Servicio_Brindado">
+          <End Role="Cat_Servicio" Type="ClinicaModel.Cat_Servicio" Multiplicity="*" />
+          <End Role="Cat_Servicio_Brindado" Type="ClinicaModel.Cat_Servicio_Brindado" Multiplicity="*" />
+        </Association>-->
   <ComplexType Name="CitasdelDia_SP_Result">
     <Property Type="String" Name="IdCita" Nullable="false" MaxLength="10" />
     <Property Type="Int32" Name="IdPaciente" Nullable="true" />
@@ -274,6 +254,7 @@
     <Property Type="Int32" Name="IdRol" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Rol" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Usuarios" Relationship="ClinicaModel.FK_Usuario_Cat_Rol" FromRole="Cat_Rol" ToRole="Usuario" />
+    <NavigationProperty Name="OpcionRols" Relationship="ClinicaModel.FK_OpcionRol_Cat_Rol" FromRole="Cat_Rol" ToRole="OpcionRol" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -392,6 +373,84 @@
       </Principal>
       <Dependent Role="Cat_Cita">
         <PropertyRef Name="NroCedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cat_Opcion">
+    <Key>
+      <PropertyRef Name="IdOpcion" />
+    </Key>
+    <Property Type="Int32" Name="IdOpcion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Opcion" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descripcion" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OpcionRols" Relationship="ClinicaModel.FK_OpcionRol_Cat_Opcion" FromRole="Cat_Opcion" ToRole="OpcionRol" />
+  </EntityType>
+  <EntityType Name="OpcionRol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IdOpcion" />
+    <Property Type="Int32" Name="IdRol" />
+    <NavigationProperty Name="Cat_Opcion" Relationship="ClinicaModel.FK_OpcionRol_Cat_Opcion" FromRole="OpcionRol" ToRole="Cat_Opcion" />
+    <NavigationProperty Name="Cat_Rol" Relationship="ClinicaModel.FK_OpcionRol_Cat_Rol" FromRole="OpcionRol" ToRole="Cat_Rol" />
+  </EntityType>
+  <Association Name="FK_OpcionRol_Cat_Opcion">
+    <End Type="ClinicaModel.Cat_Opcion" Role="Cat_Opcion" Multiplicity="0..1" />
+    <End Type="ClinicaModel.OpcionRol" Role="OpcionRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Opcion">
+        <PropertyRef Name="IdOpcion" />
+      </Principal>
+      <Dependent Role="OpcionRol">
+        <PropertyRef Name="IdOpcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OpcionRol_Cat_Rol">
+    <End Type="ClinicaModel.Cat_Rol" Role="Cat_Rol" Multiplicity="0..1" />
+    <End Type="ClinicaModel.OpcionRol" Role="OpcionRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="OpcionRol">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Detalle_Servicio_Brindado">
+    <Key>
+      <PropertyRef Name="IdRecibo" />
+      <PropertyRef Name="IdServicio" />
+    </Key>
+    <Property Type="String" Name="IdRecibo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IdServicio" Nullable="false" />
+    <Property Type="Int32" Name="Valor" />
+    <NavigationProperty Name="Cat_Servicio" Relationship="ClinicaModel.FK_Detalle_Servicio_Brindado_Cat_Servicio" FromRole="Detalle_Servicio_Brindado" ToRole="Cat_Servicio" />
+    <NavigationProperty Name="Cat_Servicio_Brindado" Relationship="ClinicaModel.FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado" FromRole="Detalle_Servicio_Brindado" ToRole="Cat_Servicio_Brindado" />
+  </EntityType>
+  <Association Name="FK_Detalle_Servicio_Brindado_Cat_Servicio">
+    <End Type="ClinicaModel.Cat_Servicio" Role="Cat_Servicio" Multiplicity="1" />
+    <End Type="ClinicaModel.Detalle_Servicio_Brindado" Role="Detalle_Servicio_Brindado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Servicio">
+        <PropertyRef Name="IdServicio" />
+      </Principal>
+      <Dependent Role="Detalle_Servicio_Brindado">
+        <PropertyRef Name="IdServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado">
+    <End Type="ClinicaModel.Cat_Servicio_Brindado" Role="Cat_Servicio_Brindado" Multiplicity="1" />
+    <End Type="ClinicaModel.Detalle_Servicio_Brindado" Role="Detalle_Servicio_Brindado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat_Servicio_Brindado">
+        <PropertyRef Name="IdRecibo" />
+      </Principal>
+      <Dependent Role="Detalle_Servicio_Brindado">
+        <PropertyRef Name="IdRecibo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

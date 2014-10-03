@@ -45,11 +45,13 @@
     <Compile Include="citaData.cs" />
     <Compile Include="citasdeldia_spData.cs" />
     <Compile Include="clinicaData.cs" />
+    <Compile Include="detalleserviciobrindadoData.cs" />
     <Compile Include="medicoData.cs" />
     <Compile Include="opcionesxrol_spData.cs" />
     <Compile Include="pacienteData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rolData.cs" />
+    <Compile Include="serviciobrindadoData.cs" />
     <Compile Include="serviciosData.cs" />
     <Compile Include="usuariosData.cs" />
     <Compile Include="validarexistenciapaciente_spData.cs" />
