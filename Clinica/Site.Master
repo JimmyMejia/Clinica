@@ -43,6 +43,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
+
+    <div class="container" >
+        <div id="mycarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#mycarousel" data-slide-to="0"></li>
+                <li data-target="#mycarousel" data-slide-to="1"></li>
+                <li data-target="#mycarousel" data-slide-to="2" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <asp:Image ImageUrl="~/Images/Clinica-silla.jpg" runat="server" AlternateText=""/>
+                    <%--<div class="carousel-caption">
+                        <h4>Primera imagen de carousel</h4>
+                        <p>Este es un texto de prueba en la primera imagen del carousel.</p>
+                    </div>--%>
+                </div>
+                <div class="item">
+                    <asp:Image ImageUrl="~/Images/Clinica-silla1.jpg" runat="server" AlternateText="" />
+                    <%--<div class="carousel-caption">
+                        <h4>Segunda imagen de carousel</h4>
+                        <p>Este es un texto de prueba en la segunda imagen del carousel.</p>
+                    </div>--%>
+                </div>
+                <div class="item">
+                    <asp:Image ImageUrl="~/Images/favicon.jpg" runat="server" AlternateText="" />
+                    <%--<div class="carousel-caption">
+                        <h4>Tercera imagen de carousel</h4>
+                        <p>Este es un texto de prueba en la tercera imagen del carousel.</p>
+                    </div>--%>
+                </div>
+            </div>
+            <a href="#mycarousel" class="left carousel-control" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="#mycarousel" class="right carousel-control" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+        
+    </div>
     <div class="container">    
          <form id="Form1" runat="server">
              <div class="page-header">         
@@ -135,7 +171,7 @@
                                             <li class="dropdown">
                                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Facturación<b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">Facturar Servicio</a></li>
+                                                    <li><a href="wf_Factura.aspx">Facturar</a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="#">Trash</a></li>
                                                 </ul>

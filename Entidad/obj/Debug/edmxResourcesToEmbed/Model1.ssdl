@@ -108,7 +108,7 @@
     </Key>
     <Property Name="IdRecibo" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="IdPaciente" Type="int" />
-    <Property Name="Monto" Type="decimal" Precision="14" Scale="2" />
+    <Property Name="Monto" Type="int" />
     <Property Name="Usuario" Type="varchar" MaxLength="10" />
     <Property Name="Fecha" Type="date" />
   </EntityType>
@@ -141,6 +141,7 @@
     </Key>
     <Property Name="IdRecibo" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="IdServicio" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="int" />
     <Property Name="Valor" Type="int" />
   </EntityType>
   <EntityType Name="Foto">

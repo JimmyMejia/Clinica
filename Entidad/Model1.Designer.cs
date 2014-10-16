@@ -18,7 +18,6 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
-[assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Servicio_Brindado_Paciente", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Paciente), "Cat_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Servicio_Brindado), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Sub_Opcion_Maes_Opciones_Catalogo", "Maes_Opciones_Catalogo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Maes_Opciones_Catalogo), "Cat_Sub_Opcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Sub_Opcion), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Mes_Derecho_Usuario_Maes_Opciones_Catalogo", "Maes_Opciones_Catalogo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Maes_Opciones_Catalogo), "Maes_Derecho_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Maes_Derecho_Usuario), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Usuario_Cat_Rol", "Cat_Rol", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Cat_Rol), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Usuario), true)]
@@ -29,6 +28,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_OpcionRol_Cat_Opcion", "Cat_Opcion", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Cat_Opcion), "OpcionRol", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.OpcionRol), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_OpcionRol_Cat_Rol", "Cat_Rol", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Cat_Rol), "OpcionRol", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.OpcionRol), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Detalle_Servicio_Brindado_Cat_Servicio", "Cat_Servicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Cat_Servicio), "Detalle_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Detalle_Servicio_Brindado), true)]
+[assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Cat_Servicio_Brindado_Paciente", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Entidad.Paciente), "Cat_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Cat_Servicio_Brindado), true)]
 [assembly: EdmRelationshipAttribute("ClinicaModel", "FK_Detalle_Servicio_Brindado_Cat_Servicio_Brindado", "Cat_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Entidad.Cat_Servicio_Brindado), "Detalle_Servicio_Brindado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Entidad.Detalle_Servicio_Brindado), true)]
 
 #endregion
@@ -96,22 +96,6 @@ namespace Entidad
             }
         }
         private ObjectSet<Cat_Servicio> _Cat_Servicio;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<Cat_Servicio_Brindado> Cat_Servicio_Brindado
-        {
-            get
-            {
-                if ((_Cat_Servicio_Brindado == null))
-                {
-                    _Cat_Servicio_Brindado = base.CreateObjectSet<Cat_Servicio_Brindado>("Cat_Servicio_Brindado");
-                }
-                return _Cat_Servicio_Brindado;
-            }
-        }
-        private ObjectSet<Cat_Servicio_Brindado> _Cat_Servicio_Brindado;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -320,6 +304,22 @@ namespace Entidad
             }
         }
         private ObjectSet<Detalle_Servicio_Brindado> _Detalle_Servicio_Brindado;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Cat_Servicio_Brindado> Cat_Servicio_Brindado
+        {
+            get
+            {
+                if ((_Cat_Servicio_Brindado == null))
+                {
+                    _Cat_Servicio_Brindado = base.CreateObjectSet<Cat_Servicio_Brindado>("Cat_Servicio_Brindado");
+                }
+                return _Cat_Servicio_Brindado;
+            }
+        }
+        private ObjectSet<Cat_Servicio_Brindado> _Cat_Servicio_Brindado;
 
         #endregion
         #region Métodos AddTo
@@ -330,14 +330,6 @@ namespace Entidad
         public void AddToCat_Servicio(Cat_Servicio cat_Servicio)
         {
             base.AddObject("Cat_Servicio", cat_Servicio);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Cat_Servicio_Brindado. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToCat_Servicio_Brindado(Cat_Servicio_Brindado cat_Servicio_Brindado)
-        {
-            base.AddObject("Cat_Servicio_Brindado", cat_Servicio_Brindado);
         }
     
         /// <summary>
@@ -442,6 +434,14 @@ namespace Entidad
         public void AddToDetalle_Servicio_Brindado(Detalle_Servicio_Brindado detalle_Servicio_Brindado)
         {
             base.AddObject("Detalle_Servicio_Brindado", detalle_Servicio_Brindado);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Cat_Servicio_Brindado. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCat_Servicio_Brindado(Cat_Servicio_Brindado cat_Servicio_Brindado)
+        {
+            base.AddObject("Cat_Servicio_Brindado", cat_Servicio_Brindado);
         }
 
         #endregion
@@ -1459,30 +1459,6 @@ namespace Entidad
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> Fecha
-        {
-            get
-            {
-                return _Fecha;
-            }
-            set
-            {
-                OnFechaChanging(value);
-                ReportPropertyChanging("Fecha");
-                _Fecha = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Fecha");
-                OnFechaChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _Fecha;
-        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.Int32> IdPaciente
         {
             get
@@ -1507,7 +1483,7 @@ namespace Entidad
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> Monto
+        public Nullable<global::System.Int32> Monto
         {
             get
             {
@@ -1522,8 +1498,8 @@ namespace Entidad
                 OnMontoChanged();
             }
         }
-        private Nullable<global::System.Decimal> _Monto;
-        partial void OnMontoChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Int32> _Monto;
+        partial void OnMontoChanging(Nullable<global::System.Int32> value);
         partial void OnMontoChanged();
     
         /// <summary>
@@ -1549,6 +1525,30 @@ namespace Entidad
         private global::System.String _Usuario;
         partial void OnUsuarioChanging(global::System.String value);
         partial void OnUsuarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+            set
+            {
+                OnFechaChanging(value);
+                ReportPropertyChanging("Fecha");
+                _Fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Fecha");
+                OnFechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Fecha;
+        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaChanged();
 
         #endregion
     
@@ -2092,6 +2092,30 @@ namespace Entidad
         private Nullable<global::System.Int32> _Valor;
         partial void OnValorChanging(Nullable<global::System.Int32> value);
         partial void OnValorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Cantidad
+        {
+            get
+            {
+                return _Cantidad;
+            }
+            set
+            {
+                OnCantidadChanging(value);
+                ReportPropertyChanging("Cantidad");
+                _Cantidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cantidad");
+                OnCantidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Cantidad;
+        partial void OnCantidadChanging(Nullable<global::System.Int32> value);
+        partial void OnCantidadChanged();
 
         #endregion
     
@@ -3256,28 +3280,6 @@ namespace Entidad
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Cat_Servicio_Brindado_Paciente", "Cat_Servicio_Brindado")]
-        public EntityCollection<Cat_Servicio_Brindado> Cat_Servicio_Brindado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Cat_Servicio_Brindado>("ClinicaModel.FK_Cat_Servicio_Brindado_Paciente", "Cat_Servicio_Brindado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cat_Servicio_Brindado>("ClinicaModel.FK_Cat_Servicio_Brindado_Paciente", "Cat_Servicio_Brindado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Cat_Cita_Paciente", "Cat_Cita")]
         public EntityCollection<Cat_Cita> Cat_Cita
         {
@@ -3290,6 +3292,28 @@ namespace Entidad
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cat_Cita>("ClinicaModel.FK_Cat_Cita_Paciente", "Cat_Cita", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClinicaModel", "FK_Cat_Servicio_Brindado_Paciente", "Cat_Servicio_Brindado")]
+        public EntityCollection<Cat_Servicio_Brindado> Cat_Servicio_Brindado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Cat_Servicio_Brindado>("ClinicaModel.FK_Cat_Servicio_Brindado_Paciente", "Cat_Servicio_Brindado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cat_Servicio_Brindado>("ClinicaModel.FK_Cat_Servicio_Brindado_Paciente", "Cat_Servicio_Brindado", value);
                 }
             }
         }

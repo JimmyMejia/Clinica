@@ -48,6 +48,20 @@ namespace Negocio
             }
         }
 
+        public Entidad.Cat_Servicio_Brindado GetBy_NumFactura(string nfac)
+        {
+            try
+            {
+                Datos.serviciobrindadoData dc = new Datos.serviciobrindadoData();
+                return dc.GetBy_Factura(nfac);
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Error en GetBy_NumFactura " + err.Message);
+            }
+        }
+
+
 
     }
 }

@@ -54,3 +54,5 @@ C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Clinica\bin\zh-CHT\AjaxContr
 C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Clinica\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Clinica\obj\Debug\Clinica.dll
 C:\Users\Jimmy\Documents\Visual Studio 2010\Clinica\Clinica\obj\Debug\Clinica.pdb
+C:\Users\Jimmy\Documents\Visual Studio 2010\Projects\Clinica\Clinica\obj\Debug\RdlCompile.cache
+C:\Users\Jimmy\Documents\Visual Studio 2010\Projects\Clinica\Clinica\obj\Debug\RdlCompile.compiled

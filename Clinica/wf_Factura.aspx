@@ -29,7 +29,8 @@
                 <p>Paciente:</p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <asp:DropDownList ID="ddl_paciente" runat="server" AppendDataBoundItems="true" CssClass="form-control">
+                <asp:DropDownList ID="ddl_paciente" runat="server" AppendDataBoundItems="true" 
+                    CssClass="form-control">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfv_paciente" runat="server" ForeColor="red" Text="*" ControlToValidate="ddl_paciente" InitialValue="0" 
                     ErrorMessage="Debe seleccionar el paciente!!!"></asp:RequiredFieldValidator>        
@@ -52,10 +53,11 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">
-                <p>Motivo:</p>
+                <p>Servicio:</p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <asp:DropDownList ID="ddl_motivo" runat="server" AppendDataBoundItems="true" Enabled="false" CssClass="form-control" >
+                <asp:DropDownList ID="ddl_motivo" runat="server" AppendDataBoundItems="true" 
+                    Enabled="false" CssClass="form-control">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfv_motivo" runat="server" ForeColor="red" Text="*" ControlToValidate="ddl_motivo" InitialValue="0"
                     ErrorMessage="Debe seleccionar el motivo!!!"></asp:RequiredFieldValidator>  
@@ -63,14 +65,61 @@
         </div>
 
         <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">
+                <p>Cantidad:</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <asp:TextBox ID="tb_cantidad" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfv_cantidad" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_cantidad"
+                    ErrorMessage="Debe digitar la cantidad!!!"></asp:RequiredFieldValidator>  
+            </div>
+        </div>
+
+
+        <div class="row">
             <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-2 col-lg-6 col-lg-offset-2">
-                <asp:Button ID="btn_agregar" runat="server" Text="Agregar" CssClass="btn btn-primary" 
-                    CausesValidation="false" Enabled ="false" onclick="btn_agregar_Click"/>
-                    <asp:Button ID="btn_facturar" runat="server" Text="Facturar" CssClass="btn btn-primary" 
+                <asp:Button ID="btn_agregar" runat="server" Text="Agregar" CssClass="btn btn-primary" Enabled ="false" onclick="btn_agregar_Click"/>
+                <asp:Button ID="btn_facturar" runat="server" Text="Facturar" CssClass="btn btn-primary" 
                     CausesValidation="false" Enabled ="false" onclick="btn_facturar_Click"/>
+                    <asp:Button ID="btn_imprimir" runat="server" Text="Imprimir" CssClass="btn btn-primary" 
+                    CausesValidation="false" Enabled ="false" onclick="btn_imprimir_Click"/>
                 <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" CssClass="btn btn-primary" 
                     CausesValidation="false" onclick="btn_cancelar_Click"/>
             </div>
+        </div>
+        
+        </br>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11">
+                <div class="table-responsive">                
+                    <asp:GridView ID="gv_detalle" runat="server" BackColor="White" 
+                        BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
+                        GridLines="Vertical" AutoGenerateColumns="False">
+                        <AlternatingRowStyle BackColor="#DCDCDC" />
+                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                        <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
+                        <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#0000A9" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#000065" />
+
+                        <Columns>
+                            <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" HeaderStyle-Width="70%"/>
+                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" HeaderStyle-Width="15%"/>
+                            <asp:BoundField DataField="Precio" HeaderText="Precio Unitario" HeaderStyle-Width="15%"/>
+                        </Columns>
+
+                    </asp:GridView>
+                </div>
+                <asp:Label ID="Label1" runat="server" Text="Total:" Font-Bold="true" Visible="false"></asp:Label>
+                <asp:Label ID="lb_moneda" runat="server" Visible="false"></asp:Label>
+                <asp:Label ID="lb_total" runat="server" Visible="false"></asp:Label>
+            </div>
+
+
         </div>
         
         <div class="row">

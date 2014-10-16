@@ -33,5 +33,18 @@ namespace Datos
                  throw new Exception("Error en GetCount: " + err.Message);
             }
         }
+
+        public Entidad.Cat_Servicio_Brindado GetBy_Factura(string nfactura)
+        {
+            try
+            {
+                Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+                return dc.Cat_Servicio_Brindado.Where(f => f.IdRecibo == nfactura).FirstOrDefault();
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Error en GetBy_Factura " + err.Message);
+            }
+        }
     }
 }

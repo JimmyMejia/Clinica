@@ -10,17 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Cat_Servicio_Brindado">
-      <EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio_Brindado">
-        <MappingFragment StoreEntitySet="Cat_Servicio_Brindado">
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Monto" ColumnName="Monto" />
-          <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cat_Sub_Opcion">
       <EntityTypeMapping TypeName="ClinicaModel.Cat_Sub_Opcion">
         <MappingFragment StoreEntitySet="Cat_Sub_Opcion">
@@ -225,8 +214,20 @@
     <EntitySetMapping Name="Detalle_Servicio_Brindado">
       <EntityTypeMapping TypeName="ClinicaModel.Detalle_Servicio_Brindado">
         <MappingFragment StoreEntitySet="Detalle_Servicio_Brindado">
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
           <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+          <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cat_Servicio_Brindado">
+      <EntityTypeMapping TypeName="ClinicaModel.Cat_Servicio_Brindado">
+        <MappingFragment StoreEntitySet="Cat_Servicio_Brindado">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
           <ScalarProperty Name="IdRecibo" ColumnName="IdRecibo" />
         </MappingFragment>
       </EntityTypeMapping>
