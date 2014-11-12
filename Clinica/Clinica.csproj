@@ -96,7 +96,9 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -295,6 +297,7 @@
     <None Include="Styles\bootstrap.css.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\rpt_ClinicaActiva.rdlc" />
     <EmbeddedResource Include="Reportes\rpt_Factura.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

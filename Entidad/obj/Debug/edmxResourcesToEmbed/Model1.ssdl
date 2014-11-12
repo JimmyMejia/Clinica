@@ -16,6 +16,18 @@
     <EntitySet Name="OpcionRol" EntityType="ClinicaModel.Store.OpcionRol" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paciente" EntityType="ClinicaModel.Store.Paciente" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Usuario" EntityType="ClinicaModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="V_Clinica_Activa" EntityType="ClinicaModel.Store.V_Clinica_Activa" store:Type="Views" store:Schema="dbo" store:Name="V_Clinica_Activa">
+      <DefiningQuery>SELECT 
+      [V_Clinica_Activa].[IdClinica] AS [IdClinica], 
+      [V_Clinica_Activa].[Nombre] AS [Nombre], 
+      [V_Clinica_Activa].[Direccion] AS [Direccion], 
+      [V_Clinica_Activa].[Email] AS [Email], 
+      [V_Clinica_Activa].[Telefono] AS [Telefono], 
+      [V_Clinica_Activa].[Celular] AS [Celular], 
+      [V_Clinica_Activa].[Logo] AS [Logo], 
+      [V_Clinica_Activa].[Activo] AS [Activo]
+      FROM [dbo].[V_Clinica_Activa] AS [V_Clinica_Activa]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Cat_Cita_Cat_Servicio" Association="ClinicaModel.Store.FK_Cat_Cita_Cat_Servicio">
       <End Role="Cat_Servicio" EntitySet="Cat_Servicio" />
       <End Role="Cat_Cita" EntitySet="Cat_Cita" />
@@ -214,6 +226,22 @@
     <Property Name="Contrasenia" Type="nvarchar" MaxLength="20" />
     <Property Name="Activo" Type="char" MaxLength="1" />
     <Property Name="Fecha_Creacion" Type="date" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'Clinica.dbo.V_Clinica_Activa' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="V_Clinica_Activa">
+    <Key>
+      <PropertyRef Name="IdClinica" />
+    </Key>
+    <Property Name="IdClinica" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="40" />
+    <Property Name="Telefono" Type="varchar" MaxLength="9" />
+    <Property Name="Celular" Type="varchar" MaxLength="9" />
+    <Property Name="Logo" Type="varchar(max)" />
+    <Property Name="Activo" Type="char" MaxLength="1" />
   </EntityType>
   <Association Name="FK_Cat_Cita_Cat_Servicio">
     <End Role="Cat_Servicio" Type="ClinicaModel.Store.Cat_Servicio" Multiplicity="0..1" />

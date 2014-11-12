@@ -76,5 +76,18 @@ namespace Negocio
             }
         }
 
+        public List<Entidad.Clinica> ClinicaActiva()
+        {
+            try
+            {
+                Datos.clinicaData dc = new Datos.clinicaData();
+                return dc.ClinicaActiva();
+            }
+            catch (Exception err)
+            {                
+                throw new Exception(err.Message);
+            }
+        }
+
     }
 }

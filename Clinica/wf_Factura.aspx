@@ -11,7 +11,7 @@
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <p>Fecha de la Cita:</p>
             </div>
-            <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
+            <div class="col-xs-8 col-sm-3 col-md-2 col-lg-2">
                 <asp:TextBox ID="tb_fechafiltro" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechafiltro" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fechafiltro"
                     ErrorMessage="Debe digitar la fecha!!!"></asp:RequiredFieldValidator>
@@ -42,7 +42,7 @@
                 <p>Fecha:</p>
             </div>
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
-                <asp:TextBox ID="tb_fecha" runat="server" Enabled ="false"></asp:TextBox>
+                <asp:TextBox ID="tb_fecha" runat="server" ReadOnly="true" Enabled="false" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fecha" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_fecha"
                     ErrorMessage="Debe digitar la fecha!!!"></asp:RequiredFieldValidator>
                     <asp:CalendarExtender ID="ce_fecha" Format="dd/MM/yyyy" TargetControlID="tb_fecha"  runat="server"></asp:CalendarExtender>
@@ -65,10 +65,10 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <p>Cantidad:</p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="col-xs-4 col-sm-2 col-md-1 col-lg-1">
                 <asp:TextBox ID="tb_cantidad" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_cantidad" runat="server" ForeColor="red" Text="*" ControlToValidate="tb_cantidad"
                     ErrorMessage="Debe digitar la cantidad!!!"></asp:RequiredFieldValidator>  

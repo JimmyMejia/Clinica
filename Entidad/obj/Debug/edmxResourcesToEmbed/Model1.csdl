@@ -92,6 +92,7 @@
       <End Role="Cat_Servicio_Brindado" EntitySet="Cat_Servicio_Brindado" />
       <End Role="Detalle_Servicio_Brindado" EntitySet="Detalle_Servicio_Brindado" />
     </AssociationSet>
+    <EntitySet Name="V_Clinica_Activa" EntityType="ClinicaModel.V_Clinica_Activa" />
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -454,4 +455,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="V_Clinica_Activa">
+    <Key>
+      <PropertyRef Name="IdClinica" />
+    </Key>
+    <Property Type="Int32" Name="IdClinica" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Direccion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Email" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Telefono" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Celular" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Logo" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Activo" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -139,6 +139,19 @@ namespace Datos
            
         }
 
+        public List<Entidad.Clinica> ClinicaActiva()
+        {
+            try
+            {
+                Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+                return dc.Clinicas.ToList();
+            }
+            catch (Exception err)
+            {                
+                throw new Exception("Error en ClinicaActiva (ClinicaData), " + err.Message);
+            }            
+        }
+
                 
         
     }
