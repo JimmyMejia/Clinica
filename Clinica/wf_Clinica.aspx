@@ -77,7 +77,7 @@
             </div>                       
         </div>
 
-        <div class="row">
+        <%--<div class="row">
             <div class="col-md-2 col-md-offset-1">   
                 <div class="checkbox">
                     <asp:CheckBox ID="chk_previa" runat="server" Text="Previa" Visible= "false" 
@@ -91,15 +91,17 @@
            <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">               
                <p class="text-left"><asp:Label ID="lb_previa" runat="server" Text="Previa:" Visible="false"></asp:Label></p>
             </div> 
-            <%--<div class="col-xs-12 col-sm-10 col-md-8 col-lg-7">--%>
+            <%--<div class="col-xs-12 col-sm-10 col-md-8 col-lg-7">
             <asp:Image ID="Logo" runat="server" CssClass="img-responsive" Visible="false" Height="25%" Width="25%" />
-           <%-- </div> --%>                      
-        </div>        
+            </div>                      
+        </div>        --%>
 
         <div class="row">
-            <div class="col-md-2 col-md-offset-1">   
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">   
                 <div class="checkbox">
-                    <asp:CheckBox ID="chk_activa" runat="server" Text="Activa"/>
+                    <label>
+                        <asp:CheckBox ID="chk_activa" runat="server" Text="Activa"/>
+                    </label>
                 </div>                    
             </div> 
         </div>

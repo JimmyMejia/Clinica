@@ -63,6 +63,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="BuscarServicio.aspx" />
+    <Content Include="Images\estructura-semantica-html5.jpg" />
     <Content Include="Scripts\messages_with_toastr.js" />
     <Content Include="Scripts\sdk.js" />
     <Content Include="Scripts\toastr.js" />
