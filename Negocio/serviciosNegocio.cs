@@ -49,7 +49,7 @@ namespace Negocio
             try
             {
                 Datos.serviciosData dc = new Datos.serviciosData();
-                if(!dc.ExisteServicio(servicioNegocio))
+                if(!dc.ModificarServicio(servicioNegocio))
                 {
                     dc.Update(servicioNegocio);
                     resp = true;

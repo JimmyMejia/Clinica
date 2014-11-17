@@ -65,14 +65,12 @@
             </div>
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
                 <asp:TextBox ID="tb_fechaNacimiento" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
-                <asp:CalendarExtender ID="ce1_fecha" runat="server" Format="dd/MM/yyyy" TargetControlID="tb_fechaNacimiento"></asp:CalendarExtender> 
-                <asp:MaskedEditExtender ID="me1_fecha"  TargetControlID="tb_fechaNacimiento" Mask="99/99/9999" MaskType="Date"
+                <asp:CalendarExtender ID="ce_fecha" runat="server" Format="dd/MM/yyyy" TargetControlID="tb_fechaNacimiento"></asp:CalendarExtender> 
+                <asp:MaskedEditExtender ID="me_fecha"  TargetControlID="tb_fechaNacimiento" Mask="99/99/9999" MaskType="Date"
                     UserDateFormat="DayMonthYear" runat="server">
                 </asp:MaskedEditExtender>
                 <asp:RequiredFieldValidator ID="rfv_fecha" runat="server" ControlToValidate="tb_fechaNacimiento" Text="*" ForeColor="red"
-                            ErrorMessage="Debe digitar la fecha de nacimiento del paciente!!!"></asp:RequiredFieldValidator> 
-            <!--<asp:CalendarExtender ID="ce_fecha" runat="server" Format="dd/MM/yyyy" TargetControlID="tb_fechaNacimiento" ></asp:CalendarExtender>
-                        <asp:MaskedEditExtender ID="me_fecha"  TargetControlID="tb_fechaNacimiento" Mask="99/99/9999" MaskType="Date" UserDateFormat="DayMonthYear" runat="server"> </asp:MaskedEditExtender>-->      
+                            ErrorMessage="Debe digitar la fecha de nacimiento del paciente!!!"></asp:RequiredFieldValidator>      
             </div>
             </div>
         </div>

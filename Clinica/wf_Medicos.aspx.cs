@@ -79,17 +79,26 @@ namespace Clinica
                         string mensaje = "MostrarMensaje('ERROR','Número de cedula ya existe, por favor verifique!!!')";
                         //MOSTRAMOS EL MENSAJE
                         ClientScript.RegisterStartupScript(GetType(), "ocultar", mensaje, true);
-
                     }
                     else
                     {
-                        dc.InsertarMedico(med);
-                        //lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                        //lb_mensajes.Text = "Datos del médico insertado satisfactoriamente!!!";
-                        CleanControls(this.Controls);
-                        //MOSTRAMOS EL MENSAJE
-                        string mensaje = "MostrarMensaje('SUCCESS','Datos del médico insertados satisfactoriamente!!!')";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "ocultar1", mensaje, true);
+                        string error = "";
+                        error = dc.InsertarMedico(med);
+                        if (error != "")
+                        {
+                            //MOSTRAMOS EL MENSAJE DE EXCEPCION MOSTRADO EN LA CAPA DE NEGOCIO
+                            string mensaje = "MostrarMensaje('ERROR','La fecha de nacimiento no puede ser mayor a la fecha actual!!!')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "excepcion", mensaje, true);
+                        }
+                        else
+                        {
+                            //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                            //lb_mensajes.Text = "Datos del médico insertado satisfactoriamente!!!";
+                            CleanControls(this.Controls);
+                            //MOSTRAMOS EL MENSAJE
+                            string mensaje = "MostrarMensaje('SUCCESS','Datos del médico insertados satisfactoriamente!!!')";
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "ocultar1", mensaje, true);
+                        }
                     }
                 }
                 else

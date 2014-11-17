@@ -8,13 +8,73 @@ namespace Negocio
     public class pacienteNegocio
     {
 
-        public void InsertarPaciente(Entidad.Paciente pacienteNegocio)
+        //public void InsertarPaciente(Entidad.Paciente pacienteNegocio)
+        //{
+        //    try
+        //    {
+        //        Datos.pacienteData pd = new Datos.pacienteData();
+        //        //pd.ValidarPaciente(pacienteNegocio);
+        //        pd.Insert(pacienteNegocio);
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        throw new Exception(err.Message);
+        //    }
+        //}
+
+        public string ValidarFechas(Entidad.Paciente pacienteNegocio)
         {
             try
             {
-                Datos.pacienteData pd = new Datos.pacienteData();
+                string error = "";
+                //Datos.pacienteData pd = new Datos.pacienteData();
                 //pd.ValidarPaciente(pacienteNegocio);
-                pd.Insert(pacienteNegocio);
+                /*OBTENEMOS LA FECHA DE NACIMIENTO EN UNA VARIABLE PARA TRATARLA DESPUES*/
+                DateTime fecha_nac = Convert.ToDateTime(pacienteNegocio.Fecha_nacimiento);
+                /*GUARDAMOS EN UNA VARIABLE LA FECHA ACTUAL*/
+                string fecha = Convert.ToString(DateTime.Now.ToString().Substring(0, 10));//19/08/2014 10:00:20 a.m.
+                DateTime fechaactual = Convert.ToDateTime(fecha);
+                /*VERIFICAMOS QUE LA FECHA DIJITADA NO SEA MAYOR A LA FECHA ACTUAL*/
+                if (fecha_nac > fechaactual)
+                    //throw new Exception("La fecha de nacimiento no puede ser mayor a la fecha actual!!!");
+                    error = "La fecha de nacimiento no puede ser mayor a la fecha actual!!!";
+                return error;          
+            }
+            catch (Exception err)
+            {                
+                throw new Exception(err.Message);
+            }
+        }
+
+        public string InsertarPaciente(Entidad.Paciente pacienteNegocio)
+        {
+            try
+            {
+                //string error = "";
+                //Datos.pacienteData pd = new Datos.pacienteData();
+                ////pd.ValidarPaciente(pacienteNegocio);
+                ///*OBTENEMOS LA FECHA DE NACIMIENTO EN UNA VARIABLE PARA TRATARLA DESPUES*/
+                //DateTime fecha_nac = Convert.ToDateTime(pacienteNegocio.Fecha_nacimiento);
+                ///*GUARDAMOS EN UNA VARIABLE LA FECHA ACTUAL*/
+                //string fecha = Convert.ToString(DateTime.Now.ToString().Substring(0, 10));//19/08/2014 10:00:20 a.m.
+                //DateTime fechaactual = Convert.ToDateTime(fecha);
+                ///*VERIFICAMOS QUE LA FECHA DIJITADA NO SEA MAYOR A LA FECHA ACTUAL*/
+                //if (fecha_nac > fechaactual)
+                //    //throw new Exception("La fecha de nacimiento no puede ser mayor a la fecha actual!!!");
+                //    error = "La fecha de nacimiento no puede ser mayor a la fecha actual!!!";
+                //else
+                //{
+                //    pd.Insert(pacienteNegocio);
+                //}
+                //return error;                
+                string error = "";
+                Datos.pacienteData dc = new Datos.pacienteData();
+                error = ValidarFechas(pacienteNegocio);
+                if (error == "")
+                {
+                    dc.Insert(pacienteNegocio);
+                }
+                return error;
             }
             catch (Exception err)
             {
@@ -22,12 +82,18 @@ namespace Negocio
             }
         }
 
-        public void UpdatePaciente(Entidad.Paciente pacienteNegocio)
+        public string UpdatePaciente(Entidad.Paciente pacienteNegocio)
         {
             try
             {
+                string error = "";
                 Datos.pacienteData dc = new Datos.pacienteData();
-                dc.Update(pacienteNegocio);
+                error = ValidarFechas(pacienteNegocio);
+                if (error == "")
+                {                    
+                    dc.Update(pacienteNegocio);
+                }
+                return error;
             }
             catch (Exception err)
             {                

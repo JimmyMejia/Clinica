@@ -49,18 +49,84 @@ namespace Negocio
             }
         }
 
-        public void InsertarMedico(Entidad.Medico m)
+        public string ValidarFechas(Entidad.Medico med)
         {
             try
             {
+                string error = "";
+                /*OBTENEMOS LA FECHA DE NACIMIENTO EN UNA VARIABLE PARA TRATARLA DESPUES*/
+                DateTime fecha_nac = Convert.ToDateTime(med.Fecha_nacimiento);
+                /*GUARDAMOS EN UNA VARIABLE LA FECHA ACTUAL*/
+                string fecha = Convert.ToString(DateTime.Now.ToString().Substring(0,10));//19/08/2014 10:00:20 a.m.
+                DateTime fechaactual = Convert.ToDateTime(fecha);
+                /*VERIFICAMOS QUE LA FECHA SOLICITADA PARA LA CITA NO SEA MENOR A LA FECHA ACTUAL*/
+                if (fecha_nac > fechaactual)
+                    //throw new Exception("La fecha de nacimiento no puede ser mayor a la fecha actual!!!");
+                    error = "La fecha de nacimiento no puede ser mayor a la fecha actual!!!";
+                return error;
+            }
+            catch (Exception err)
+            {                
+                throw new Exception(err.Message);
+            }
+        }
+
+        public string InsertarMedico(Entidad.Medico m)
+        {
+            try
+            {
+                //string error = "";
+                //Datos.medicoData dc = new Datos.medicoData();
+                ///*OBTENEMOS LA FECHA DE NACIMIENTO EN UNA VARIABLE PARA TRATARLA DESPUES*/
+                //DateTime fecha_nac = Convert.ToDateTime(m.Fecha_nacimiento);
+                ///*GUARDAMOS EN UNA VARIABLE LA FECHA ACTUAL*/
+                //string fecha = Convert.ToString(DateTime.Now.ToString().Substring(0, 10));//19/08/2014 10:00:20 a.m.
+                //DateTime fechaactual = Convert.ToDateTime(fecha);
+                ///*VERIFICAMOS QUE LA FECHA DIJITADA NO SEA MAYOR A LA FECHA ACTUAL*/
+                //if (fecha_nac > fechaactual)
+                //    //throw new Exception("La fecha de nacimiento no puede ser mayor a la fecha actual!!!");
+                //    error = "La fecha de nacimiento no puede ser mayor a la fecha actual!!!";
+                //else
+                //{
+                //    dc.InsertMedico(m);
+                //}
+                //return error;
+                string error = "";
                 Datos.medicoData dc = new Datos.medicoData();
-                dc.InsertMedico(m);
+                error = ValidarFechas(m);
+                if (error == "")
+                {
+                    dc.InsertMedico(m);
+                }
+                return error;
             }
             catch (Exception err)
             {
                 throw new Exception("Error en InsertarMedico: " + err.Message);
             }
         }
+
+        //public void InsertarMedico(Entidad.Medico m)
+        //{
+        //    try
+        //    {
+        //        Datos.medicoData dc = new Datos.medicoData();
+        //        /*OBTENEMOS LA FECHA DE NACIMIENTO EN UNA VARIABLE PARA TRATARLA DESPUES*/
+        //        DateTime fecha_nac = Convert.ToDateTime(m.Fecha_nacimiento);
+        //        /*GUARDAMOS EN UNA VARIABLE LA FECHA ACTUAL*/
+        //        string fecha = Convert.ToString(DateTime.Now.ToString().Substring(0, 10));//19/08/2014 10:00:20 a.m.
+        //        DateTime fechaactual = Convert.ToDateTime(fecha);
+        //        /*VERIFICAMOS QUE LA FECHA DIJITADA NO SEA MAYOR A LA FECHA ACTUAL*/
+        //        if (fecha_nac > fechaactual)
+        //            throw new Exception("La fecha de nacimiento no puede ser mayor a la fecha actual!!!");
+        //        else
+        //            dc.InsertMedico(m);
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        throw new Exception("Error en InsertarMedico: " + err.Message);
+        //    }
+        //}
 
         public int ExisteCedula(string cedula)
         {

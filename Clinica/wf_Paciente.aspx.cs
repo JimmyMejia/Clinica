@@ -29,12 +29,21 @@ namespace Clinica
                 int existe = pn.ValidarPaciente(p);
                 if (existe == 0)
                 {
-                    pn.InsertarPaciente(p);
-                    //lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                    //lb_mensajes.Text = "Paciente insertado correctamente!!!";
-                    string mensaje = "MostrarMensaje('SUCCESS','Paciente insertado satisfactoriamente!!!')";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
-                    CleanControl(this.Controls);
+                    string error = "";
+                    error = pn.InsertarPaciente(p);
+                    if (error != "")
+                    {
+                        string mensaje = "MostrarMensaje('ERROR','La fecha de nacimiento no puede ser mayor a la fecha actual!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                    }
+                    else
+                    {
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                        //lb_mensajes.Text = "Paciente insertado correctamente!!!";
+                        string mensaje = "MostrarMensaje('SUCCESS','Registro insertado satisfactoriamente!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                        CleanControl(this.Controls);
+                    }
                 }
                 else
                 {

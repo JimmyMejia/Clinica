@@ -98,21 +98,30 @@ namespace Clinica
                 }
                 else
                 {*/
-                    pn.UpdatePaciente(dc);
-                    //lb_mensajes.ForeColor = System.Drawing.Color.Green;
-                    //lb_mensajes.Text = "Datos actualizados correctamente!!!";
-                    string mensaje = "MostrarMensaje('SUCCESS','Datos actualizados correctamente!!!')";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
-                    //CargarGrid();
-                    
-                    string busqueda = tb_apellidosfiltro.Text;
-                    Session.Remove("S_IdPaciente");
-                    CleanControls(this.Controls);
-                    tb_apellidosfiltro.Text = busqueda;
-                    BuscarPaciente();                    
-                    //DESHABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
-                    DeshabilitarCajasdeTexto();
-                    btn_Modificar.Enabled = false;
+                string error = "";
+                    error = pn.UpdatePaciente(dc);
+                    if (error != "")
+                    {
+                        string mensaje = "MostrarMensaje('ERROR','La fecha de nacimiento no puede ser mayor a la fecha actual!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                    }
+                    else
+                    {
+                        //lb_mensajes.ForeColor = System.Drawing.Color.Green;
+                        //lb_mensajes.Text = "Datos actualizados correctamente!!!";
+                        string mensaje = "MostrarMensaje('SUCCESS','Datos actualizados correctamente!!!')";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
+                        //CargarGrid();
+
+                        string busqueda = tb_apellidosfiltro.Text;
+                        Session.Remove("S_IdPaciente");
+                        CleanControls(this.Controls);
+                        tb_apellidosfiltro.Text = busqueda;
+                        BuscarPaciente();
+                        //DESHABILITAMOS LOS CONTROLES PARA QUE SEAN EDITADOS
+                        DeshabilitarCajasdeTexto();
+                        btn_Modificar.Enabled = false;
+                    }
                 //}
             }
             catch (Exception err)

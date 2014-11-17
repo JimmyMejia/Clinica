@@ -29,11 +29,11 @@
             <div class="col-xs-12 col-sm-11 col-md-2 col-lg-2">
                 <p class="text-left">Precio:</p>
             </div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-                <asp:TextBox ID="tb_precio" runat="server" MaxLength="3" CssClass="form-control"></asp:TextBox>
+            <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                <asp:TextBox ID="tb_precio" runat="server" MaxLength="4" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_precio" runat="server" ControlToValidate="tb_precio" ForeColor="Red"
                         ErrorMessage="Debe digitar el precio!!!" Text="*"></asp:RequiredFieldValidator>
-                <asp:RangeValidator ID="rv_precio" runat="server" ForeColor="Red" Type="Integer" MaximumValue="999" MinimumValue="1" 
+                <asp:RangeValidator ID="rv_precio" runat="server" ForeColor="Red" Type="Integer" MaximumValue="9999" MinimumValue="0" 
                         ControlToValidate="tb_precio" ErrorMessage="Debe digitar números!!!" Text="*"></asp:RangeValidator>
             </div>
         </div>

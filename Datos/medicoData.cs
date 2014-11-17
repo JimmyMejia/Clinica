@@ -53,7 +53,7 @@ namespace Datos
             {                
                 throw new Exception("Error en ExistCedula: " + err.Message);
             }
-        }
+        }        
 
     }
 }

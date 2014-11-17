@@ -85,33 +85,6 @@ namespace Clinica {
         protected global::System.Web.UI.WebControls.TextBox tb_fechaNacimiento;
         
         /// <summary>
-        /// Control ce1_fecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ce1_fecha;
-        
-        /// <summary>
-        /// Control me1_fecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender me1_fecha;
-        
-        /// <summary>
-        /// Control rfv_fecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fecha;
-        
-        /// <summary>
         /// Control ce_fecha.
         /// </summary>
         /// <remarks>
@@ -128,6 +101,15 @@ namespace Clinica {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.MaskedEditExtender me_fecha;
+        
+        /// <summary>
+        /// Control rfv_fecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fecha;
         
         /// <summary>
         /// Control tb_direccion.

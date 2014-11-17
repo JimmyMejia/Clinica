@@ -53,6 +53,24 @@ namespace Datos
             }           
         }
 
+        public bool ModificarServicio(Entidad.Cat_Servicio servicio)
+        {
+            try
+            {
+                Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+                Entidad.Cat_Servicio cs = null;
+                cs = dc.Cat_Servicio.Where(c => c.Descripcion == servicio.Descripcion && c.Precio == servicio.Precio).FirstOrDefault();
+                if (cs != null)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception err)
+            {                
+                throw new Exception(err.Message);
+            }
+        }
+
         public void Delete(int id_borrar)
         {
             try
