@@ -228,6 +228,7 @@
                             <asp:MenuItem NavigateUrl="~/wf_Usuarios.aspx" Text="Usuarios"/>                        
                             <asp:MenuItem NavigateUrl="~/wf_Login.aspx" Text="Login"/>
                             <asp:MenuItem NavigateUrl="~/wf_Medicos.aspx" Text="Medico"/>
+                            <asp:MenuItem NavigateUrl="~/wf_Medicos_Modificar.aspx" Text="Modificar Medico"/>
                             <asp:MenuItem NavigateUrl="~/wf_Envio_Correo.aspx" Text="Correo"/>
                             <asp:MenuItem NavigateUrl="~/wf_Factura.aspx" Text="Factura"/>
                         </Items>

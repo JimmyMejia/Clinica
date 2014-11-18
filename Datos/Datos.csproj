@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="buscarmedicos_spData.cs" />
     <Compile Include="buscarpacientes_spData.cs" />
     <Compile Include="citaData.cs" />
     <Compile Include="citasdeldia_spData.cs" />

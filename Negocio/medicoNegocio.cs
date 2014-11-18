@@ -49,6 +49,35 @@ namespace Negocio
             }
         }
 
+        public List<Entidad.Medico> ListaMedicos()
+        {
+            try
+            {
+                List<Entidad.Medico> resp = new List<Entidad.Medico>();
+                Datos.medicoData dc = new Datos.medicoData();
+                List<Entidad.Medico> medicos = dc.GetListMedico();
+                foreach (var item in medicos)
+                {
+                    Entidad.Medico p = new Entidad.Medico();
+                    p.NroCedula = item.NroCedula;
+                    //p.Nombres = string.Concat(item.Nombres, " ", item.Apellidos);
+                    //p.Nombres = item.Nombres + " " + item.Apellidos;
+                    p.Nombres = item.Nombres;
+                    p.Apellidos = item.Apellidos;
+                    p.Direccion = item.Direccion;
+                    p.Celular = item.Celular;
+                    p.Fecha_nacimiento = item.Fecha_nacimiento;
+                    p.Telefono = item.Telefono;
+                    resp.Add(p);
+                }
+                return resp;
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
+        }
+
         public string ValidarFechas(Entidad.Medico med)
         {
             try
@@ -103,6 +132,25 @@ namespace Negocio
             catch (Exception err)
             {
                 throw new Exception("Error en InsertarMedico: " + err.Message);
+            }
+        }
+
+        public string UpdateMedico(Entidad.Medico m, string cedula_nueva)
+        {
+            try
+            {
+                string error = "";
+                Datos.medicoData dc = new Datos.medicoData();
+                error = ValidarFechas(m);
+                if (error == "")
+                {
+                    dc.Update(m,cedula_nueva);
+                }
+                return error;
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
             }
         }
 
@@ -177,6 +225,19 @@ namespace Negocio
             }
             else
                 return false;
+        }
+
+        public Entidad.Medico ConsultarMedico(string nro_cedula)
+        {
+            try
+            {
+                Datos.medicoData dc = new Datos.medicoData();
+                return dc.GetListMedico().Where(p => p.NroCedula== nro_cedula).FirstOrDefault();
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
         }
 
 

@@ -68,7 +68,7 @@ namespace Clinica
                 Entidad.Validar_Login_Result login = (Entidad.Validar_Login_Result)Session["S_Login"];
                 if (login == null)
                 {
-                    idrol = 3;
+                    idrol = 3; // ESTE ES EL IDROL EL CUAL INDICA EN LA TABLA CAT_ROL QUE SE REFIERE AL USUARIO PACIENTE, CON MENOS PRIVILEGIOS EN EL SISTEMA
                 }
                 else
                 {

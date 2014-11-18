@@ -80,6 +80,7 @@
     <Content Include="Images\favicon_login.jpg" />
     <Content Include="wf_Factura.aspx" />
     <Content Include="wf_Medicos.aspx" />
+    <Content Include="wf_Medicos_Modificar.aspx" />
     <Content Include="wf_Paciente.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -178,6 +179,13 @@
     </Compile>
     <Compile Include="wf_Medicos.aspx.designer.cs">
       <DependentUpon>wf_Medicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wf_Medicos_Modificar.aspx.cs">
+      <DependentUpon>wf_Medicos_Modificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wf_Medicos_Modificar.aspx.designer.cs">
+      <DependentUpon>wf_Medicos_Modificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="wf_Paciente.aspx.cs">
       <DependentUpon>wf_Paciente.aspx</DependentUpon>

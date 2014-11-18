@@ -50,7 +50,9 @@ namespace Clinica
                 if (usuario == null)
                 {
                     lb_mensajes.ForeColor = System.Drawing.Color.Red;
-                    lb_mensajes.Text = "Datos incorrectos por favor verifique!!!";
+                    lb_mensajes.Text = "Datos incorrectos, por favor verifique!!!";
+                    string mensaje = "MostrarMensaje('ERROR','Datos incorrectos, por favor verifique!!!')";
+                    //ScriptManager1.RegisterStartupScript(this, GetType(), "mensaje", mensaje, true);
                 }
                 else
                 {

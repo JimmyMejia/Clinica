@@ -650,6 +650,25 @@ namespace Entidad
     
             return base.ExecuteFunction<Validar_Existencia_Paciente_Result>("Validar_Existencia_Paciente", nombresParameter, apellidosParameter);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="apellidos">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Buscar_Medicos_Result> Buscar_Medicos(global::System.String apellidos)
+        {
+            ObjectParameter apellidosParameter;
+            if (apellidos != null)
+            {
+                apellidosParameter = new ObjectParameter("Apellidos", apellidos);
+            }
+            else
+            {
+                apellidosParameter = new ObjectParameter("Apellidos", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Buscar_Medicos_Result>("Buscar_Medicos", apellidosParameter);
+        }
 
         #endregion
     }
@@ -3832,6 +3851,81 @@ namespace Entidad
 
     #endregion
     #region ComplexTypes
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ClinicaModel", Name="Buscar_Medicos_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class Buscar_Medicos_Result : ComplexObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Buscar_Medicos_Result.
+        /// </summary>
+        /// <param name="nroCedula">Valor inicial de la propiedad NroCedula.</param>
+        public static Buscar_Medicos_Result CreateBuscar_Medicos_Result(global::System.String nroCedula)
+        {
+            Buscar_Medicos_Result buscar_Medicos_Result = new Buscar_Medicos_Result();
+            buscar_Medicos_Result.NroCedula = nroCedula;
+            return buscar_Medicos_Result;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NroCedula
+        {
+            get
+            {
+                return _NroCedula;
+            }
+            set
+            {
+                OnNroCedulaChanging(value);
+                ReportPropertyChanging("NroCedula");
+                _NroCedula = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NroCedula");
+                OnNroCedulaChanged();
+            }
+        }
+        private global::System.String _NroCedula;
+        partial void OnNroCedulaChanging(global::System.String value);
+        partial void OnNroCedulaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NombreCompleto
+        {
+            get
+            {
+                return _NombreCompleto;
+            }
+            set
+            {
+                OnNombreCompletoChanging(value);
+                ReportPropertyChanging("NombreCompleto");
+                _NombreCompleto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NombreCompleto");
+                OnNombreCompletoChanged();
+            }
+        }
+        private global::System.String _NombreCompleto;
+        partial void OnNombreCompletoChanging(global::System.String value);
+        partial void OnNombreCompletoChanged();
+
+        #endregion
+    }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.

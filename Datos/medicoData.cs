@@ -35,6 +35,31 @@ namespace Datos
             }            
         }
 
+        public void Update(Entidad.Medico m, string cedula_nueva)
+        {
+            try
+            {
+                Entidad.ClinicaEntities dc = new Entidad.ClinicaEntities();
+                Entidad.Medico db_medico = null;
+                db_medico = dc.Medicos.Where(p => p.NroCedula == m.NroCedula).FirstOrDefault();
+                if (db_medico != null)
+                {                    
+                    db_medico.Nombres = m.Nombres;
+                    db_medico.Apellidos = m.Apellidos;
+                    db_medico.Fecha_nacimiento = m.Fecha_nacimiento;
+                    db_medico.Direccion = m.Direccion;
+                    db_medico.Telefono = m.Telefono;
+                    db_medico.Celular = m.Celular;
+                    db_medico.NroCedula = cedula_nueva;
+                    dc.SaveChanges();
+                }
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Error en Update data: " + err.Message);
+            }
+        }
+
         public int ExistCedula(string cedula)
         {
             try

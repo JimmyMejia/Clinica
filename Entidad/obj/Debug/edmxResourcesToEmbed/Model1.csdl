@@ -93,6 +93,9 @@
       <End Role="Detalle_Servicio_Brindado" EntitySet="Detalle_Servicio_Brindado" />
     </AssociationSet>
     <EntitySet Name="V_Clinica_Activa" EntityType="ClinicaModel.V_Clinica_Activa" />
+    <FunctionImport Name="Buscar_Medicos" ReturnType="Collection(ClinicaModel.Buscar_Medicos_Result)">
+      <Parameter Name="Apellidos" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Cat_Servicio">
     <Key>
@@ -468,4 +471,8 @@
     <Property Type="String" Name="Logo" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Activo" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
+  <ComplexType Name="Buscar_Medicos_Result">
+    <Property Type="String" Name="NroCedula" Nullable="false" MaxLength="16" />
+    <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="81" />
+  </ComplexType>
 </Schema>

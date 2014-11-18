@@ -81,10 +81,12 @@
                 <asp:Button ID="btn_agregar" runat="server" Text="Agregar" CssClass="btn btn-primary" Enabled ="false" onclick="btn_agregar_Click"/>
                 <asp:Button ID="btn_facturar" runat="server" Text="Facturar" CssClass="btn btn-primary" 
                     CausesValidation="false" Enabled ="false" onclick="btn_facturar_Click"/>
-                    <asp:Button ID="btn_imprimir" runat="server" Text="Imprimir" CssClass="btn btn-primary" 
+                    
+                <asp:Button ID="btn_imprimir" runat="server" Text="Imprimir" CssClass="btn btn-primary" 
                     CausesValidation="false" Enabled ="false" onclick="btn_imprimir_Click"/>
                 <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" CssClass="btn btn-primary" 
                     CausesValidation="false" onclick="btn_cancelar_Click"/>
+                    
             </div>
         </div>
         

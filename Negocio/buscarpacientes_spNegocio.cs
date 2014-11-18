@@ -16,7 +16,7 @@ namespace Negocio
             }
             catch (Exception err)
             {
-                throw new Exception("Error en BuscarPacientes, data: " + err.Message);
+                throw new Exception("Error en BuscarPacientes, negocio: " + err.Message);
             }
         }
 

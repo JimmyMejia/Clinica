@@ -246,5 +246,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Buscar_Medicos" FunctionName="ClinicaModel.Store.Buscar_Medicos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicaModel.Buscar_Medicos_Result">
+          <ScalarProperty Name="NroCedula" ColumnName="NroCedula" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

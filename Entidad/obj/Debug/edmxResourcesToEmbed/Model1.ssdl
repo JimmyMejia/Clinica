@@ -387,6 +387,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Buscar_Medicos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Apellidos" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="Buscar_Pacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Apellidos" Type="varchar" Mode="In" />
   </Function>
